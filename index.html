@@ -8,20 +8,34 @@
   </head>
   <body>
     <header>
-      
       <div class="logo6">
-      <div class="logo6-main">WEST-TEK</div>
-      <div class="logo6-sub">S O L U T I O N S</div>
-    </div>
-  </div>
+        <div class="logo6-main">WEST-TEK</div>
+        <div class="logo6-sub">S O L U T I O N S</div>
+      </div>
+      
       <nav>
         <a href="index.html">Home</a>
         <a href="gallery.html">Shop</a>
         <a href="about.html">About Us</a>
         <a href="events.html">Launches</a>
-        
       </nav>
+      
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </header>
+
+    <!-- ADD THESE TWO ELEMENTS -->
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="mobile-nav" id="mobileNav">
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Shop</a>
+      <a href="about.html">About Us</a>
+      <a href="events.html">Launches</a>
+    </div>
 
     <main>
       <!-- Hero / Landing Section -->
@@ -88,6 +102,33 @@
         } else {
           alert('Please enter a valid email address.');
         }
+      });
+
+      const hamburger = document.getElementById('hamburger');
+      const mobileNav = document.getElementById('mobileNav');
+      const overlay = document.getElementById('overlay');
+
+      function toggleMenu() {
+          hamburger.classList.toggle('active');
+          mobileNav.classList.toggle('active');
+          overlay.classList.toggle('active');
+          document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+      }
+
+      hamburger.addEventListener('click', toggleMenu);
+      overlay.addEventListener('click', toggleMenu);
+
+      // Close menu when clicking on a link
+      const mobileLinks = mobileNav.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+          link.addEventListener('click', toggleMenu);
+      });
+
+      // Close menu on window resize if desktop size
+      window.addEventListener('resize', () => {
+          if (window.innerWidth > 768 && mobileNav.classList.contains('active')) {
+              toggleMenu();
+          }
       });
     </script>
   </body>

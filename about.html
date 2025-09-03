@@ -7,21 +7,35 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-  <header>
+    <header>
+      <div class="logo6">
+        <div class="logo6-main">WEST-TEK</div>
+        <div class="logo6-sub">S O L U T I O N S</div>
+      </div>
       
-  <div class="logo6">
-  <div class="logo6-main">WEST-TEK</div>
-  <div class="logo6-sub">S O L U T I O N S</div>
-</div>
-</div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="gallery.html">Shop</a>
-    <a href="about.html">About Us</a>
-    <a href="events.html">Launches</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Shop</a>
+        <a href="about.html">About Us</a>
+        <a href="events.html">Launches</a>
+      </nav>
+      
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Elements -->
+    <div class="overlay" id="overlay"></div>
     
-  </nav>
-</header>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Shop</a>
+      <a href="about.html">About Us</a>
+      <a href="events.html">Launches</a>
+    </div>
 
     <main>
       <div class="about-section">
@@ -43,7 +57,7 @@
       <div class="feedback-section">
         <h2>Contact Us</h2>
         <p>
-          We’d love to hear from you! A feedback form will be available here
+          We'd love to hear from you! A feedback form will be available here
           soon.
         </p>
       </div>
@@ -74,6 +88,34 @@
         } else {
           alert('Please enter a valid email address.');
         }
+      });
+
+      // Hamburger Menu JavaScript
+      const hamburger = document.getElementById('hamburger');
+      const mobileNav = document.getElementById('mobileNav');
+      const overlay = document.getElementById('overlay');
+
+      function toggleMenu() {
+          hamburger.classList.toggle('active');
+          mobileNav.classList.toggle('active');
+          overlay.classList.toggle('active');
+          document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+      }
+
+      hamburger.addEventListener('click', toggleMenu);
+      overlay.addEventListener('click', toggleMenu);
+
+      // Close menu when clicking on a link
+      const mobileLinks = mobileNav.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+          link.addEventListener('click', toggleMenu);
+      });
+
+      // Close menu on window resize if desktop size
+      window.addEventListener('resize', () => {
+          if (window.innerWidth > 768 && mobileNav.classList.contains('active')) {
+              toggleMenu();
+          }
       });
     </script>
   </body>
