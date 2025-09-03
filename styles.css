@@ -1011,25 +1011,42 @@ header audio:hover {
   position: relative;
   min-height: 60vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 4rem 2rem;
-  
-  width: 100;
-  
-  /* Background Image */
-  background-image: url('assets/cats_paw_nebula.webp'); /* Replace with your image path */
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: scroll; 
-  animation: slowRotate 120s linear infinite;
-  
-  /* Dark overlay for text readability */
-  background-color: var(--space-black); /* Fallback if image doesn't load */
+  overflow: hidden;
 }
+
+.hero-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  object-fit: cover;
+  transform: translate(-50%, -50%); /* no rotate here */
+  transform-origin: center center;
+  animation: slowRotate 120s linear infinite;
+  z-index: 1;
+}
+
+
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+
+/* rotation animation */
+@keyframes slowRotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(100deg); }
+}
+
 
 .hero::before {
   content: '';
