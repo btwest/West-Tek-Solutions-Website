@@ -64,7 +64,7 @@ h1 {
 }
 
 main {
-  padding: 3rem 2rem;
+  padding: 0rem 2rem 3rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -1017,10 +1017,7 @@ header audio:hover {
   text-align: center;
   padding: 4rem 2rem;
   
-  /* Break out of main container width restriction */
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  width: 100vw;
+  width: 100;
   
   /* Background Image */
   background-image: url('assets/cats_paw_nebula.webp'); /* Replace with your image path */
