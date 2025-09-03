@@ -196,6 +196,7 @@ h2::after {
   background-color: var(--dark-gray);
   padding: 1rem;
   border: 1px solid var(--border-gray);
+  width: 300px;
 }
 
 /* ---- About / Contact ---- */
