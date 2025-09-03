@@ -1025,6 +1025,7 @@ header audio:hover {
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: scroll; 
+  animation: slowRotate 120s linear infinite;
   
   /* Dark overlay for text readability */
   background-color: var(--space-black); /* Fallback if image doesn't load */
