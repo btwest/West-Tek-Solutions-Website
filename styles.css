@@ -623,3 +623,385 @@ header audio:hover {
     letter-spacing: 3px;
   }
 }
+
+/* ---- Event/Mission Template Styles ---- */
+
+/* Mission Header */
+.mission-header {
+  text-align: center;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border-gray);
+  margin-bottom: 2rem;
+}
+
+.mission-title {
+  font-size: 3rem;
+  color: var(--pure-white);
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.mission-status {
+  margin-top: 1rem;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 2px solid;
+}
+
+.status-badge.upcoming {
+  background-color: var(--spacex-orange);
+  color: var(--space-black);
+  border-color: var(--spacex-orange);
+}
+
+.status-badge.completed {
+  background-color: var(--space-black);
+  color: var(--pure-white);
+  border-color: var(--pure-white);
+}
+
+/* Mission Info Grid */
+.mission-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.info-card {
+  background-color: var(--dark-gray);
+  padding: 1.5rem;
+  border: 1px solid var(--border-gray);
+  text-align: center;
+  transition: border-color 0.3s ease;
+}
+
+.info-card:hover {
+  border-color: var(--spacex-orange);
+}
+
+.info-card h3 {
+  font-size: 1.1rem;
+  color: var(--spacex-orange);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.info-card p {
+  color: var(--pure-white);
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Countdown Display */
+.countdown-section {
+  text-align: center;
+  margin: 3rem 0;
+  padding: 2rem;
+  background-color: var(--dark-gray);
+  border: 1px solid var(--border-gray);
+}
+
+.countdown-display {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--spacex-orange);
+  font-family: 'Courier New', monospace;
+  margin-top: 1rem;
+  text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+}
+
+/* Mission Specs */
+.mission-specs {
+  background-color: var(--dark-gray);
+  padding: 2rem;
+  border: 1px solid var(--border-gray);
+  margin-top: 2rem;
+}
+
+.mission-specs h3 {
+  color: var(--spacex-orange);
+  margin-bottom: 1rem;
+}
+
+.mission-specs ul {
+  list-style: none;
+  padding: 0;
+}
+
+.mission-specs li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-gray);
+  color: var(--light-gray);
+}
+
+.mission-specs li:last-child {
+  border-bottom: none;
+}
+
+/* Mission Goals */
+.goals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.goal-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background-color: var(--dark-gray);
+  padding: 1.5rem;
+  border: 1px solid var(--border-gray);
+  transition: border-color 0.3s ease;
+}
+
+.goal-item:hover {
+  border-color: var(--spacex-orange);
+}
+
+.goal-icon {
+  font-size: 2rem;
+  min-width: 50px;  /* Back to min-width for flexibility */
+  text-align: left;  /* Align icon to the left of its space */
+  flex-shrink: 0;  /* Prevent the icon from shrinking */
+  display: flex;
+  align-items: flex-start;  /* Align with the start of text */
+}
+
+.goal-content {
+  flex: 1;  /* Take up remaining space */
+}
+
+.goal-content h4 {
+  color: var(--spacex-orange);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.goal-content p {
+  color: var(--light-gray);
+  margin: 0;
+  line-height: 1.6;
+}
+/* Image Gallery */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.image-item {
+  background-color: var(--dark-gray);
+  border: 1px solid var(--border-gray);
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.image-item:hover {
+  border-color: var(--spacex-orange);
+}
+
+.mission-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(20%);
+  transition: filter 0.3s ease;
+}
+
+.image-item:hover .mission-image {
+  filter: grayscale(0%);
+}
+
+.image-caption {
+  padding: 1rem;
+  color: var(--light-gray);
+  font-size: 0.9rem;
+  text-align: center;
+  margin: 0;
+}
+
+/* Mission Outcome */
+.outcome-status {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.outcome-badge {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 0;
+  margin-bottom: 1rem;
+}
+
+.outcome-badge.success {
+  background-color: #27ae60;
+  color: var(--pure-white);
+  border: 2px solid #27ae60;
+}
+
+.outcome-badge.partial {
+  background-color: var(--spacex-orange);
+  color: var(--space-black);
+  border: 2px solid var(--spacex-orange);
+}
+
+.outcome-badge.failure {
+  background-color: #e74c3c;
+  color: var(--pure-white);
+  border: 2px solid #e74c3c;
+}
+
+.outcome-text {
+  color: var(--light-gray);
+  font-size: 1.1rem;
+}
+
+/* Results Grid */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.result-item {
+  background-color: var(--dark-gray);
+  padding: 1.5rem;
+  border: 1px solid var(--border-gray);
+}
+
+.result-item h4 {
+  color: var(--spacex-orange);
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.result-item p {
+  color: var(--light-gray);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Mission Data Placeholder */
+.mission-data {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.data-placeholder {
+  background-color: var(--dark-gray);
+  border: 2px dashed var(--border-gray);
+  padding: 3rem;
+  color: var(--medium-gray);
+  font-style: italic;
+}
+
+/* Navigation Buttons */
+.mission-navigation {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-gray);
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  background-color: var(--space-black);
+  color: var(--pure-white);
+  border: 2px solid var(--spacex-orange);
+  padding: 0.8rem 1.5rem;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 150px;
+}
+
+.nav-btn:hover {
+  background-color: var(--spacex-orange);
+  color: var(--space-black);
+}
+
+/* Responsive Design for Event Template */
+@media (max-width: 768px) {
+  .mission-title {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+
+  .mission-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .countdown-display {
+    font-size: 1.8rem;
+  }
+
+  .goals-list {
+    gap: 1rem;
+  }
+
+  .goal-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-buttons {
+    flex-direction: column;
+  }
+
+  .nav-btn {
+    flex: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .mission-title {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  .countdown-display {
+    font-size: 1.4rem;
+  }
+
+  .info-card {
+    padding: 1rem;
+  }
+}
