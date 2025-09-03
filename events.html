@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WestTek Aerospace | Launches</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+  <header>
+      
+  <div class="logo6">
+  <div class="logo6-main">WEST-TEK</div>
+  <div class="logo6-sub">A E R O S P A C E</div>
+</div>
+</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="gallery.html">Shop</a>
+    <a href="about.html">About Us</a>
+    <a href="events.html">Launches</a>
+  </nav>
+</header>
+
+    <main>
+      <div class="gallery-header">
+        <h2 class="gallery-title">Upcoming Launches</h2>
+      </div>
+
+      <div id="upcoming-launches" class="product-list">
+        <!-- Mission 1 -->
+        <div class="product-item" data-launch="2025-09-07T16:00:00">
+          <div class="product-details">
+            <h3 class="product-title">Mission: Gnat</h3>
+            <p class="product-description">
+              Launch of a 3D-printed model rocket powered by the A34t engine.
+            </p>
+            <p><strong>Date:</strong> Sunday, Sept 7, 2025 – 4:00 PM</p>
+            <p class="countdown"></p>
+            <button class="add-to-cart-btn" onclick="viewMission('gnat.html')">
+              View
+            </button>
+          </div>
+        </div>
+
+        <!-- Mission 2 (placeholder) -->
+        <div class="product-item" data-launch="2025-09-20T14:00:00">
+          <div class="product-details">
+            <h3 class="product-title">Mission: Placeholder Alpha</h3>
+            <p class="product-description">
+              Placeholder mission for testing future launch details.
+            </p>
+            <p><strong>Date:</strong> Saturday, Sept 20, 2025 – 2:00 PM</p>
+            <p class="countdown"></p>
+            <button class="add-to-cart-btn" onclick="viewMission('alpha.html')">
+              View
+            </button>
+          </div>
+        </div>
+
+        <!-- Mission 3 (placeholder) -->
+        <div class="product-item" data-launch="2025-10-01T10:00:00">
+          <div class="product-details">
+            <h3 class="product-title">Mission: Placeholder Beta</h3>
+            <p class="product-description">
+              Another placeholder mission representing a future launch.
+            </p>
+            <p><strong>Date:</strong> Wednesday, Oct 1, 2025 – 10:00 AM</p>
+            <p class="countdown"></p>
+            <button class="add-to-cart-btn" onclick="viewMission('beta.html')">
+              View
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-header">
+        <h2 class="gallery-title">Completed Missions</h2>
+      </div>
+      <div id="completed-missions" class="product-list">
+        <!-- Completed missions will move here automatically -->
+      </div>
+    </main>
+
+    <footer>
+      <p>Social Media Links</p>
+      <div class="newsletter">
+        <input type="email" id="subscribe-email" placeholder="Your email" />
+        <button id="subscribe-btn">Join</button>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a> | <a href="gallery.html">Shop</a> |
+        <a href="about.html">About Us</a> |
+        <a href="events.html">Launches</a>
+      </div>
+    </footer>
+
+    <script>
+      // Subscribe
+      const subscribeBtn = document.getElementById('subscribe-btn');
+      const emailInput = document.getElementById('subscribe-email');
+
+      subscribeBtn.addEventListener('click', function () {
+        const email = emailInput.value.trim();
+        if (email) {
+          alert(`Thank you for subscribing with ${email}!`);
+          emailInput.value = '';
+        } else {
+          alert('Please enter a valid email address.');
+        }
+      });
+
+      // View Mission
+      function viewMission(page) {
+        window.location.href = page;
+      }
+
+      // Countdown + auto-move to Completed
+      function updateCountdowns() {
+        const now = new Date().getTime();
+        const upcoming = document.querySelectorAll(
+          '#upcoming-launches .product-item'
+        );
+
+        upcoming.forEach((item) => {
+          const launchTime = new Date(item.dataset.launch).getTime();
+          const countdownEl = item.querySelector('.countdown');
+          const distance = launchTime - now;
+
+          if (distance > 0) {
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor(
+              (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+            );
+            const minutes = Math.floor(
+              (distance % (1000 * 60 * 60)) / (1000 * 60)
+            );
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownEl.textContent = `T-${days}d ${hours}h ${minutes}m ${seconds}s`;
+          } else {
+            countdownEl.textContent = 'Launched!';
+            document.getElementById('completed-missions').appendChild(item);
+          }
+        });
+      }
+
+      setInterval(updateCountdowns, 1000);
+    </script>
+  </body>
+</html>

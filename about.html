@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - Westtek Aerospace</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+  <header>
+      
+  <div class="logo6">
+  <div class="logo6-main">WEST-TEK</div>
+  <div class="logo6-sub">A E R O S P A C E</div>
+</div>
+</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="gallery.html">Shop</a>
+    <a href="about.html">About Us</a>
+    <a href="events.html">Launches</a>
+    
+  </nav>
+</header>
+
+    <main>
+      <div class="about-section">
+        <h2>About Us</h2>
+        <img src="assets/about.JPEG" alt="About Westtek Aerospace" class="about-image" />
+        <p>
+          <span class="highlight">WEST-TEK AEROSPACE</span> is a family-driven hub for creativity, exploration,
+          and innovation. What began as a collection of small projects has
+          evolved into a shared space for documenting our work in rocketry,
+          software development, game design, and creative media.
+        </p>
+        <p>
+          Our mission is simple: bring together curiosity, technical skill, and
+          imagination to build projects that inspire and connect. From launching
+          model rockets to building apps and sharing stories online, this is where our ideas take flight.
+        </p>
+      </div>
+
+      <div class="feedback-section">
+        <h2>Contact Us</h2>
+        <p>
+          We’d love to hear from you! A feedback form will be available here
+          soon.
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      <p>Social Media Links</p>
+      <div class="newsletter">
+        <input type="email" id="subscribe-email" placeholder="Your email" />
+        <button id="subscribe-btn">Join</button>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a> | <a href="gallery.html">Shop</a> |
+        <a href="about.html">About Us</a> |
+        <a href="events.html">Launches</a>
+      </div>
+    </footer>
+
+    <script>
+      const subscribeBtn = document.getElementById('subscribe-btn');
+      const emailInput = document.getElementById('subscribe-email');
+
+      subscribeBtn.addEventListener('click', function () {
+        const email = emailInput.value.trim();
+        if (email) {
+          alert(`Thank you for subscribing with ${email}!`);
+          emailInput.value = '';
+        } else {
+          alert('Please enter a valid email address.');
+        }
+      });
+    </script>
+  </body>
+</html>

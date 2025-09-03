@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop - Westtek Aerospace</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+  <header>
+      
+  <div class="logo6">
+  <div class="logo6-main">WEST-TEK</div>
+  <div class="logo6-sub">A E R O S P A C E</div>
+</div>
+</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="gallery.html">Shop</a>
+    <a href="about.html">About Us</a>
+    <a href="events.html">Launches</a>
+    
+  </nav>
+</header>
+
+    <main>
+      <section class="coming-soon">
+        <h2>Shop Coming Soon</h2>
+        <p>
+          We’re working on something exciting! Check back soon to explore
+          exclusive Westtek Aerospace merch and project kits.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Social Media Links</p>
+      <div class="newsletter">
+        <input type="email" id="subscribe-email" placeholder="Your email" />
+        <button id="subscribe-btn">Join</button>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a> | <a href="gallery.html">Shop</a> |
+        <a href="about.html">About Us</a> |
+        <a href="events.html">Launches</a>
+      </div>
+    </footer>
+
+    <script>
+      const subscribeBtn = document.getElementById('subscribe-btn');
+      const emailInput = document.getElementById('subscribe-email');
+
+      subscribeBtn.addEventListener('click', function () {
+        const email = emailInput.value.trim();
+        if (email) {
+          alert(`Thank you for subscribing with ${email}!`);
+          emailInput.value = '';
+        } else {
+          alert('Please enter a valid email address.');
+        }
+      });
+    </script>
+  </body>
+</html>

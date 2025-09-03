@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SpaceX-Inspired Logo Examples</title>
+    <style>
+      :root {
+        --space-black: #000000;
+        --pure-white: #ffffff;
+        --spacex-orange: #ff6b35;
+        --dark-gray: #1a1a1a;
+        --border-gray: #333333;
+      }
+
+      body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        background-color: var(--space-black);
+        color: var(--pure-white);
+        margin: 0;
+        padding: 2rem;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: var(--pure-white);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+      }
+
+      .logo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .logo-card {
+        background-color: var(--dark-gray);
+        border: 1px solid var(--border-gray);
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .logo-card h3 {
+        color: var(--spacex-orange);
+        margin-bottom: 2rem;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .logo-preview {
+        background-color: var(--space-black);
+        padding: 3rem 2rem;
+        margin-bottom: 2rem;
+        min-height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--border-gray);
+      }
+
+      /* Logo 1 - Simple Text with Orange Accent */
+      .logo1 {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--pure-white);
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        position: relative;
+      }
+
+      .logo1::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: var(--spacex-orange);
+      }
+
+      /* Logo 2 - Rocket Symbol */
+      .logo2 {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        justify-content: center;
+      }
+
+      .rocket-icon {
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 40px solid var(--spacex-orange);
+        position: relative;
+      }
+
+      .rocket-icon::after {
+        content: '';
+        position: absolute;
+        top: 40px;
+        left: -8px;
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 15px solid var(--spacex-orange);
+      }
+
+      .logo2-text {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--pure-white);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+      }
+
+      /* Logo 3 - Geometric Design */
+      .logo3 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .logo3-symbol {
+        display: flex;
+        gap: 3px;
+      }
+
+      .logo3-bar {
+        width: 4px;
+        background-color: var(--spacex-orange);
+      }
+
+      .logo3-bar:nth-child(1) {
+        height: 20px;
+      }
+      .logo3-bar:nth-child(2) {
+        height: 35px;
+      }
+      .logo3-bar:nth-child(3) {
+        height: 45px;
+      }
+      .logo3-bar:nth-child(4) {
+        height: 35px;
+      }
+      .logo3-bar:nth-child(5) {
+        height: 20px;
+      }
+
+      .logo3-text {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--pure-white);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-top: 0.5rem;
+      }
+
+      /* Logo 4 - Minimalist Box */
+      .logo4 {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .logo4-box {
+        width: 50px;
+        height: 50px;
+        border: 3px solid var(--spacex-orange);
+        position: relative;
+        background-color: var(--space-black);
+      }
+
+      .logo4-box::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 20px;
+        height: 20px;
+        background-color: var(--spacex-orange);
+      }
+
+      .logo4-text {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 2rem;
+        font-weight: 300;
+        color: var(--pure-white);
+        text-transform: uppercase;
+        letter-spacing: 4px;
+      }
+
+      /* Logo 5 - Circle with Arrow */
+      .logo5 {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .logo5-circle {
+        width: 50px;
+        height: 50px;
+        border: 3px solid var(--spacex-orange);
+        border-radius: 50%;
+        position: relative;
+        background-color: var(--space-black);
+      }
+
+      .logo5-arrow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        width: 20px;
+        height: 20px;
+        border-top: 3px solid var(--spacex-orange);
+        border-right: 3px solid var(--spacex-orange);
+      }
+
+      .logo5-text {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--pure-white);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      /* Logo 6 - Stacked Text */
+      .logo6 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .logo6-main {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: var(--pure-white);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        line-height: 1;
+      }
+
+      .logo6-sub {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: var(--spacex-orange);
+        text-transform: uppercase;
+        letter-spacing: 6px;
+        margin-top: 0.5rem;
+      }
+
+      .usage-note {
+        background-color: var(--dark-gray);
+        border: 1px solid var(--border-gray);
+        padding: 1.5rem;
+        margin-top: 2rem;
+        border-radius: 0;
+      }
+
+      .usage-note h3 {
+        color: var(--spacex-orange);
+        margin-top: 0;
+      }
+
+      .usage-note p {
+        color: var(--pure-white);
+        margin-bottom: 0.5rem;
+      }
+
+      .code-snippet {
+        background-color: var(--space-black);
+        border: 1px solid var(--border-gray);
+        padding: 1rem;
+        margin: 1rem 0;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        color: var(--spacex-orange);
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>SpaceX-Inspired Logo Examples</h1>
+
+      <div class="logo-grid">
+        <div class="logo-card">
+          <h3>Simple Text with Accent</h3>
+          <div class="logo-preview">
+            <div class="logo1">WEST-TEK</div>
+          </div>
+          <p>
+            Clean, professional text logo with orange underline accent. Perfect
+            for headers.
+          </p>
+        </div>
+
+        <div class="logo-card">
+          <h3>Rocket Symbol + Text</h3>
+          <div class="logo-preview">
+            <div class="logo2">
+              <div class="rocket-icon"></div>
+              <div class="logo2-text">WESTTEK</div>
+            </div>
+          </div>
+          <p>
+            Simple rocket icon paired with bold typography. Great for
+            space-themed brands.
+          </p>
+        </div>
+
+        <div class="logo-card">
+          <h3>Geometric Bars</h3>
+          <div class="logo-preview">
+            <div class="logo3">
+              <div class="logo3-symbol">
+                <div class="logo3-bar"></div>
+                <div class="logo3-bar"></div>
+                <div class="logo3-bar"></div>
+                <div class="logo3-bar"></div>
+                <div class="logo3-bar"></div>
+              </div>
+              <div class="logo3-text">LAUNCH</div>
+            </div>
+          </div>
+          <p>
+            Abstract geometric design suggesting growth and launch trajectory.
+          </p>
+        </div>
+
+        <div class="logo-card">
+          <h3>Minimalist Square</h3>
+          <div class="logo-preview">
+            <div class="logo4">
+              <div class="logo4-box"></div>
+              <div class="logo4-text">MISSION</div>
+            </div>
+          </div>
+          <p>
+            Ultra-minimal design with geometric precision. Very modern and
+            clean.
+          </p>
+        </div>
+
+        <div class="logo-card">
+          <h3>Circle with Arrow</h3>
+          <div class="logo-preview">
+            <div class="logo5">
+              <div class="logo5-circle">
+                <div class="logo5-arrow"></div>
+              </div>
+              <div class="logo5-text">WESTTEK</div>
+            </div>
+          </div>
+          <p>
+            Circular design with directional arrow, suggesting movement and
+            progress.
+          </p>
+        </div>
+
+        <div class="logo-card">
+          <h3>Stacked Typography</h3>
+          <div class="logo-preview">
+            <div class="logo6">
+              <div class="logo6-main">WEST-TEK</div>
+              <div class="logo6-sub">AEROSPACE</div>
+            </div>
+          </div>
+          <p>Two-tier text design with contrasting weights and colors.</p>
+        </div>
+      </div>
+
+      <div class="usage-note">
+        <h3>How to Use These Logos</h3>
+        <p>
+          <strong>For your website header:</strong> Copy the HTML and CSS for
+          your chosen logo and integrate it into your site.
+        </p>
+        <p>
+          <strong>For other uses:</strong> You can screenshot these designs and
+          use image editing software to create PNG/SVG versions.
+        </p>
+        <p>
+          <strong>Customization:</strong> Change the text to your company name
+          and adjust colors to match your brand.
+        </p>
+
+        <div class="code-snippet">
+          /* Example: Using Logo 1 in your header */ .header-logo { font-family:
+          'Helvetica Neue', Arial, sans-serif; font-size: 2rem; font-weight:
+          700; color: var(--pure-white); text-transform: uppercase;
+          letter-spacing: 3px; position: relative; } .header-logo::after {
+          content: ''; position: absolute; bottom: -4px; left: 0; width: 100%;
+          height: 2px; background-color: var(--spacex-orange); }
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
