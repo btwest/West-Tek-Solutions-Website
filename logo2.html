@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEST-TEK 3D Logo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Impact&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Impact', Arial Black, sans-serif;
+        }
+        
+        .logo-container {
+            text-align: center;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+        }
+        
+        .therm-text {
+            font-size: 120px;
+            font-weight: 900;
+            letter-spacing: 6px;
+            margin: 0;
+            position: relative;
+            display: inline-block;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .letter {
+            display: inline-block;
+            position: relative;
+            transform-style: preserve-3d;
+            margin: 0 1px;
+        }
+        
+        .letter-face {
+            position: relative;
+            background: linear-gradient(145deg, #ff8c00 0%, #ff6b00 30%, #e55100 70%, #bf360c 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: none;
+        }
+        
+        .letter-face::before {
+            content: attr(data-letter);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(145deg, #e55100 0%, #bf360c 30%, #8d2f00 70%, #5d1f00 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            transform: translate3d(3px, 3px, -10px);
+            filter: brightness(0.7);
+        }
+        
+        .letter-face::after {
+            content: attr(data-letter);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -2;
+            background: linear-gradient(145deg, #bf360c 0%, #8d2f00 30%, #5d1f00 70%, #3e1300 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            transform: translate3d(6px, 6px, -20px);
+            filter: brightness(0.5);
+        }
+        
+        /* Individual letter styling for better 3D effect */
+        .letter:nth-child(1) { transform: rotateY(-3deg); }
+        .letter:nth-child(2) { transform: rotateY(-2deg); }
+        .letter:nth-child(3) { transform: rotateY(-1deg); }
+        .letter:nth-child(4) { transform: rotateY(0deg); }
+        .letter:nth-child(5) { transform: rotateY(1deg); } /* dash */
+        .letter:nth-child(6) { transform: rotateY(1deg); }
+        .letter:nth-child(7) { transform: rotateY(2deg); }
+        .letter:nth-child(8) { transform: rotateY(3deg); }
+        
+        /* Special styling for the dash */
+        .dash .letter-face {
+            font-size: 0.8em;
+            position: relative;
+            top: -0.1em;
+        }
+        
+        /* Add some shadow effect */
+        .letter-face {
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+        }
+        
+        .solutions {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            font-weight: normal;
+            letter-spacing: 8px;
+            color: var(--light-gray);
+            margin-top: 15px;
+            text-transform: lowercase;
+        }
+        
+
+        
+        /* Hover effect */
+        .logo-container:hover .letter {
+            animation: float 2s ease-in-out infinite;
+        }
+        
+        .logo-container:hover .letter:nth-child(1) { animation-delay: 0s; }
+        .logo-container:hover .letter:nth-child(2) { animation-delay: 0.1s; }
+        .logo-container:hover .letter:nth-child(3) { animation-delay: 0.15s; }
+        .logo-container:hover .letter:nth-child(4) { animation-delay: 0.2s; }
+        .logo-container:hover .letter:nth-child(5) { animation-delay: 0.25s; }
+        .logo-container:hover .letter:nth-child(6) { animation-delay: 0.3s; }
+        .logo-container:hover .letter:nth-child(7) { animation-delay: 0.35s; }
+        .logo-container:hover .letter:nth-child(8) { animation-delay: 0.4s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotateY(var(--rotate, 0deg)); }
+            50% { transform: translateY(-10px) rotateY(var(--rotate, 0deg)); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .therm-text {
+                font-size: 90px;
+                letter-spacing: 4px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .therm-text {
+                font-size: 70px;
+                letter-spacing: 3px;
+            }
+            .solutions {
+                font-size: 16px;
+                letter-spacing: 6px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .therm-text {
+                font-size: 55px;
+                letter-spacing: 2px;
+            }
+            .solutions {
+                font-size: 14px;
+                letter-spacing: 4px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .therm-text {
+                font-size: 45px;
+                letter-spacing: 1px;
+            }
+            .solutions {
+                font-size: 12px;
+                letter-spacing: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <h1 class="therm-text">
+            <span class="letter" style="--rotate: -3deg;" data-char="W">
+                <span class="letter-face" data-letter="W">W</span>
+            </span>
+            <span class="letter" style="--rotate: -2deg;" data-char="E">
+                <span class="letter-face" data-letter="E">E</span>
+            </span>
+            <span class="letter" style="--rotate: -1deg;" data-char="S">
+                <span class="letter-face" data-letter="S">S</span>
+            </span>
+            <span class="letter" style="--rotate: 0deg;" data-char="T">
+                <span class="letter-face" data-letter="T">T</span>
+            </span>
+            <span class="letter dash" style="--rotate: 1deg;" data-char="-">
+                <span class="letter-face" data-letter="-">-</span>
+            </span>
+            <span class="letter" style="--rotate: 1deg;" data-char="T">
+                <span class="letter-face" data-letter="T">T</span>
+            </span>
+            <span class="letter" style="--rotate: 2deg;" data-char="E">
+                <span class="letter-face" data-letter="E">E</span>
+            </span>
+            <span class="letter" style="--rotate: 3deg;" data-char="K">
+                <span class="letter-face" data-letter="K">K</span>
+            </span>
+        </h1>
+        <div class="solutions">solutions</div>
+    </div>
+</body>
+</html>
