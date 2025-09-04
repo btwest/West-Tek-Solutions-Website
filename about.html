@@ -57,9 +57,30 @@
       <div class="feedback-section">
         <h2>Contact Us</h2>
         <p>
-          We'd love to hear from you! A feedback form will be available here
-          soon.
+          We'd love to hear from you! Drop us a message below.
         </p>
+        
+        <form class="contact-form" id="contact-form">
+          <input 
+            type="text" 
+            id="contact-name" 
+            placeholder="Your Name" 
+            required 
+          />
+          <input 
+            type="email" 
+            id="contact-email" 
+            placeholder="Your Email" 
+            required 
+          />
+          <textarea 
+            id="contact-message" 
+            placeholder="Your Message" 
+            required
+          ></textarea>
+          <button type="submit" id="contact-submit">Send Message</button>
+          <div id="contact-status" class="form-status"></div>
+        </form>
       </div>
     </main>
 
@@ -78,7 +99,79 @@
     </footer>
 
     <script>
-      // Replace with your actual SheetDB API URL
+      // === CONTACT FORM LOGIC ===
+      const CONTACT_URL = 'https://sheetdb.io/api/v1/r7vx0zy5f5kky';
+      
+      const contactForm = document.getElementById('contact-form');
+      const contactName = document.getElementById('contact-name');
+      const contactEmail = document.getElementById('contact-email');
+      const contactMessage = document.getElementById('contact-message');
+      const contactSubmit = document.getElementById('contact-submit');
+      const contactStatus = document.getElementById('contact-status');
+
+      function showContactStatus(message, isError = false) {
+        contactStatus.textContent = message;
+        contactStatus.style.color = isError ? '#ff6b6b' : '#51cf66';
+        setTimeout(() => {
+          contactStatus.textContent = '';
+        }, 5000);
+      }
+
+      contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const name = contactName.value.trim();
+        const email = contactEmail.value.trim();
+        const message = contactMessage.value.trim();
+        
+        // Validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!name || !email || !message) {
+          showContactStatus('Please fill in all fields.', true);
+          return;
+        }
+        
+        if (!emailRegex.test(email)) {
+          showContactStatus('Please enter a valid email address.', true);
+          return;
+        }
+
+        // Disable form during submission
+        contactSubmit.disabled = true;
+        contactSubmit.textContent = 'Sending...';
+
+        try {
+          const response = await fetch(CONTACT_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              data: [{
+                name: name,
+                email: email,
+                message: message,
+                timestamp: new Date().toISOString()
+              }]
+            })
+          });
+
+          if (response.ok) {
+            showContactStatus('Thank you! Your message has been sent.');
+            contactForm.reset();
+          } else {
+            throw new Error('Network response was not ok');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          showContactStatus('Something went wrong. Please try again.', true);
+        } finally {
+          contactSubmit.disabled = false;
+          contactSubmit.textContent = 'Send Message';
+        }
+      });
+
+      // === NEWSLETTER LOGIC ===
       const SHEET_DB_URL = 'https://sheetdb.io/api/v1/sf0j8tkm2crwm';
       
       const subscribeBtn = document.getElementById('subscribe-btn');
@@ -144,7 +237,7 @@
         }
       });
 
-      // Hamburger Menu JavaScript
+      // === HAMBURGER MENU LOGIC ===
       const hamburger = document.getElementById('hamburger');
       const mobileNav = document.getElementById('mobileNav');
       const overlay = document.getElementById('overlay');
