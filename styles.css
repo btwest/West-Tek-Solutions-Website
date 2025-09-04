@@ -233,7 +233,8 @@
     text-align: center;
     overflow: hidden;
     width: 100%;
-    max-width: 100vw
+    max-width: 100%;
+    
   }
   
   .hero-bg {
@@ -1041,6 +1042,10 @@
       min-height: 50vh;
       padding: 3rem 1rem;
       background-attachment: scroll;
+      
+    }
+    .hero-content{
+      max-width: 100%;
     }
     
     .hero h2 {
@@ -1153,3 +1158,7 @@
       padding: 1rem;
     }
   }
+
+  /* Temporary debugging styles */
+header { border: 2px solid red !important; }
+.hero { border: 2px solid blue !important; }
