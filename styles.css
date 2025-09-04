@@ -1024,9 +1024,9 @@ header audio:hover {
   width: 200%;
   height: 200%;
   object-fit: cover;
-  transform: translate(-50%, -50%); /* no rotate here */
+  transform: translate(-50%, -50%);
   transform-origin: center center;
-  animation: slowRotate 120s linear infinite;
+  animation: slowRotate 30s linear infinite;
   z-index: 1;
 }
 
@@ -1044,7 +1044,7 @@ header audio:hover {
 /* rotation animation */
 @keyframes slowRotate {
   from { transform: translate(-50%, -50%) rotate(0deg); }
-  to   { transform: translate(-50%, -50%) rotate(100deg); }
+  to   { transform: translate(-50%, -50%) rotate(25deg); }
 }
 
 
