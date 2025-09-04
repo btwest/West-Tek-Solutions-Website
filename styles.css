@@ -1161,6 +1161,9 @@
     }
   }
 
+
   /* Temporary debugging styles */
-header { border: 2px solid red !important; }
+/*header { border: 2px solid red !important; }
 .hero { border: 2px solid blue !important; }
+main { border: 2px solid green !important; }
+footer { border: 2px solid red !important; }*/
