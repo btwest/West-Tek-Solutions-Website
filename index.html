@@ -78,33 +78,88 @@
 </section>
 </main>
 
-    <footer>
-      <p>Social Media Links</p>
-      <div class="newsletter">
-        <input type="email" id="subscribe-email" placeholder="Your email" />
-        <button id="subscribe-btn">Join</button>
-      </div>
-      <div class="footer-links">
-        <a href="index.html">Home</a> | <a href="gallery.html">Shop</a> |
-        <a href="about.html">About Us</a> |
-        <a href="events.html">Launches</a>
-      </div>
-    </footer>
+<footer>
+  <p>Social Media Links</p>
+  <div class="newsletter">
+    <input type="email" id="subscribe-email" placeholder="Your email" required />
+    <button id="subscribe-btn">Join</button>
+    <div id="newsletter-status" style="margin-top: 10px; font-size: 14px;"></div>
+  </div>
+  <div class="footer-links">
+    <a href="index.html">Home</a> | <a href="gallery.html">Shop</a> |
+    <a href="about.html">About Us</a> |
+    <a href="events.html">Launches</a>
+  </div>
+</footer>
 
     <script>
+      // Replace with your actual SheetDB API URL
+      const SHEET_DB_URL = 'https://sheetdb.io/api/v1/sf0j8tkm2crwm';
+      
       const subscribeBtn = document.getElementById('subscribe-btn');
       const emailInput = document.getElementById('subscribe-email');
+      const statusDiv = document.getElementById('newsletter-status');
 
-      subscribeBtn.addEventListener('click', function () {
+      function showStatus(message, isError = false) {
+        statusDiv.textContent = message;
+        statusDiv.style.color = isError ? '#ff6b6b' : '#51cf66';
+        setTimeout(() => {
+          statusDiv.textContent = '';
+        }, 4000);
+      }
+
+      subscribeBtn.addEventListener('click', async function () {
         const email = emailInput.value.trim();
-        if (email) {
-          alert(`Thank you for subscribing with ${email}!`);
-          emailInput.value = '';
-        } else {
-          alert('Please enter a valid email address.');
+        
+        // Basic email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailRegex.test(email)) {
+          showStatus('Please enter a valid email address.', true);
+          return;
+        }
+
+        // Disable button during request
+        subscribeBtn.disabled = true;
+        subscribeBtn.textContent = 'Joining...';
+
+        try {
+          const response = await fetch(SHEET_DB_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              data: [{
+                email: email,
+                timestamp: new Date().toISOString()
+              }]
+            })
+          });
+
+          if (response.ok) {
+            showStatus(`Thank you for subscribing with ${email}!`);
+            emailInput.value = '';
+          } else {
+            throw new Error('Network response was not ok');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          showStatus('Something went wrong. Please try again.', true);
+        } finally {
+          // Re-enable button
+          subscribeBtn.disabled = false;
+          subscribeBtn.textContent = 'Join';
         }
       });
 
+      // Allow Enter key to submit
+      emailInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          subscribeBtn.click();
+        }
+      });
+
+      // Hamburger menu functionality
       const hamburger = document.getElementById('hamburger');
       const mobileNav = document.getElementById('mobileNav');
       const overlay = document.getElementById('overlay');
@@ -119,13 +174,11 @@
       hamburger.addEventListener('click', toggleMenu);
       overlay.addEventListener('click', toggleMenu);
 
-      // Close menu when clicking on a link
       const mobileLinks = mobileNav.querySelectorAll('a');
       mobileLinks.forEach(link => {
           link.addEventListener('click', toggleMenu);
       });
 
-      // Close menu on window resize if desktop size
       window.addEventListener('resize', () => {
           if (window.innerWidth > 768 && mobileNav.classList.contains('active')) {
               toggleMenu();
