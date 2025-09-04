@@ -1122,6 +1122,7 @@ header audio:hover {
     min-height: 50vh;
     padding: 3rem 1rem;
     background-attachment: scroll; /* Better performance on mobile */
+    
   }
   
   .hero h2 {
