@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission Data Logger (BETA)</title>
+    <style>
+        /* WestTek Color Palette */
+        :root {
+            --space-black: #1c1c1c;
+            --pure-white: #ffffff;
+            --spacex-orange: #ff6b35;
+            --dark-gray: #1a1a1a;
+            --medium-gray: #666666;
+            --light-gray: #cccccc;
+            --border-gray: #333333;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: var(--space-black);
+            color: var(--pure-white);
+            font-weight: 300;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 2px solid var(--spacex-orange);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, var(--space-black) 0%, var(--dark-gray) 50%, var(--space-black) 100%);
+            padding: 30px 20px 20px;
+            margin: -20px -20px 30px -20px;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--pure-white);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .header h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--spacex-orange);
+            margin: 1rem auto;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+            background-color: var(--dark-gray);
+            border: 1px solid var(--border-gray);
+            padding: 20px;
+            border-radius: 0;
+            transition: border-color 0.3s ease;
+        }
+
+        .section:hover {
+            border-color: var(--spacex-orange);
+        }
+        
+        .section-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--spacex-orange);
+            border-bottom: 1px solid var(--border-gray);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .field-row {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .field-label {
+            min-width: 200px;
+            font-weight: 500;
+            color: var(--light-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        .field-input {
+            flex: 1;
+            border-bottom: 2px solid var(--border-gray);
+            min-height: 25px;
+            margin-left: 15px;
+            padding: 5px 8px;
+            background-color: var(--space-black);
+            color: var(--pure-white);
+            transition: border-color 0.3s ease;
+        }
+
+        .field-input:focus-within {
+            border-color: var(--spacex-orange);
+            outline: none;
+        }
+        
+        .field-input.wide {
+            min-height: 80px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border-gray);
+            background-color: var(--space-black);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox:hover {
+            border-color: var(--spacex-orange);
+        }
+
+        .checkbox-item label {
+            color: var(--light-gray);
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        
+        .notes-section {
+            min-height: 120px;
+            border: 2px solid var(--border-gray);
+            padding: 15px;
+            margin-top: 15px;
+            background-color: var(--space-black);
+            color: var(--pure-white);
+            transition: border-color 0.3s ease;
+        }
+
+        .notes-section:focus-within {
+            border-color: var(--spacex-orange);
+        }
+
+        .assessment-section {
+            background-color: var(--dark-gray);
+            border: 1px solid var(--border-gray);
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .assessment-section h3 {
+            color: var(--spacex-orange);
+            margin-bottom: 15px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .status-badges {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .status-badge {
+            padding: 8px 16px;
+            border: 2px solid var(--border-gray);
+            background-color: var(--space-black);
+            color: var(--light-gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .status-badge:hover {
+            border-color: var(--spacex-orange);
+            color: var(--spacex-orange);
+        }
+
+        .signature-section {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border-gray);
+            background-color: var(--dark-gray);
+            border: 1px solid var(--border-gray);
+            padding: 30px 20px;
+        }
+
+        .mission-info {
+            background: linear-gradient(135deg, var(--dark-gray) 0%, var(--space-black) 100%);
+            border: 1px solid var(--spacex-orange);
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .mission-info .section-title {
+            color: var(--spacex-orange);
+            border-bottom: 1px solid var(--spacex-orange);
+        }
+
+        /* Responsive design */
+        @media print {
+            body { 
+                margin: 0; 
+                padding: 15px; 
+                background-color: white;
+                color: black;
+            }
+            .section { 
+                page-break-inside: avoid;
+                background-color: #f9f9f9;
+                border-color: #333;
+            }
+            .header {
+                background-color: #f0f0f0;
+            }
+            .section-title {
+                color: #ff6b35;
+            }
+            .field-input {
+                background-color: white;
+                border-color: #333;
+            }
+            .notes-section {
+                background-color: white;
+                border-color: #333;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+                letter-spacing: 2px;
+            }
+            
+            .field-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .field-label {
+                min-width: auto;
+                margin-bottom: 5px;
+            }
+            
+            .field-input {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .checkbox-group {
+                gap: 15px;
+            }
+        }
+
+        /* Custom input styling */
+        input[type="text"], input[type="number"], input[type="date"], input[type="time"], textarea {
+            background-color: var(--space-black);
+            border: none;
+            border-bottom: 2px solid var(--border-gray);
+            color: var(--pure-white);
+            padding: 8px 0;
+            font-family: inherit;
+            font-size: 0.95rem;
+            width: 100%;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus, input[type="date"]:focus, input[type="time"]:focus, textarea:focus {
+            outline: none;
+            border-color: var(--spacex-orange);
+        }
+
+        input[type="text"]::placeholder, input[type="number"]::placeholder, textarea::placeholder {
+            color: var(--medium-gray);
+            font-style: italic;
+        }
+
+        /* Checkbox styling */
+        input[type="checkbox"] {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border-gray);
+            background-color: var(--space-black);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: var(--spacex-orange);
+            border-color: var(--spacex-orange);
+        }
+
+        input[type="checkbox"]:checked::after {
+            content: '✓';
+            color: var(--space-black);
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        input[type="checkbox"]:hover {
+            border-color: var(--spacex-orange);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Model Rocket Launch Data Collection Sheet</h1>
+        <div class="field-row">
+            <span class="field-label">Mission Name:</span>
+            <input type="text" class="field-input" placeholder="Enter mission designation">
+            <span class="field-label" style="margin-left: 30px;">Date:</span>
+            <input type="date" class="field-input" style="max-width: 150px;">
+            <span class="field-label" style="margin-left: 30px;">Time:</span>
+            <input type="time" class="field-input" style="max-width: 120px;">
+        </div>
+    </div>
+
+    <div class="grid">
+        <div>
+            <div class="section mission-info">
+                <div class="section-title">🚀 Rocket Specifications</div>
+                <div class="field-row">
+                    <span class="field-label">Rocket Name/Model:</span>
+                    <input type="text" class="field-input" placeholder="Model designation">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Length:</span>
+                    <input type="text" class="field-input" placeholder="cm/inches">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Diameter:</span>
+                    <input type="text" class="field-input" placeholder="cm/inches">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Mass (loaded):</span>
+                    <input type="text" class="field-input" placeholder="grams/ounces">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Recovery System:</span>
+                    <input type="text" class="field-input" placeholder="Parachute/Streamer">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">3D Printed Components:</span>
+                    <input type="text" class="field-input" placeholder="Nose cone, fins, etc.">
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">⚡ Motor Specifications</div>
+                <div class="field-row">
+                    <span class="field-label">Motor Designation:</span>
+                    <input type="text" class="field-input" placeholder="e.g., A8-3, B6-4">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Manufacturer:</span>
+                    <input type="text" class="field-input" placeholder="Estes, Quest, etc.">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Total Impulse:</span>
+                    <input type="text" class="field-input" placeholder="Newton-seconds">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Burn Time:</span>
+                    <input type="text" class="field-input" placeholder="seconds">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Delay Time:</span>
+                    <input type="text" class="field-input" placeholder="seconds">
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="section">
+                <div class="section-title">🌤️ Weather Conditions</div>
+                <div class="field-row">
+                    <span class="field-label">Temperature:</span>
+                    <input type="text" class="field-input" placeholder="°F/°C">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Wind Speed:</span>
+                    <input type="text" class="field-input" placeholder="mph/kph">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Wind Direction:</span>
+                    <input type="text" class="field-input" placeholder="N, S, E, W">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Humidity:</span>
+                    <input type="text" class="field-input" placeholder="%">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Pressure:</span>
+                    <input type="text" class="field-input" placeholder="inHg/mb">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Sky Conditions:</span>
+                    <input type="text" class="field-input" placeholder="Clear, cloudy, etc.">
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">🎯 Launch Setup</div>
+                <div class="field-row">
+                    <span class="field-label">Launch Angle:</span>
+                    <input type="text" class="field-input" placeholder="degrees from vertical">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Launch Azimuth:</span>
+                    <input type="text" class="field-input" placeholder="compass heading">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Launch Rod Length:</span>
+                    <input type="text" class="field-input" placeholder="feet/meters">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Safety Distance:</span>
+                    <input type="text" class="field-input" placeholder="feet/meters">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📊 Flight Performance Data</div>
+        <div class="grid">
+            <div>
+                <div class="field-row">
+                    <span class="field-label">Max Altitude (estimated):</span>
+                    <input type="text" class="field-input" placeholder="feet/meters">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Max Altitude (measured):</span>
+                    <input type="text" class="field-input" placeholder="feet/meters">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Flight Duration:</span>
+                    <input type="text" class="field-input" placeholder="seconds">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Motor Burn Time (observed):</span>
+                    <input type="text" class="field-input" placeholder="seconds">
+                </div>
+            </div>
+            <div>
+                <div class="field-row">
+                    <span class="field-label">Recovery Deploy Time:</span>
+                    <input type="text" class="field-input" placeholder="seconds after burnout">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Drift Distance:</span>
+                    <input type="text" class="field-input" placeholder="feet/meters">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Drift Direction:</span>
+                    <input type="text" class="field-input" placeholder="compass heading">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Landing Condition:</span>
+                    <input type="text" class="field-input" placeholder="soft, hard, etc.">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="assessment-section">
+        <div class="section-title">✅ Flight Assessment</div>
+        
+        <h3>Flight Quality:</h3>
+        <div class="status-badges">
+            <label class="status-badge">
+                <input type="checkbox" name="flight-quality" value="excellent"> Excellent
+            </label>
+            <label class="status-badge">
+                <input type="checkbox" name="flight-quality" value="good"> Good
+            </label>
+            <label class="status-badge">
+                <input type="checkbox" name="flight-quality" value="fair"> Fair
+            </label>
+            <label class="status-badge">
+                <input type="checkbox" name="flight-quality" value="poor"> Poor
+            </label>
+        </div>
+        
+        <h3>Recovery System:</h3>
+        <div class="status-badges">
+            <label class="status-badge">
+                <input type="checkbox" name="recovery" value="perfect"> Perfect Deploy
+            </label>
+            <label class="status-badge">
+                <input type="checkbox" name="recovery" value="late"> Late Deploy
+            </label>
+            <label class="status-badge">
+                <input type="checkbox" name="recovery" value="early"> Early Deploy
+            </label>
+            <label class="status-badge">
+                <input type="checkbox" name="recovery" value="failed"> Failed
+            </label>
+            <label class="status-badge">
+                <input type="checkbox" name="recovery" value="tangled"> Tangled
+            </label>
+        </div>
+
+        <h3>3D Printed Components:</h3>
+        <div class="status-badges">
+            <label class="status-badge">
+                <input type="checkbox" name="3d-components" value="no-issues"> No Issues
+            </label>
+            <label class="status-badge">
+                <input type="checkbox" name="3d-components" value="stress"> Stress Marks
+            </label>
+            <label class="status-badge">
+                <input type="checkbox" name="3d-components" value="cracking"> Cracking
+            </label>
+            <label class="status-badge">
+                <input type="checkbox" name="3d-components" value="deformation"> Deformation
+            </label>
+            <label class="status-badge">
+                <input type="checkbox" name="3d-components" value="failure"> Component Failure
+            </label>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📱 Instrumentation Data</div>
+        <div class="grid">
+            <div>
+                <div class="field-row">
+                    <span class="field-label">Altimeter Model:</span>
+                    <input type="text" class="field-input" placeholder="Brand and model">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">GPS Tracker:</span>
+                    <input type="text" class="field-input" placeholder="Brand and model">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Accelerometer:</span>
+                    <input type="text" class="field-input" placeholder="Brand and model">
+                </div>
+            </div>
+            <div>
+                <div class="field-row">
+                    <span class="field-label">Camera/Video:</span>
+                    <input type="text" class="field-input" placeholder="Type and location">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Other Sensors:</span>
+                    <input type="text" class="field-input" placeholder="Additional instrumentation">
+                </div>
+                <div class="field-row">
+                    <span class="field-label">Data Files Saved:</span>
+                    <input type="text" class="field-input" placeholder="File names/locations">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">📝 Observations & Notes</div>
+        <div>
+            <h3 style="color: var(--spacex-orange); margin-bottom: 10px;">Flight Observations:</h3>
+            <textarea class="notes-section" placeholder="Describe the flight path, stability, performance, and any notable events..."></textarea>
+        </div>
+        <div style="margin-top: 20px;">
+            <h3 style="color: var(--spacex-orange); margin-bottom: 10px;">Issues/Anomalies:</h3>
+            <textarea class="notes-section" placeholder="Note any problems, unexpected behavior, or anomalies observed..."></textarea>
+        </div>
+        <div style="margin-top: 20px;">
+            <h3 style="color: var(--spacex-orange); margin-bottom: 10px;">Lessons Learned:</h3>
+            <textarea class="notes-section" placeholder="What did you learn from this flight? What worked well?"></textarea>
+        </div>
+        <div style="margin-top: 20px;">
+            <h3 style="color: var(--spacex-orange); margin-bottom: 10px;">Modifications for Next Flight:</h3>
+            <textarea class="notes-section" placeholder="What changes will you make for the next launch?"></textarea>
+        </div>
+    </div>
+
+    <div class="assessment-section">
+        <div class="section-title">🔍 Post-Flight Inspection</div>
+        
+        <h3>Overall Condition:</h3>
+        <div class="status-badges">
+            <label class="status-badge">
+                <input type="checkbox" name="condition" value="excellent"> Excellent
+            </label>
+            <label class="status-badge">
+                <input type="checkbox" name="condition" value="good"> Good
+            </label>
+            <label class="status-badge">
+                <input type="checkbox" name="condition" value="fair"> Fair
+            </label>
+            <label class="status-badge">
+                <input type="checkbox" name="condition" value="poor"> Poor
+            </label>
+            <label class="status-badge">
+                <input type="checkbox" name="condition" value="destroyed"> Destroyed
+            </label>
+        </div>
+
+        <div class="grid" style="margin-top: 20px;">
+            <div class="field-row">
+                <span class="field-label">Recovery Time:</span>
+                <input type="text" class="field-input" placeholder="minutes after landing">
+            </div>
+            <div class="field-row">
+                <span class="field-label">Damage Details:</span>
+                <input type="text" class="field-input" placeholder="Describe any damage found">
+            </div>
+        </div>
+    </div>
+
+    <div class="signature-section">
+        <div class="grid">
+            <div class="field-row">
+                <span class="field-label">Observer Name:</span>
+                <input type="text" class="field-input" placeholder="Your name">
+            </div>
+            <div class="field-row">
+                <span class="field-label">Signature:</span>
+                <input type="text" class="field-input" placeholder="Sign here">
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Management Controls -->
+    <div class="section" style="text-align: center; background: linear-gradient(135deg, var(--dark-gray) 0%, var(--space-black) 100%); border-color: var(--spacex-orange);">
+        <div class="section-title">💾 Data Management</div>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 15px;">
+            <button id="saveData" class="status-badge" style="background-color: var(--spacex-orange); color: var(--space-black); border-color: var(--spacex-orange);">
+                💾 Save Data
+            </button>
+            <button id="loadData" class="status-badge">
+                📂 Load Data
+            </button>
+            <button id="exportJson" class="status-badge">
+                📄 Export JSON
+            </button>
+            <button id="clearForm" class="status-badge" style="border-color: #e74c3c; color: #e74c3c;">
+                🗑️ Clear Form
+            </button>
+        </div>
+        <div id="saveStatus" style="margin-top: 10px; font-size: 0.9rem; color: var(--light-gray);"></div>
+        <input type="file" id="fileInput" accept=".json" style="display: none;">
+    </div>
+
+    <script>
+        // Data Management System
+        class RocketDataManager {
+            constructor() {
+                this.storageKey = 'rocket-launch-data';
+                this.autoSaveInterval = 5000; // Auto-save every 5 seconds
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.loadFromStorage();
+                this.startAutoSave();
+                this.setupDateTime();
+                this.setupCheckboxGroups();
+            }
+
+            setupEventListeners() {
+                // Data management buttons
+                document.getElementById('saveData').addEventListener('click', () => this.saveToStorage());
+                document.getElementById('loadData').addEventListener('click', () => this.loadFromFile());
+                document.getElementById('exportJson').addEventListener('click', () => this.exportToFile());
+                document.getElementById('clearForm').addEventListener('click', () => this.clearForm());
+                
+                // File input for loading
+                document.getElementById('fileInput').addEventListener('change', (e) => this.handleFileLoad(e));
+
+                // Auto-save on input changes
+                this.getAllInputs().forEach(input => {
+                    input.addEventListener('input', () => this.scheduleAutoSave());
+                    input.addEventListener('change', () => this.scheduleAutoSave());
+                });
+            }
+
+            getAllInputs() {
+                return document.querySelectorAll('input, textarea, select');
+            }
+
+            collectFormData() {
+                const data = {
+                    timestamp: new Date().toISOString(),
+                    mission: {},
+                    rocket: {},
+                    motor: {},
+                    weather: {},
+                    launch: {},
+                    performance: {},
+                    instrumentation: {},
+                    assessment: {},
+                    inspection: {},
+                    notes: {},
+                    observer: {}
+                };
+
+                // Collect all input values
+                this.getAllInputs().forEach(input => {
+                    if (input.type === 'checkbox') {
+                        if (input.checked) {
+                            const category = input.name || 'general';
+                            if (!data.assessment[category]) data.assessment[category] = [];
+                            data.assessment[category].push(input.value);
+                        }
+                    } else if (input.name || input.placeholder) {
+                        const key = input.placeholder || input.name || 'unknown';
+                        const value = input.value;
+                        if (value) {
+                            // Categorize based on section
+                            const section = this.getInputSection(input);
+                            data[section][key] = value;
+                        }
+                    }
+                });
+
+                return data;
+            }
+
+            getInputSection(input) {
+                const section = input.closest('.section');
+                if (!section) return 'general';
+                
+                const title = section.querySelector('.section-title')?.textContent || '';
+                if (title.includes('Rocket')) return 'rocket';
+                if (title.includes('Motor')) return 'motor';
+                if (title.includes('Weather')) return 'weather';
+                if (title.includes('Launch')) return 'launch';
+                if (title.includes('Performance')) return 'performance';
+                if (title.includes('Instrumentation')) return 'instrumentation';
+                if (title.includes('Assessment')) return 'assessment';
+                if (title.includes('Inspection')) return 'inspection';
+                if (title.includes('Observations')) return 'notes';
+                return 'general';
+            }
+
+            populateForm(data) {
+                // Clear form first
+                this.getAllInputs().forEach(input => {
+                    if (input.type === 'checkbox') {
+                        input.checked = false;
+                    } else {
+                        input.value = '';
+                    }
+                });
+
+                // Populate text inputs and textareas
+                Object.entries(data).forEach(([section, sectionData]) => {
+                    if (typeof sectionData === 'object' && sectionData !== null) {
+                        Object.entries(sectionData).forEach(([key, value]) => {
+                            if (section === 'assessment' && Array.isArray(value)) {
+                                // Handle checkboxes
+                                value.forEach(checkValue => {
+                                    const checkbox = document.querySelector(`input[name="${key}"][value="${checkValue}"]`);
+                                    if (checkbox) checkbox.checked = true;
+                                });
+                            } else {
+                                // Handle text inputs
+                                const input = document.querySelector(`input[placeholder="${key}"], textarea[placeholder="${key}"]`);
+                                if (input && typeof value === 'string') {
+                                    input.value = value;
+                                }
+                            }
+                        });
+                    }
+                });
+
+                this.showStatus('Data loaded successfully! 🚀', 'success');
+            }
+
+            saveToStorage() {
+                const data = this.collectFormData();
+                localStorage.setItem(this.storageKey, JSON.stringify(data));
+                this.showStatus('Data saved to browser storage! 💾', 'success');
+            }
+
+            loadFromStorage() {
+                const saved = localStorage.getItem(this.storageKey);
+                if (saved) {
+                    try {
+                        const data = JSON.parse(saved);
+                        this.populateForm(data);
+                        this.showStatus('Previous data restored 🔄', 'info');
+                    } catch (e) {
+                        this.showStatus('Error loading saved data ❌', 'error');
+                    }
+                }
+            }
+
+            loadFromFile() {
+                document.getElementById('fileInput').click();
+            }
+
+            handleFileLoad(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const data = JSON.parse(e.target.result);
+                        this.populateForm(data);
+                    } catch (error) {
+                        this.showStatus('Error loading file ❌', 'error');
+                    }
+                };
+                reader.readAsText(file);
+            }
+
+            exportToFile() {
+                const data = this.collectFormData();
+                const filename = `rocket-launch-data-${new Date().toISOString().split('T')[0]}.json`;
+                
+                const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                this.showStatus(`Data exported as ${filename} 📄`, 'success');
+            }
+
+            clearForm() {
+                if (confirm('Are you sure you want to clear all data? This cannot be undone.')) {
+                    this.getAllInputs().forEach(input => {
+                        if (input.type === 'checkbox') {
+                            input.checked = false;
+                        } else {
+                            input.value = '';
+                        }
+                    });
+                    localStorage.removeItem(this.storageKey);
+                    this.setupDateTime(); // Reset date/time
+                    this.showStatus('Form cleared 🗑️', 'info');
+                }
+            }
+
+            scheduleAutoSave() {
+                clearTimeout(this.autoSaveTimeout);
+                this.autoSaveTimeout = setTimeout(() => {
+                    this.saveToStorage();
+                    this.showStatus('Auto-saved ✅', 'success', 2000);
+                }, 2000); // Auto-save 2 seconds after last change
+            }
+
+            startAutoSave() {
+                setInterval(() => {
+                    const data = this.collectFormData();
+                    if (Object.values(data).some(section => 
+                        typeof section === 'object' && Object.keys(section).length > 0)) {
+                        this.saveToStorage();
+                    }
+                }, this.autoSaveInterval);
+            }
+
+            showStatus(message, type = 'info', duration = 3000) {
+                const statusEl = document.getElementById('saveStatus');
+                statusEl.textContent = message;
+                
+                statusEl.style.color = type === 'success' ? '#27ae60' : 
+                                     type === 'error' ? '#e74c3c' : 
+                                     '#cccccc';
+                
+                setTimeout(() => {
+                    statusEl.textContent = '';
+                }, duration);
+            }
+
+            setupDateTime() {
+                const dateInput = document.querySelector('input[type="date"]');
+                const timeInput = document.querySelector('input[type="time"]');
+                
+                if (dateInput && !dateInput.value) {
+                    dateInput.value = new Date().toISOString().split('T')[0];
+                }
+                
+                if (timeInput && !timeInput.value) {
+                    const now = new Date();
+                    const timeString = now.getHours().toString().padStart(2, '0') + ':' + 
+                                     now.getMinutes().toString().padStart(2, '0');
+                    timeInput.value = timeString;
+                }
+            }
+
+            setupCheckboxGroups() {
+                const checkboxGroups = ['flight-quality', 'recovery', '3d-components', 'condition'];
+                
+                checkboxGroups.forEach(groupName => {
+                    const checkboxes = document.querySelectorAll(`input[name="${groupName}"]`);
+                    checkboxes.forEach(checkbox => {
+                        checkbox.addEventListener('change', function() {
+                            if (this.checked) {
+                                checkboxes.forEach(cb => {
+                                    if (cb !== this) cb.checked = false;
+                                });
+                            }
+                        });
+                    });
+                });
+            }
+        }
+
+        // Initialize the data manager when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            new RocketDataManager();
+        });
+    </script>
+</body>
+</html>
