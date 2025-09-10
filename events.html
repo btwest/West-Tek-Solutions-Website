@@ -48,19 +48,19 @@
 
       <div id="upcoming-launches" class="product-list">
         <!-- Mission 1 -->
-        <div class="product-item" data-launch="2025-09-07T16:00:00">
+        <div class="product-item" data-launch="2025-09-14T17:00:00">
           <div class="product-details">
-            <h3 class="product-title">Mission: Gnat 1</h3>
+            <h3 class="product-title">Mission: Stratum 1</h3>
             <p class="product-description">
-              Prototype 3D-printed rockets powered by the Estes A3-4T engine. This mission tests launch procedures, recovery, and the essentials of 3D-printed rocketry, helping us learn and iterate for future flights.
-            </p>
-            <p><strong>Date:</strong> Sunday, Sept 7, 2025 – 4:00 PM</p>
+              The Stratum Program explores the viability of 3D-printed polymers in model rocketry through iterative launch and recovery testing.            </p>
+            <p><strong>Date:</strong> Sunday, Sept 14, – 5:00 PM</p>
             <p class="countdown"></p>
-            <button class="add-to-cart-btn" onclick="viewMission('gnat1')">
+            <button class="add-to-cart-btn" onclick="viewMission('stratum1')">
               View
             </button>
           </div>
         </div>
+      
 
       
 
@@ -72,6 +72,18 @@
       </div>
       <div id="completed-missions" class="product-list">
         <!-- Completed missions will move here automatically -->
+        <div class="product-item" data-launch="2025-09-07T16:00:00">
+          <div class="product-details">
+            <h3 class="product-title">Mission: Gnat 1</h3>
+            <p class="product-description">
+              Prototype 3D-printed rockets powered by the Estes A3-4T engine. This mission tests launch procedures, recovery, and the essentials of 3D-printed rocketry, helping us learn and iterate for future flights.
+            </p>
+            <p><strong>Date:</strong> Sunday, Sept 7, 2025 – 4:00 PM</p>
+            <button class="add-to-cart-btn" onclick="viewMission('gnat1')">
+              View
+            </button>
+          </div>
+        </div>
       </div>
     </main>
 
@@ -159,8 +171,8 @@
 
       // View Mission
       function viewMission(page) {
-        window.location.href = page;
-      }
+        window.location.href = page + '.html';
+        }
 
       // Countdown + auto-move to Completed
       function updateCountdowns() {
