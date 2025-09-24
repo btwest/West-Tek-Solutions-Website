@@ -42,115 +42,84 @@
 
     <main>
       <!-- Mission Header -->
-      <section class="mission-header">
+      <section class="mission-header" style="background-image: url('assets/stratum1-pre-launch.png');">
+        <div class="countdown-display" id="countdown-display" data-launch="2025-09-20T17:00:00">
+          T-[DAYS]d [HOURS]h [MINUTES]m [SECONDS]s
+        </div>
         <h1 class="mission-title">Mission: STRATUM 1</h1>
+        
         <div class="mission-status" id="mission-status">
           <!-- Status will be updated by JavaScript: UPCOMING, LIVE, COMPLETED -->
           <span class="status-badge">UPCOMING</span>
         </div>
       </section>
 
-      <!-- Pre-Event Information -->
-      <section class="mission-details">
-        <h2>Mission Details</h2>
-        
-        <div class="mission-info-grid">
-          <div class="info-card">
-            <h3>📅 Launch Date</h3>
-            <p class="mission-date">Sunday, September 20, 2025</p>
-          </div>
-          
-          <div class="info-card">
-            <h3>🕐 Launch Time</h3>
-            <p class="mission-time">5:00 PM EST</p>
-          </div>
-          
-          <div class="info-card">
-            <h3>📍 Location</h3>
-            <p class="mission-location">West Family Launch Site</p>
-          </div>
-          
-          <div class="info-card">
-            <h3>🚀 Vehicle</h3>
-            <p class="mission-vehicle">3D-Printed Stratum Rockets</p>
-          </div>
-        </div>
-
-        <!-- Live Countdown (for upcoming events) -->
-        <div class="countdown-section" id="countdown-section">
-          <h3>Launch Countdown</h3>
-          <div class="countdown-display" id="countdown-display" data-launch="2025-09-20T17:00:00">
-            T-[DAYS]d [HOURS]h [MINUTES]m [SECONDS]s
-          </div>
-        </div>
-      </section>
-
-      <!-- Mission Description -->
+      <!-- Mission Overview -->
       <section class="mission-description">
-        <h2>Mission Description</h2>
         <p>
-          <span class="highlight">Mission: Stratum</span> 
-          </p><p>
-            This mission is about applying and testing our 3D printing capabilities in a more conventional model rocket. Unlike the GNAT, which was a simple two-piece tumble-recovery design requiring minimal assembly, the Stratum is a more complex eight-piece rocket. Its name reflects the layered construction that defines both its design and its assembly process. Every step—from fitting the individual 3D-printed components to executing a controlled launch and recovery—is an opportunity to refine our fabrication techniques and gain hands-on familiarity with conventional model rocketry. This mission combines material experimentation with practical experience, ensuring that each launch not only tests the limits of our prints but also strengthens the foundational knowledge we’ll build upon for future rockets.        </p>
-        
-        <div class="mission-specs">
-          <h3>Technical Specifications</h3>
-          <ul>
-            <li><strong>Engine:</strong> Estes B6-4 Single-Use Motor</li>
-            <li><strong>Estimated Altitude:</strong> 800 feet</li>
-            <li><strong>Recovery:</strong> Parachute</li>
-            <li><strong>Payload:</strong> None</li>
-          </ul>
-        </div>
+          West-Tek Solutions is targeting Sunday, September 20 for launch of our STRATUM 1 rockets from the West Family Launch Site. Liftoff is targeted for 5:00 PM EST.
+        </p>
+        <p>
+          This will be the first flight for our 3D-Printed Stratum Rockets, powered by Estes B6-4 single-use motors. Following liftoff, the rocket will reach an estimated altitude of 800 feet, deploy its parachute recovery system, and return to the launch site for inspection and potential relaunch preparation.
+        </p>
+        <p>
+          <span class="highlight">Mission: Stratum</span> represents West-Tek Solutions' advancement into more complex 3D-printed rocketry. Unlike the GNAT, which was a simple two-piece tumble-recovery design requiring minimal assembly, the Stratum is a more complex eight-piece rocket. Its name reflects the layered construction that defines both its design and its assembly process.
+        </p>
+        <p>
+          This mission is about applying and testing our 3D printing capabilities in a more conventional model rocket. Every step—from fitting the individual 3D-printed components to executing a controlled launch and recovery—is an opportunity to refine our fabrication techniques and gain hands-on familiarity with conventional model rocketry. This mission combines material experimentation with practical experience, ensuring that each launch not only tests the limits of our prints but also strengthens the foundational knowledge we'll build upon for future rockets.
+        </p>
       </section>
 
- <!-- Mission Goals -->
-<section class="mission-goals">
-  <h2>Mission Objectives</h2>
-  <div class="goals-list">
-    <div class="goal-item">
-      <div class="goal-content">
-        <h4>🎯 Primary Objective</h4>
-        <p>3D print, assemble, launch, and recover a larger, more conventional model rocket.</p>
-      </div>
-    </div>
-    
-    <div class="goal-item">
-      <div class="goal-content">
-        <h4>🔬 Secondary Objective</h4>
-        <p>Test recovery methods, including different parachute sizes and parachutes with vent holes, to evaluate descent control and reliability.</p>
-      </div>
-    </div>
-    
-    <div class="goal-item">
-      <div class="goal-content">
-        <h4>📚 Experience Objective</h4>
-        <p>Gain additional hands-on experience with rocket assembly, flight procedures, and recovery operations to build practical rocketry skills.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-      <!-- Pre-Launch Images -->
+      <!-- Mission Gallery -->
       <section class="mission-gallery">
-        <h2>Pre-Launch Gallery</h2>
-        <div class="image-grid">
-          <div class="image-item">
+        <div class="gallery-container">
+          <div class="gallery-image active" data-index="0">
             <img src="assets/stratum1-printing.jpg" alt="printing stratum 1 parts" class="mission-image" />
-            <p class="image-caption">Printing the STRATUM 1 components.</p>
-          </div>
-          <!--
-          <div class="image-item">
-            <img src="assets/gnat1_body.webp" alt="printing body" class="mission-image" />
-            <p class="image-caption">Printing the GNAT 1 body.</p>
+            <div class="image-overlay">
+              <p class="image-caption">Printing the STRATUM 1 components.</p>
+            </div>
           </div>
           
-          <div class="image-item">
-            <img src="assets/gnat1_printed.webp" alt="printed rocket" class="mission-image" />
-            <p class="image-caption">GNAT 1 printed, pre-assembly.</p>
+          <div class="gallery-image" data-index="1">
+            <img src="assets/stratum1-launch-lineup.png" alt="launch lineup" class="mission-image" />
+            <div class="image-overlay">
+              <p class="image-caption">The Stratum 1 Launch Line Up</p>
+            </div>
           </div>
-        </div>-->
+          
+          <div class="gallery-image" data-index="2">
+            <img src="assets/stratum1-pre-launch.png" alt="pre-launch preparation" class="mission-image" />
+            <div class="image-overlay">
+              <p class="image-caption">Stratum 1 Before Take Off</p>
+            </div>
+          </div>
+          
+          <div class="gallery-image" data-index="3">
+            <img src="assets/stratum1-size-comparison.png" alt="size comparison" class="mission-image" />
+            <div class="image-overlay">
+              <p class="image-caption">Stratum Size Comparison</p>
+            </div>
+          </div>
+          
+          <!-- Navigation Controls -->
+          <div class="gallery-controls">
+            <button class="gallery-nav prev-btn" onclick="changeImage(-1)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15,18 9,12 15,6"></polyline>
+              </svg>
+            </button>
+            <button class="gallery-nav next-btn" onclick="changeImage(1)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9,18 15,12 9,6"></polyline>
+              </svg>
+            </button>
+          </div>
+          
+          <!-- Image Counter -->
+          <div class="image-counter">
+            <span class="current-image">1</span> / <span class="total-images">4</span>
+          </div>
+        </div>
       </section>
 
       <!-- Post-Event Section (Hidden until mission is completed) -->
@@ -159,77 +128,25 @@
         
         <div class="outcome-status">
           <div class="status-indicator">
-            <span class="outcome-badge" id="outcome-badge">SUCCESS</span>
+            <span class="outcome-badge" id="outcome-badge">PARTIAL SUCCESS</span>
             <p class="outcome-text">
-
-              West-Tek Solutions successfully completed our inaugural rocket launch on September 7, 2025, under partly cloudy skies with temperatures in the mid to high 60s°F and relatively windy conditions. We launched four GNAT 1 rockets, each powered by 1/2 A3-4T motors, with all four achieving successful liftoffs and flight profiles. Most importantly, we successfully recovered our very first launch vehicle in perfect condition—a fantastic omen for West-Tek's entry into rocketry.
-              </p><p>
-              While we only recovered one of the four rockets (a 25% recovery rate), this actually represents an impressive achievement given that GNAT rockets are infamous for being difficult to recover. The recovered GNAT 1 showed no meaningful structural damage, with the PLA plastic construction performing excellently under flight stresses. Given its historic significance as our first successful launch and recovery, we've decided to retire this particular vehicle for posterity.
-              </p><p>
-              Overall, we're extremely happy with this launch and learned tremendous amounts about the entire process. The primary objective of GNAT 1 wasn't just to fly a rocket, but to master everything that goes into launching rockets—from pre-flight preparation and safety protocols to recovery operations and post-flight analysis. Through this mission, we've established our operational procedures, validated our 3D printing techniques under real-world conditions, and built the institutional knowledge that comes only from hands-on experience. Because of everything we learned during GNAT 1, we feel strongly positioned and ready to tackle future launches of bigger and better rockets.</p>
+              The Stratum I launch drew a great turnout of family, making the day both fun and productive. Alongside the Stratum rockets, we also flew three GNATs, all of which performed well though none were recovered, and two in-development rockets that flew successfully and were retrieved. One of those prototypes was gifted to our field recovery technician, Avi, as thanks for his efforts in the field.
+            </p>
+            <p>
+              The Stratum rockets, while not achieving full success, provided critical lessons. The short version suffered a structural failure about one second after ignition when motor heat softened the PLA body tube, causing the fin housing to detach. The second rocket reached apogee and deployed its chute, but again the PLA tube melted near the fin connection, resulting in fin separation during descent.
+            </p>
+            <p>
+              These results highlighted material and design limitations, leading us to switch to PETG for future body tubes and to strengthen the fin can in the upcoming Stratum II design. Overall, the mission provided valuable insights into material properties under flight conditions and informed our design improvements for future launches.
+            </p>
           </div>
         </div>
-        <div class="outcome-details">
-          <h3>Results</h3>
-          <div class="results-grid">
-            <div class="result-item">
-              <h4>🚀 Launch Performance</h4>
-              <p>Four consecutive successful launches with clean liftoffs at T+0 for all vehicles. No misfires or delays encountered. All GNAT 1 rockets demonstrated excellent flight characteristics and stability throughout their flight profiles.</p>
-            </div>
-                         
-            <div class="result-item">
-              <h4>📏 Actual Altitude</h4>
-              <p>Estimated 400 feet across all launches, meeting expected performance parameters for 1/2 A3-4T motor configuration.</p>
-            </div>
-                         
-            <div class="result-item">
-              <h4>🪂 Recovery</h4>
-              <p>1 of 4 rockets successfully recovered (25% recovery rate) - an impressive achievement for GNAT-class vehicles. The recovered rocket was in stellar condition with no structural damage, validating our 3D-printed PLA construction.</p>
-            </div>
-                         
-            <div class="result-item">
-              <h4>📝 Lessons Learned</h4>
-              <p>Key insights include supply chain optimization needs, recovery method improvements requiring faster descent rates, and the critical importance of higher visibility systems for tracking and recovery operations in future missions.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Post-Launch Images -->
-        <div class="post-mission-gallery">
-          <h3>Launch & Recovery Gallery</h3>
-          <div class="image-grid">
-            <div class="image-item">
-              <img src="assets/gnat1_prep.png" alt="Liftoff" class="mission-image" />
-              <p class="image-caption">Minister of Manufacturing Preps the Rockets</p>
-            </div>
-            
-            <div class="image-item">
-              <img src="assets/gnat1_launch.png" alt="Flight" class="mission-image" />
-              <p class="image-caption">GNAT-1 takes off!</p>
-            </div>
-            
-            <div class="image-item">
-              <img src="assets/gnat1_recovery.png" alt="Recovery" class="mission-image" />
-              <p class="image-caption">Successful recovery</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mission Data (if available) 
-        <div class="mission-data">
-          <h3>Flight Data</h3>
-          <div class="data-placeholder">
-            <p>Flight telemetry and performance graphs will be displayed here once available.</p>
-            Placeholder for future data visualization
-          </div>
-        </div>
-      </section> -->
+      </section>
 
       <!-- Navigation -->
       <section class="mission-navigation">
         <div class="nav-buttons">
           <button class="nav-btn" onclick="window.location.href='events.html'">← Back to Launches</button>
-          <button class="nav-btn" onclick="window.location.href='events.html'">← Previous Mission</button>
+          <button class="nav-btn" onclick="window.location.href='gnat1.html'">← Previous Mission</button>
           <button class="nav-btn" onclick="window.location.href='events.html'">Next Mission →</button>
         </div>
       </section>
@@ -316,6 +233,7 @@
           subscribeBtn.click();
         }
       });
+      
       // Hamburger Menu
       const hamburger = document.getElementById('hamburger');
       const mobileNav = document.getElementById('mobileNav');
@@ -349,7 +267,7 @@
         const now = new Date();
         const statusBadge = document.querySelector('.status-badge');
         const outcomeSection = document.getElementById('mission-outcome');
-        const countdownSection = document.getElementById('countdown-section');
+        const countdownSection = document.getElementById('countdown-display');
 
         if (now < launchDate) {
           // Mission is upcoming
@@ -395,6 +313,46 @@
       if (statusBadge.textContent === 'UPCOMING') {
         setInterval(updateCountdown, 1000);
       }
+      
+      // Gallery Navigation JavaScript
+      let currentImageIndex = 0;
+      const totalImages = document.querySelectorAll('.gallery-image').length;
+
+      function changeImage(direction) {
+        const images = document.querySelectorAll('.gallery-image');
+        const currentCounter = document.querySelector('.current-image');
+        
+        // Remove active class from current image
+        images[currentImageIndex].classList.remove('active');
+        
+        // Calculate new index
+        currentImageIndex += direction;
+        
+        // Wrap around if necessary
+        if (currentImageIndex >= totalImages) {
+          currentImageIndex = 0;
+        } else if (currentImageIndex < 0) {
+          currentImageIndex = totalImages - 1;
+        }
+        
+        // Add active class to new image
+        images[currentImageIndex].classList.add('active');
+        
+        // Update counter
+        currentCounter.textContent = currentImageIndex + 1;
+      }
+
+      // Initialize counter
+      document.querySelector('.total-images').textContent = totalImages;
+      
+      // Optional: Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          changeImage(-1);
+        } else if (e.key === 'ArrowRight') {
+          changeImage(1);
+        }
+      });
     </script>
   </body>
 </html>

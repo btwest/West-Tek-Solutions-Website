@@ -538,10 +538,25 @@
   
   /* Mission Header */
   .mission-header {
+    position: relative;
     text-align: center;
-    padding: 2rem 0;
+    padding: 0;
     border-bottom: 1px solid var(--border-gray);
     margin-bottom: 2rem;
+    width: 100vw;
+    height: 80vh;
+    margin-left: calc(-50vw + 50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    
+    /* Default background styling */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    
   }
   
   .mission-title {
@@ -660,45 +675,143 @@
     line-height: 1.6;
   }
   
-  /* Image Gallery */
-  .image-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
+ /* Full Screen Image Gallery */
+.mission-gallery {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.gallery-container {
+  position: relative;
+  width: 100vw;
+  height: 80vh;
+  margin-left: calc(-50vw + 50%);
+  overflow: hidden;
+}
+
+.gallery-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 1;
+}
+
+.gallery-image.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.gallery-image .mission-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 4rem 2rem 2rem;
+  color: white;
+}
+
+.image-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin: 0 0 1rem 0;
+  color: white;
+}
+
+.image-caption {
+  font-size: 1.1rem;
+  color: var(--light-gray);
+  margin: 0;
+  max-width: 600px;
+}
+
+/* Navigation Controls */
+.gallery-controls {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.gallery-nav {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.gallery-nav:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--spacex-orange);
+  transform: scale(1.1);
+}
+
+.gallery-nav:active {
+  transform: scale(0.95);
+}
+
+/* Image Counter */
+.image-counter {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  color: white;
+  font-size: 1rem;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .image-title {
+    font-size: 2rem;
   }
   
-  .image-item {
-    background-color: var(--dark-gray);
-    border: 1px solid var(--border-gray);
-    overflow: hidden;
-    transition: border-color 0.3s ease;
+  .image-overlay {
+    padding: 2rem 1rem 1rem;
   }
   
-  .image-item:hover {
-    border-color: var(--spacex-orange);
+  .gallery-controls {
+    bottom: 1rem;
+    right: 1rem;
   }
   
-  .mission-image {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    display: block;
-    filter: grayscale(20%);
-    transition: filter 0.3s ease;
-  }
-  
-  .image-item:hover .mission-image {
-    filter: grayscale(0%);
-  }
-  
-  .image-caption {
-    padding: 1rem;
-    color: var(--light-gray);
+  .image-counter {
+    bottom: 1rem;
+    left: 1rem;
     font-size: 0.9rem;
-    text-align: center;
-    margin: 0;
   }
+  
+  .gallery-nav {
+    width: 40px;
+    height: 40px;
+  }
+}
   
   /* Mission Outcome */
   .outcome-status {
