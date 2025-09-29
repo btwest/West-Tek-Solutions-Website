@@ -163,45 +163,76 @@
         </div>
     </section>
 
-     <!-- Gallery Section -->
-     <section id="gallery" class="gallery-section">
-      <div class="container">
-          <h2>PROJECT GALLERY</h2>
-          <p>From concept to completion - witness the engineering journey of the NVM 2 "Beachvision"</p>
-          
-          <div class="image-grid">
-              <div class="image-item">
-                  <img src="assets/brendan_nvm2_mounted.png" alt="Mounting Demo" class="mission-image" />
-                  <p class="image-caption">J-ARM mounting system</p>
-              </div>
-
-              <div class="image-item">
-                  <img src="assets/green_phosphor_test.jpg" alt="Green Beach Test" class="mission-image" />
-                  <p class="image-caption">Green phosphor beach test</p>
-              </div>
-
-              <div class="image-item">
-                  <img src="assets/capstone_presentation.jpg" alt="presentation" class="mission-image" />
-                  <p class="image-caption">Capstone project presentation</p>
-              </div>
-
-              <div class="image-item">
-                  <img src="assets/capstone_presentation_celebration.jpg" alt="prototype modeling" class="mission-image" />
-                  <p class="image-caption">Prototype modeling</p>
-              </div>
-
-              <div class="image-item">
-                  <img src="assets/beach_field_test.jpg" alt="Technical documentation process" class="mission-image" />
-                  <p class="image-caption">White phosphor beach test</p>
-              </div>
-
-              <div class="image-item">
-                  <img src="assets/beta_testing.jpg" alt="field test" class="mission-image" />
-                  <p class="image-caption">Nighttime field test</p>
-              </div>
-          </div>
+<!-- Gallery Section -->
+<section id="gallery" class="mission-gallery">
+  <div class="container">
+    <h2>PROJECT GALLERY</h2>
+    <p>From concept to completion - witness the engineering journey of the NVM 2 "Beachvision"</p>
+    
+    <div class="gallery-container">
+      <div class="gallery-image active" data-index="0">
+        <img src="assets/brendan_nvm2_mounted.png" alt="Mounting Demo" class="mission-image" />
+        <div class="image-overlay">
+          <p class="image-caption">J-ARM mounting system</p>
+        </div>
       </div>
-  </section>
+      
+      <div class="gallery-image" data-index="1">
+        <img src="assets/green_phosphor_test.jpg" alt="Green Beach Test" class="mission-image" />
+        <div class="image-overlay">
+          <p class="image-caption">Green phosphor beach test</p>
+        </div>
+      </div>
+      
+      <div class="gallery-image" data-index="2">
+        <img src="assets/capstone_presentation.jpg" alt="presentation" class="mission-image" />
+        <div class="image-overlay">
+          <p class="image-caption">Capstone project presentation</p>
+        </div>
+      </div>
+      
+      <div class="gallery-image" data-index="3">
+        <img src="assets/capstone_presentation_celebration.jpg" alt="prototype modeling" class="mission-image" />
+        <div class="image-overlay">
+          <p class="image-caption">Prototype modeling</p>
+        </div>
+      </div>
+      
+      <div class="gallery-image" data-index="4">
+        <img src="assets/beach_field_test.jpg" alt="Technical documentation process" class="mission-image" />
+        <div class="image-overlay">
+          <p class="image-caption">White phosphor beach test</p>
+        </div>
+      </div>
+      
+      <div class="gallery-image" data-index="5">
+        <img src="assets/beta_testing.jpg" alt="field test" class="mission-image" />
+        <div class="image-overlay">
+          <p class="image-caption">Nighttime field test</p>
+        </div>
+      </div>
+
+      <!-- Navigation Controls -->
+      <div class="gallery-controls">
+        <button class="gallery-nav prev-btn" onclick="changeImage(-1)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15,18 9,12 15,6"></polyline>
+          </svg>
+        </button>
+        <button class="gallery-nav next-btn" onclick="changeImage(1)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9,18 15,12 9,6"></polyline>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Image Counter -->
+      <div class="image-counter">
+        <span class="current-image">1</span> / <span class="total-images">6</span>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Impact Section -->
     <section id="impact" class="overview-section">
@@ -340,6 +371,47 @@
               toggleMenu();
           }
       });
+
+// Gallery Navigation JavaScript
+let currentImageIndex = 0;
+const galleryImages = document.querySelectorAll('.gallery-image');
+const totalImages = galleryImages.length;
+
+function changeImage(direction) {
+  const images = document.querySelectorAll('.gallery-image');
+  const currentCounter = document.querySelector('.current-image');
+  
+  // Remove active class from current image
+  images[currentImageIndex].classList.remove('active');
+  
+  // Calculate new index
+  currentImageIndex += direction;
+  
+  // Wrap around if necessary
+  if (currentImageIndex >= totalImages) {
+    currentImageIndex = 0;
+  } else if (currentImageIndex < 0) {
+    currentImageIndex = totalImages - 1;
+  }
+  
+  // Add active class to new image
+  images[currentImageIndex].classList.add('active');
+  
+  // Update counter
+  currentCounter.textContent = currentImageIndex + 1;
+}
+
+// Initialize counter
+document.querySelector('.total-images').textContent = totalImages;
+
+// Optional: Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') {
+    changeImage(-1);
+  } else if (e.key === 'ArrowRight') {
+    changeImage(1);
+  }
+});
     </script>
   </body>
 </html>
