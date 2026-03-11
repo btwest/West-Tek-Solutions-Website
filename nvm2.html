@@ -1,417 +1,673 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>West-Tek Solutions | NVM2</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  </head>
-  <body>
-    <header>
-      <div class="logo">
-        <a href="index.html">
-        <img src="assets/westtek-solutions-dark-theme.png" alt="West-Tek Solutions" class="logo-img" />
-        </a>
-      </div>
-      
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="gallery.html">Shop</a>
-        <a href="about.html">About Us</a>
-        <a href="events.html">Launches</a>
-        <a href="nvm2.html">NVM2</a>
-      </nav>
-      
-      <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mission: NVM2 Beachvision | West-Tek Solutions</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    :root {
+      --space-black: #1c1c1c;
+      --pure-white: #ffffff;
+      --spacex-orange: #ff6b35;
+      --dark-gray: #1a1a1a;
+      --medium-gray: #666666;
+      --light-gray: #cccccc;
+      --border-gray: #333333;
+      --success-green: #27ae60;
+      --warning-yellow: #f39c12;
+    }
 
-    <!-- ADD THESE TWO ELEMENTS -->
-    <div class="overlay" id="overlay"></div>
-    
-    <div class="mobile-nav" id="mobileNav">
-      <a href="index.html">Home</a>
-      <a href="gallery.html">Shop</a>
-      <a href="about.html">About Us</a>
-      <a href="events.html">Launches</a>
-      <a href="nvm2.html">NVM2</a>
-    </div>
- <!-- Hero Section -->
- <section class="hero">
-    <div class="hero-content">
-        <h1><span class="model-number">NVM 2</span> "BEACHVISION"</h1>
-        <p class="hero-subtitle">High school innovation meets professional engineering</p>
-        
-        <div class="hero-image">
-            <div class="product-placeholder">
-                <img src="assets/nvm2.jpg"/>
-            </div>
-        </div>
-    </div>
-</section>
+    /* MISSION BANNER */
+    .mission-header {
+      position: relative;
+      width: 100vw;
+      height: 80vh;
+      margin-left: calc(-50vw + 50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-gray);
+      background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+    }
 
-<main>
-    <!-- Overview Section -->
-<section id="overview" class="overview-section">
-  <div class="container">
-      <h2>ENGINEERING EXCELLENCE</h2>
-      <div class="overview-content">
-          <div class="overview-image">
-              <img src="assets/hanssen_beach.png" alt="Hanssen Hassett working on the NVM 2 project" />
-          </div>
-          <div class="overview-text">
-              <p>Hanssen Hassett, as part of his high school capstone, designed and built the <span class="highlight">NVM 2 "Beachvision"</span>, a digital night vision monocle optimized for low-light and near-water conditions. What sets this project apart is not just its functionality, but the <span class="highlight">full engineering process</span>: concept, prototyping, modular housing design, and detailed operational documentation.</p>  
-              <p>This monocle is a perfect example of the <span class="highlight">West-Tek philosophy</span>: building tools to explore, observe, and innovate. Just as our rocketry projects reach the skies and our astrophotography captures distant galaxies, the NVM 2 expands human vision into the night.</p>
-          </div>
-      </div>
+    .mission-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border-gray) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border-gray) 1px, transparent 1px);
+      background-size: 50px 50px;
+      opacity: 0.18;
+      z-index: 0;
+    }
+
+    .mission-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 65%;
+      background: linear-gradient(to top, rgba(28,28,28,0.97) 0%, transparent 100%);
+      z-index: 1;
+    }
+
+.mission-header-content {
+      position: relative;
+      z-index: 3;
+      padding: 3rem 4rem;
+      animation: fadeInUp 0.7s ease both;
+    }
+
+    .mission-id-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--spacex-orange);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .mission-id-tag::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 2px;
+      background: var(--spacex-orange);
+    }
+
+    .mission-title {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: var(--pure-white);
+      line-height: 1;
+      margin: 0 0 0.4rem 0;
+      text-align: left;
+      text-shadow: 2px 2px 12px rgba(0,0,0,0.8);
+    }
+
+    .mission-subtitle {
+      font-size: 1rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--light-gray);
+      margin: 0 0 1.5rem 0;
+      text-align: left;
+    }
+
+    .mission-title span { color: var(--spacex-orange); }
+
+    .mission-banner-meta {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .mission-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: 2px solid var(--success-green);
+      color: var(--success-green);
+      background: rgba(39,174,96,0.08);
+    }
+
+    .mission-status-badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--success-green);
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.15; }
+    }
+
+    .meta-tag { font-size: 0.8rem; color: var(--medium-gray); text-transform: uppercase; letter-spacing: 1px; }
+    .meta-tag span { color: var(--light-gray); margin-left: 0.3rem; }
+
+    /* MAIN */
+    main {
+      padding: 0 2rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--border-gray);
+    }
+
+    section:last-of-type { border-bottom: none; }
+
+    /* OVERVIEW */
+    .overview-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .overview-body p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--light-gray);
+      margin-bottom: 1.25rem;
+    }
+
+    .overview-body p:first-child {
+      font-size: 1.2rem;
+      color: var(--pure-white);
+      font-weight: 400;
+    }
+
+    .highlight { color: var(--spacex-orange); font-weight: 500; }
+
+    .specs-sidebar {
+      background-color: var(--dark-gray);
+      border: 1px solid var(--border-gray);
+      padding: 1.5rem;
+      align-self: start;
+      transition: border-color 0.3s ease;
+    }
+
+    .specs-sidebar:hover { border-color: var(--spacex-orange); }
+
+    .specs-sidebar-title {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--spacex-orange);
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-gray);
+    }
+
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid rgba(51,51,51,0.6);
+      gap: 0.75rem;
+    }
+
+    .spec-row:last-child { border-bottom: none; }
+    .spec-key { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--medium-gray); flex-shrink: 0; }
+    .spec-val { font-size: 0.8rem; color: var(--pure-white); font-weight: 500; text-align: right; }
+
+    /* Override styles.css h2 centering inside main sections */
+    main h2 {
+      text-align: left;
+    }
+
+    main h2::after {
+      margin: 1rem 0;
+    }
+
+    /* FEATURE CARDS */
+    .arch-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .arch-card {
+      background-color: var(--dark-gray);
+      padding: 2rem;
+      border: 1px solid var(--border-gray);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .arch-card:hover { transform: translateY(-5px); border-color: var(--spacex-orange); }
+
+    .arch-card-tag { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; color: var(--spacex-orange); text-transform: uppercase; margin-bottom: 0.75rem; }
+
+    .arch-card h3 {
+      color: var(--pure-white);
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .arch-card p { font-size: 0.9rem; color: var(--light-gray); line-height: 1.7; }
+
+    /* IMPACT — text-only panel */
+    .impact-panel {
+      background-color: var(--dark-gray);
+      border: 1px solid var(--border-gray);
+      border-left: 3px solid var(--spacex-orange);
+      padding: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .impact-panel p {
+      font-size: 0.95rem;
+      color: var(--light-gray);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .impact-panel p:last-child { margin-bottom: 0; }
+
+    /* OUTCOME */
+    .outcome-panel {
+      background-color: var(--dark-gray);
+      border: 1px solid var(--border-gray);
+      border-left: 3px solid var(--success-green);
+      padding: 2rem 2.5rem;
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .outcome-metric {
+      text-align: center;
+      flex-shrink: 0;
+      padding-right: 3rem;
+      border-right: 1px solid var(--border-gray);
+    }
+
+    .metric-value { font-size: 3.5rem; font-weight: 700; color: var(--success-green); line-height: 1; letter-spacing: -1px; }
+    .metric-unit { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--medium-gray); margin-top: 0.4rem; }
+
+    .outcome-text p { font-size: 1rem; color: var(--light-gray); line-height: 1.8; margin-bottom: 0.75rem; }
+
+    .outcome-badge {
+      display: inline-block;
+      padding: 0.6rem 1.5rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: 2px solid var(--success-green);
+      background-color: var(--success-green);
+      color: var(--space-black);
+      margin-top: 0.5rem;
+    }
+
+    /* GALLERY — override styles.css full-bleed to stay within main */
+    .gallery-container {
+      width: 100% !important;
+      height: 60vh !important;
+      margin-left: 0 !important;
+      margin-top: 1.5rem;
+    }
+
+    /* VIDEO */
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-top: 1.5rem;
+      border: 1px solid var(--border-gray);
+      transition: border-color 0.3s ease;
+    }
+
+    .video-wrapper:hover { border-color: var(--spacex-orange); }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* MISSION NAV */
+    .mission-navigation {
+      padding: 3rem 0 0;
+      border-top: 1px solid var(--border-gray);
+      margin-top: 1rem;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      background-color: var(--space-black);
+      color: var(--pure-white);
+      border: 2px solid var(--spacex-orange);
+      padding: 0.8rem 1.5rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      flex: 1;
+      min-width: 150px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .nav-btn:hover { background-color: var(--spacex-orange); color: var(--space-black); }
+
+    /* ANIMATIONS */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    section { animation: fadeInUp 0.5s ease both; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .overview-layout, .arch-grid { grid-template-columns: 1fr; }
+      .outcome-panel { flex-direction: column; gap: 1.5rem; }
+      .outcome-metric { padding-right: 0; border-right: none; border-bottom: 1px solid var(--border-gray); padding-bottom: 1.5rem; }
+      .mission-header-img { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .mission-header-content { padding: 2rem; }
+      .mission-title { font-size: 2.2rem; }
+      main { padding: 0 1rem 3rem; }
+      .nav-buttons { flex-direction: column; }
+      .nav-btn { flex: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="site-header"></header>
+  <div class="overlay" id="overlay"></div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="/index.html">Home</a>
+    <a href="/gallery.html">Shop</a>
+    <a href="/about.html">About Us</a>
+    <a href="/missionlog.html">Missions</a>
+    <a href="/nvm2.html">NVM2</a>
   </div>
-</section>
+  <script src="/header.js"></script>
 
-    <!-- Features Section -->
-    <section id="features">
-        <h2>KEY FEATURES</h2>
-        <div class="grid">
-            <div class="card">
-                <span class="feature-icon">🛡️</span>
-                <h3>CUSTOM HOUSING</h3>
-                <p>Airtight, sea-spray resistant design using advanced threaded tube technology. Built to withstand harsh coastal environments while maintaining optical clarity.</p>
-            </div>
 
-            <div class="card">
-                <span class="feature-icon">🔬</span>
-                <h3>ADVANCED OPTICS</h3>
-                <p>Interchangeable 32mm lens filters and focusable eyepiece system. Precision-engineered for optimal light gathering and image quality in low-light conditions.</p>
-            </div>
+  <!-- Mission Banner -->
+  <div class="mission-header">
 
-            <div class="card">
-                <span class="feature-icon">🔧</span>
-                <h3>MODULAR DESIGN</h3>
-                <p>Detachable components enable flexible upgrades and easy maintenance. Future-proof architecture allows for component evolution and customization.</p>
-            </div>
+    <div class="mission-header-content">
+      <div class="mission-id-tag">WTS-NVM-001 &nbsp;·&nbsp; Digital Night Vision Development</div>
+      <h1 class="mission-title"><span>NVM 2</span></h1>
+      <p class="mission-subtitle">"Beachvision" — Digital Night Vision Monocle</p>
+      <div class="mission-banner-meta">
+        <div class="mission-status-badge">Project Complete</div>
+        <div class="meta-tag">Engineer: <span>Hanssen Hassett</span></div>
+        <div class="meta-tag">Weight: <span>8.5 g</span></div>
+        <div class="meta-tag">Sensor: <span>1/2.8" 2MP</span></div>
+      </div>
+    </div>
+  </div>
 
-            <div class="card">
-                <span class="feature-icon">⚡</span>
-                <h3>PROFESSIONAL ELECTRONICS</h3>
-                <p>Runcam Night Eagle 3 camera paired with Adafruit 1.5" TFT display. High-sensitivity sensor optimized for night vision applications.</p>
-            </div>
 
-            <div class="card">
-                <span class="feature-icon">📚</span>
-                <h3>COMPLETE DOCUMENTATION</h3>
-                <p>Full operator's manual detailing specifications, usage procedures, and maintenance protocols. Professional-grade documentation standards.</p>
-            </div>
+  <main>
 
-            <div class="card">
-                <span class="feature-icon">⚖️</span>
-                <h3>LIGHTWEIGHT DESIGN</h3>
-                <p>At just 8.5 grams net weight, the NVM 2 provides extended comfortable use without fatigue. M5 bolt compatibility with standard mounting systems.</p>
-            </div>
+    <!-- Overview -->
+    <section>
+      <h2>Project Overview</h2>
+      <div class="overview-layout">
+        <div class="overview-body">
+          <p>
+            Hanssen Hassett, as part of his high school capstone, designed and built the
+            <span class="highlight">NVM 2 "Beachvision"</span> — a digital night vision monocle optimized
+            for low-light and near-water conditions. What sets this project apart is not just its
+            functionality, but the full engineering process: concept, prototyping, modular housing
+            design, and detailed operational documentation.
+          </p>
+          <p>
+            This monocle is a perfect example of the <span class="highlight">West-Tek philosophy</span>:
+            building tools to explore, observe, and innovate. Just as our rocketry projects reach the
+            skies and our astrophotography captures distant galaxies, the NVM 2 expands human vision
+            into the night.
+          </p>
+          <p>
+            Built with <span class="highlight">no formal engineering training</span>, Hanssen's NVM 2
+            became the genesis of West-Tek's night vision venture — proving that affordable, practical
+            digital night vision was achievable through innovative, first-principles engineering.
+          </p>
         </div>
+        <div class="specs-sidebar">
+          <div class="specs-sidebar-title">// Specifications</div>
+          <div class="spec-row"><span class="spec-key">Image Sensor</span><span class="spec-val">1/2.8" 2MP</span></div>
+          <div class="spec-row"><span class="spec-key">Resolution</span><span class="spec-val">1500 TVL</span></div>
+          <div class="spec-row"><span class="spec-key">Field of View</span><span class="spec-val">125° H × 56° V</span></div>
+          <div class="spec-row"><span class="spec-key">Display</span><span class="spec-val">160 × 240 RGB</span></div>
+          <div class="spec-row"><span class="spec-key">Net Weight</span><span class="spec-val">8.5 g</span></div>
+          <div class="spec-row"><span class="spec-key">Mounting</span><span class="spec-val">M5 Bolt</span></div>
+          <div class="spec-row"><span class="spec-key">Compatibility</span><span class="spec-val">J-ARM & Bridge</span></div>
+          <div class="spec-row"><span class="spec-key">Environment</span><span class="spec-val">Sea-Spray Resistant</span></div>
+        </div>
+      </div>
     </section>
 
-   
-
-    <!-- Specifications Section -->
-    <section id="specs" class="specs-section">
-        <div class="container">
-            <h2>TECHNICAL SPECIFICATIONS</h2>
-            <div class="specs-grid">
-                <div class="spec-item">
-                    <h3>IMAGE SENSOR</h3>
-                    <p>1/2.8" 2MP</p>
-                </div>
-
-                <div class="spec-item">
-                    <h3>HORIZONTAL RESOLUTION</h3>
-                    <p>1500 TVL</p>
-                </div>
-
-                <div class="spec-item">
-                    <h3>FIELD OF VIEW</h3>
-                    <p>125° H × 56° V (16:9)</p>
-                </div>
-
-                <div class="spec-item">
-                    <h3>DISPLAY RESOLUTION</h3>
-                    <p>160 × 240 RGB</p>
-                </div>
-
-                <div class="spec-item">
-                    <h3>NET WEIGHT</h3>
-                    <p>8.5 GRAMS</p>
-                </div>
-
-                <div class="spec-item">
-                    <h3>MOUNTING</h3>
-                    <p>M5 BOLT COMPATIBLE</p>
-                </div>
-
-                <div class="spec-item">
-                    <h3>COMPATIBILITY</h3>
-                    <p>J-ARM & BRIDGE MOUNTS</p>
-                </div>
-
-                <div class="spec-item">
-                    <h3>ENVIRONMENT</h3>
-                    <p>SEA-SPRAY RESISTANT</p>
-                </div>
-            </div>
+    <!-- Key Features -->
+    <section>
+      <h2>Key Features</h2>
+      <div class="arch-grid">
+        <div class="arch-card">
+          <div class="arch-card-tag">// Feature 01</div>
+          <h3>Custom Housing</h3>
+          <p>Airtight, sea-spray resistant design using advanced threaded tube technology, built to withstand harsh coastal environments while maintaining optical clarity.</p>
         </div>
+        <div class="arch-card">
+          <div class="arch-card-tag">// Feature 02</div>
+          <h3>Advanced Optics</h3>
+          <p>Interchangeable 32mm lens filters and focusable eyepiece system. Precision-engineered for optimal light gathering and image quality in low-light conditions.</p>
+        </div>
+        <div class="arch-card">
+          <div class="arch-card-tag">// Feature 03</div>
+          <h3>Modular Design</h3>
+          <p>Detachable components enable flexible upgrades and easy maintenance. Future-proof architecture allows for component evolution and customization.</p>
+        </div>
+        <div class="arch-card">
+          <div class="arch-card-tag">// Feature 04</div>
+          <h3>Pro Electronics</h3>
+          <p>Runcam Night Eagle 3 camera paired with Adafruit 1.5" TFT display. High-sensitivity sensor optimized for night vision applications.</p>
+        </div>
+        <div class="arch-card">
+          <div class="arch-card-tag">// Feature 05</div>
+          <h3>Full Documentation</h3>
+          <p>Complete operator's manual detailing specifications, usage procedures, and maintenance protocols to professional-grade documentation standards.</p>
+        </div>
+        <div class="arch-card">
+          <div class="arch-card-tag">// Feature 06</div>
+          <h3>Lightweight</h3>
+          <p>At just 8.5 grams net weight, the NVM 2 provides extended comfortable use without fatigue. M5 bolt compatibility with standard mounting systems.</p>
+        </div>
+      </div>
     </section>
 
-<!-- Gallery Section -->
-<section id="gallery" class="mission-gallery">
-  <div class="container">
-    <h2>PROJECT GALLERY</h2>
-    <p>From concept to completion - witness the engineering journey of the NVM 2 "Beachvision"</p>
-    
-    <div class="gallery-container">
-      <div class="gallery-image active" data-index="0">
-        <img src="assets/brendan_nvm2_mounted.png" alt="Mounting Demo" class="mission-image" />
-        <div class="image-overlay">
-          <p class="image-caption">J-ARM mounting system</p>
-        </div>
+    <!-- Impact -->
+    <section>
+      <h2>The Genesis of Innovation</h2>
+      <div class="impact-panel">
+        <p>
+          What began as a high school capstone project by a student with <span class="highlight">no formal engineering training</span>
+          became something far more significant. Hanssen's NVM 2 didn't just demonstrate remarkable technical
+          achievement — it <span class="highlight">ignited a collaborative fire</span> that would reshape West-Tek's
+          approach to accessible technology.
+        </p>
+        <p>
+          This project marked the <span class="highlight">genesis of West-Tek's night vision venture</span>, proving
+          that affordable, practical digital night vision was not only possible but achievable through innovative
+          engineering approaches. Hanssen's work sparked curiosity across the entire team, leading to deeper
+          exploration of optical systems, modular design principles, and field-ready electronics.
+        </p>
+        <p>
+          The NVM 2 represents more than technical mastery — it embodies the
+          <span class="highlight">transformative potential of giving young engineers the tools, guidance, and freedom</span>
+          to pursue ambitious challenges. It's proof that breakthrough innovation often emerges from unexpected
+          places when curiosity meets opportunity.
+        </p>
       </div>
-      
-      <div class="gallery-image" data-index="1">
-        <img src="assets/green_phosphor_test.jpg" alt="Green Beach Test" class="mission-image" />
-        <div class="image-overlay">
-          <p class="image-caption">Green phosphor beach test</p>
-        </div>
-      </div>
-      
-      <div class="gallery-image" data-index="2">
-        <img src="assets/capstone_presentation.jpg" alt="presentation" class="mission-image" />
-        <div class="image-overlay">
-          <p class="image-caption">Capstone project presentation</p>
-        </div>
-      </div>
-      
-      <div class="gallery-image" data-index="3">
-        <img src="assets/capstone_presentation_celebration.jpg" alt="prototype modeling" class="mission-image" />
-        <div class="image-overlay">
-          <p class="image-caption">Prototype modeling</p>
-        </div>
-      </div>
-      
-      <div class="gallery-image" data-index="4">
-        <img src="assets/beach_field_test.jpg" alt="Technical documentation process" class="mission-image" />
-        <div class="image-overlay">
-          <p class="image-caption">White phosphor beach test</p>
-        </div>
-      </div>
-      
-      <div class="gallery-image" data-index="5">
-        <img src="assets/beta_testing.jpg" alt="field test" class="mission-image" />
-        <div class="image-overlay">
-          <p class="image-caption">Nighttime field test</p>
-        </div>
-      </div>
+    </section>
 
-      <!-- Navigation Controls -->
-      <div class="gallery-controls">
-        <button class="gallery-nav prev-btn" onclick="changeImage(-1)">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="15,18 9,12 15,6"></polyline>
-          </svg>
-        </button>
-        <button class="gallery-nav next-btn" onclick="changeImage(1)">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="9,18 15,12 9,6"></polyline>
-          </svg>
-        </button>
+    <!-- Outcome -->
+    <section>
+      <h2>Project Outcome</h2>
+      <div class="outcome-panel">
+        <div class="outcome-metric">
+          <div class="metric-value">8.5</div>
+          <div class="metric-unit">grams — net weight</div>
+        </div>
+        <div class="outcome-text">
+          <p>
+            The NVM 2 successfully completed capstone evaluation and all field testing milestones including
+            J-ARM mount integration, green and white phosphor beach tests, and nighttime field trials.
+          </p>
+          <p>
+            The operator's manual was completed to professional-grade standards, and the project was
+            presented at Hanssen's capstone showcase. The NVM 2 is fully operational and forms the
+            foundation of West-Tek's ongoing night vision program.
+          </p>
+          <div class="outcome-badge">✓ Capstone Complete — Operational</div>
+        </div>
       </div>
-      
-      <!-- Image Counter -->
-      <div class="image-counter">
-        <span class="current-image">1</span> / <span class="total-images">6</span>
+    </section>
+
+    <!-- Gallery -->
+    <section>
+      <h2>Project Gallery</h2>
+      <div class="gallery-container">
+
+        <div class="gallery-image active" data-index="0">
+          <img src="assets/brendan_nvm2_mounted.png" alt="Mounting Demo" class="mission-image">
+          <div class="image-overlay">
+            <p class="image-caption">J-ARM mounting system</p>
+          </div>
+        </div>
+
+        <div class="gallery-image" data-index="1">
+          <img src="assets/green_phosphor_test.jpg" alt="Green Beach Test" class="mission-image">
+          <div class="image-overlay">
+            <p class="image-caption">Green phosphor beach test</p>
+          </div>
+        </div>
+
+        <div class="gallery-image" data-index="2">
+          <img src="assets/capstone_presentation.jpg" alt="Capstone Presentation" class="mission-image">
+          <div class="image-overlay">
+            <p class="image-caption">Capstone project presentation</p>
+          </div>
+        </div>
+
+        <div class="gallery-image" data-index="3">
+          <img src="assets/capstone_presentation_celebration.jpg" alt="Prototype Modeling" class="mission-image">
+          <div class="image-overlay">
+            <p class="image-caption">Prototype modeling</p>
+          </div>
+        </div>
+
+        <div class="gallery-image" data-index="4">
+          <img src="assets/beach_field_test.jpg" alt="White Phosphor Test" class="mission-image">
+          <div class="image-overlay">
+            <p class="image-caption">White phosphor beach test</p>
+          </div>
+        </div>
+
+        <div class="gallery-image" data-index="5">
+          <img src="assets/beta_testing.jpg" alt="Nighttime Field Test" class="mission-image">
+          <div class="image-overlay">
+            <p class="image-caption">Nighttime field test</p>
+          </div>
+        </div>
+
+        <div class="gallery-controls">
+          <button class="gallery-nav prev-btn" onclick="changeImage(-1)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15,18 9,12 15,6"></polyline>
+            </svg>
+          </button>
+          <button class="gallery-nav next-btn" onclick="changeImage(1)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9,18 15,12 9,6"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <div class="image-counter">
+          <span class="current-image">1</span> / <span class="total-images">6</span>
+        </div>
+
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-    <!-- Impact Section -->
-    <section id="impact" class="overview-section">
-      <div class="container">
-          <h2>THE GENESIS OF INNOVATION</h2>
-          <p>What began as a high school capstone project by a student with <span class="highlight">no formal engineering training</span> became something far more significant. Hanssen's NVM 2 didn't just demonstrate remarkable technical achievement for a young builder—it <span class="highlight">ignited a collaborative fire</span> that would reshape our approach to accessible technology.</p>
-          
-          <p>This project marked the <span class="highlight">genesis of West-Tek's night vision venture</span>, proving that affordable, practical digital night vision was not only possible but could be achieved through innovative engineering approaches. Hanssen's work sparked curiosity across our entire team, leading to deeper exploration of optical systems, modular design principles, and field-ready electronics.</p>
-
-          <p>More importantly, the NVM 2 demonstrated the power of <span class="highlight">collaborative innovation</span>. What started as one student's ambitious project evolved into a shared mission: making advanced technology accessible through careful engineering, thorough documentation, and iterative design. This philosophy now drives every West-Tek project, from our rocketry endeavors to our astrophotography systems.</p>
-
-          <p>The NVM 2 represents more than technical mastery—it embodies the <span class="highlight">transformative potential of giving young engineers the tools, guidance, and freedom</span> to pursue ambitious challenges. It's proof that breakthrough innovation often emerges from unexpected places when curiosity meets opportunity.</p>
+    <!-- Video -->
+    <section>
+      <h2>Mission Video</h2>
+      <div class="video-wrapper">
+        <!-- Replace YOUR_VIDEO_ID with the NVM2 YouTube video ID -->
+        <iframe
+          src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+          title="NVM2 Beachvision — Project Video"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
       </div>
-  </section>
+    </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-      <h2>EXPLORE FURTHER</h2>
-      <p style="font-size: 1.2rem; color: var(--light-gray); margin-bottom: 2rem;">
-          Dive deeper into the engineering process and discover more innovative projects from West-Tek Solutions.
-      </p>
-      
+    <!-- Navigation -->
+    <div class="mission-navigation">
       <div class="nav-buttons">
-          
-          <a href="assets/nvm2-operators-manual.pdf" class="nav-btn">VIEW FULL OPERATOR'S MANUAL</a>
-          <a href="#" class="nav-btn">VIEW MORE PROJECTS</a>
+        <a href="/missionlog.html" class="nav-btn">← Back to Mission Log</a>
+        <a href="assets/nvm2-operators-manual.pdf" class="nav-btn" target="_blank">View Operator's Manual ↗</a>
       </div>
-  </section>
-</main>
+    </div>
+
+  </main>
 
 
-<footer>
-  <p>Social Media Links</p>
-  <div class="newsletter">
-    <input type="email" id="subscribe-email" placeholder="Your email" required />
-    <button id="subscribe-btn">Join</button>
-    <div id="newsletter-status" style="margin-top: 10px; font-size: 14px;"></div>
-  </div>
-  <div class="footer-links">
-    <a href="index.html">Home</a> | <a href="gallery.html">Shop</a> |
-    <a href="about.html">About Us</a> |
-    <a href="events.html">Launches</a> |
-    <a href="nvm2.html">NVM2</a>
-  </div>
-</footer>
+  <footer id="site-footer"></footer>
+  <script src="/footer.js"></script>
 
-    <script>
-      // Replace with your actual SheetDB API URL
-      const SHEET_DB_URL = 'https://sheetdb.io/api/v1/sf0j8tkm2crwm';
-      
-      const subscribeBtn = document.getElementById('subscribe-btn');
-      const emailInput = document.getElementById('subscribe-email');
-      const statusDiv = document.getElementById('newsletter-status');
+  <script>
+    // Gallery
+    let currentImageIndex = 0;
+    const galleryImages = document.querySelectorAll('.gallery-image');
+    const totalImages = galleryImages.length;
 
-      function showStatus(message, isError = false) {
-        statusDiv.textContent = message;
-        statusDiv.style.color = isError ? '#ff6b6b' : '#51cf66';
-        setTimeout(() => {
-          statusDiv.textContent = '';
-        }, 4000);
-      }
+    document.querySelector('.total-images').textContent = totalImages;
 
-      subscribeBtn.addEventListener('click', async function () {
-        const email = emailInput.value.trim();
-        
-        // Basic email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!email || !emailRegex.test(email)) {
-          showStatus('Please enter a valid email address.', true);
-          return;
-        }
+    function changeImage(direction) {
+      galleryImages[currentImageIndex].classList.remove('active');
+      currentImageIndex = (currentImageIndex + direction + totalImages) % totalImages;
+      galleryImages[currentImageIndex].classList.add('active');
+      document.querySelector('.current-image').textContent = currentImageIndex + 1;
+    }
 
-        // Disable button during request
-        subscribeBtn.disabled = true;
-        subscribeBtn.textContent = 'Joining...';
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') changeImage(-1);
+      else if (e.key === 'ArrowRight') changeImage(1);
+    });
+  </script>
 
-        try {
-          const response = await fetch(SHEET_DB_URL, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              data: [{
-                email: email,
-                timestamp: new Date().toISOString()
-              }]
-            })
-          });
-
-          if (response.ok) {
-            showStatus(`Thank you for subscribing with ${email}!`);
-            emailInput.value = '';
-          } else {
-            throw new Error('Network response was not ok');
-          }
-        } catch (error) {
-          console.error('Error:', error);
-          showStatus('Something went wrong. Please try again.', true);
-        } finally {
-          // Re-enable button
-          subscribeBtn.disabled = false;
-          subscribeBtn.textContent = 'Join';
-        }
-      });
-
-      // Allow Enter key to submit
-      emailInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-          subscribeBtn.click();
-        }
-      });
-
-      // Hamburger menu functionality
-      const hamburger = document.getElementById('hamburger');
-      const mobileNav = document.getElementById('mobileNav');
-      const overlay = document.getElementById('overlay');
-
-      function toggleMenu() {
-          hamburger.classList.toggle('active');
-          mobileNav.classList.toggle('active');
-          overlay.classList.toggle('active');
-          document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
-      }
-
-      hamburger.addEventListener('click', toggleMenu);
-      overlay.addEventListener('click', toggleMenu);
-
-      const mobileLinks = mobileNav.querySelectorAll('a');
-      mobileLinks.forEach(link => {
-          link.addEventListener('click', toggleMenu);
-      });
-
-      window.addEventListener('resize', () => {
-          if (window.innerWidth > 768 && mobileNav.classList.contains('active')) {
-              toggleMenu();
-          }
-      });
-
-// Gallery Navigation JavaScript
-let currentImageIndex = 0;
-const galleryImages = document.querySelectorAll('.gallery-image');
-const totalImages = galleryImages.length;
-
-function changeImage(direction) {
-  const images = document.querySelectorAll('.gallery-image');
-  const currentCounter = document.querySelector('.current-image');
-  
-  // Remove active class from current image
-  images[currentImageIndex].classList.remove('active');
-  
-  // Calculate new index
-  currentImageIndex += direction;
-  
-  // Wrap around if necessary
-  if (currentImageIndex >= totalImages) {
-    currentImageIndex = 0;
-  } else if (currentImageIndex < 0) {
-    currentImageIndex = totalImages - 1;
-  }
-  
-  // Add active class to new image
-  images[currentImageIndex].classList.add('active');
-  
-  // Update counter
-  currentCounter.textContent = currentImageIndex + 1;
-}
-
-// Initialize counter
-document.querySelector('.total-images').textContent = totalImages;
-
-// Optional: Keyboard navigation
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowLeft') {
-    changeImage(-1);
-  } else if (e.key === 'ArrowRight') {
-    changeImage(1);
-  }
-});
-    </script>
-  </body>
+</body>
 </html>

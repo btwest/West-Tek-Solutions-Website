@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission: STRATUS | West-Tek Solutions</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+  :root {
+    --space-black: #1c1c1c;
+    --pure-white: #ffffff;
+    --spacex-orange: #ff6b35;
+    --dark-gray: #1a1a1a;
+    --medium-gray: #666666;
+    --light-gray: #cccccc;
+    --border-gray: #333333;
+    --success-green: #27ae60;
+    --warning-yellow: #f39c12;
+  }
+
+  /* MISSION BANNER */
+  .mission-header {
+    position: relative;
+    width: 100vw;
+    height: 80vh;
+    margin-left: calc(-50vw + 50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-gray);
+    background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+  }
+
+  .mission-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border-gray) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border-gray) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.18;
+    z-index: 0;
+  }
+
+  .mission-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 65%;
+    background: linear-gradient(to top, rgba(28,28,28,0.97) 0%, transparent 100%);
+    z-index: 1;
+  }
+
+  .mission-header-content {
+    position: relative;
+    z-index: 2;
+    padding: 3rem 4rem;
+    animation: fadeInUp 0.7s ease both;
+  }
+
+  .mission-id-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--spacex-orange);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .mission-id-tag::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    background: var(--spacex-orange);
+  }
+
+  .mission-title {
+    font-size: clamp(3rem, 7vw, 5rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--pure-white);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 12px rgba(0,0,0,0.8);
+  }
+
+  .mission-title span { color: var(--spacex-orange); }
+
+  .mission-banner-meta {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .mission-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1.2rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid var(--success-green);
+    color: var(--success-green);
+    background: rgba(39,174,96,0.08);
+  }
+
+  .mission-status-badge::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--success-green);
+    animation: blink 2s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.15; }
+  }
+
+  .meta-tag {
+    font-size: 0.8rem;
+    color: var(--medium-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .meta-tag span { color: var(--light-gray); margin-left: 0.3rem; }
+
+  /* MAIN */
+  main {
+    padding: 0 2rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  section {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border-gray);
+  }
+
+  section:last-of-type { border-bottom: none; }
+
+  /* OVERVIEW */
+  .overview-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  .overview-body p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--light-gray);
+    margin-bottom: 1.25rem;
+  }
+
+  .overview-body p:first-child {
+    font-size: 1.2rem;
+    color: var(--pure-white);
+    font-weight: 400;
+  }
+
+  .specs-sidebar {
+    background-color: var(--dark-gray);
+    border: 1px solid var(--border-gray);
+    padding: 1.5rem;
+    align-self: start;
+    transition: border-color 0.3s ease;
+  }
+
+  .specs-sidebar:hover { border-color: var(--spacex-orange); }
+
+  .specs-sidebar-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--spacex-orange);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-gray);
+  }
+
+  .spec-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(51,51,51,0.6);
+    gap: 0.75rem;
+  }
+
+  .spec-row:last-child { border-bottom: none; }
+  .spec-key { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--medium-gray); flex-shrink: 0; }
+  .spec-val { font-size: 0.8rem; color: var(--pure-white); font-weight: 500; text-align: right; }
+
+  /* OBJECTIVES */
+  .objectives-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border-gray);
+    border: 1px solid var(--border-gray);
+    margin-top: 1.5rem;
+  }
+
+  .obj-card {
+    background: var(--dark-gray);
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    border-left: 3px solid transparent;
+    transition: background 0.3s ease, border-left-color 0.3s ease;
+  }
+
+  .obj-card:hover { background: #222; border-left-color: var(--spacex-orange); }
+
+  .obj-num { font-size: 0.7rem; font-weight: 700; color: var(--spacex-orange); letter-spacing: 0.1em; padding-top: 0.1rem; flex-shrink: 0; }
+  .obj-text { font-size: 0.9rem; color: var(--light-gray); line-height: 1.5; }
+
+  /* ARCHITECTURE CARDS */
+  .arch-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .arch-card {
+    background-color: var(--dark-gray);
+    padding: 2rem;
+    border: 1px solid var(--border-gray);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .arch-card:hover { transform: translateY(-5px); border-color: var(--spacex-orange); }
+
+  .arch-card-tag { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; color: var(--spacex-orange); text-transform: uppercase; margin-bottom: 0.75rem; }
+
+  .arch-card h3 {
+    color: var(--pure-white);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .arch-card p { font-size: 0.9rem; color: var(--light-gray); line-height: 1.7; }
+
+  /* ANOMALY PANEL */
+  .anomaly-panel {
+    background-color: var(--dark-gray);
+    border: 1px solid var(--border-gray);
+    border-left: 3px solid var(--warning-yellow);
+    padding: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  .anomaly-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--warning-yellow);
+    color: var(--warning-yellow);
+    background: rgba(243,156,18,0.08);
+    margin-bottom: 1.25rem;
+  }
+
+  .anomaly-panel p { font-size: 0.95rem; color: var(--light-gray); line-height: 1.8; margin-bottom: 1rem; }
+  .anomaly-panel p:last-child { margin-bottom: 0; }
+
+  .mitigation-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--success-green);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .mitigation-label::before { content: '▸'; }
+
+  /* OUTCOME */
+  .outcome-panel {
+    background-color: var(--dark-gray);
+    border: 1px solid var(--border-gray);
+    border-left: 3px solid var(--success-green);
+    padding: 2rem 2.5rem;
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .outcome-metric {
+    text-align: center;
+    flex-shrink: 0;
+    padding-right: 3rem;
+    border-right: 1px solid var(--border-gray);
+  }
+
+  .metric-value { font-size: 4rem; font-weight: 700; color: var(--success-green); line-height: 1; letter-spacing: -1px; }
+  .metric-unit { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--medium-gray); margin-top: 0.4rem; }
+
+  .outcome-text p { font-size: 1rem; color: var(--light-gray); line-height: 1.8; margin-bottom: 0.75rem; }
+
+  .outcome-badge {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid var(--success-green);
+    background-color: var(--success-green);
+    color: var(--space-black);
+    margin-top: 0.5rem;
+  }
+
+  /* FLIGHT DATA */
+  .data-placeholder {
+    background-color: var(--dark-gray);
+    border: 2px dashed var(--border-gray);
+    padding: 3rem;
+    margin-top: 1.5rem;
+    color: var(--medium-gray);
+    font-style: italic;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  /* MISSION NAV */
+  .mission-navigation {
+    padding: 3rem 0 0;
+    border-top: 1px solid var(--border-gray);
+    margin-top: 1rem;
+  }
+
+  .nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-btn {
+    background-color: var(--space-black);
+    color: var(--pure-white);
+    border: 2px solid var(--spacex-orange);
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 150px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .nav-btn:hover { background-color: var(--spacex-orange); color: var(--space-black); }
+
+  /* VIDEO */
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    margin-top: 1.5rem;
+    border: 1px solid var(--border-gray);
+    transition: border-color 0.3s ease;
+  }
+
+  .video-wrapper:hover { border-color: var(--spacex-orange); }
+
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  section { animation: fadeInUp 0.5s ease both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .overview-layout, .arch-grid { grid-template-columns: 1fr; }
+    .objectives-grid { grid-template-columns: 1fr 1fr; }
+    .outcome-panel { flex-direction: column; gap: 1.5rem; }
+    .outcome-metric { padding-right: 0; border-right: none; border-bottom: 1px solid var(--border-gray); padding-bottom: 1.5rem; }
+  }
+
+  @media (max-width: 600px) {
+    .mission-header-content { padding: 2rem; }
+    .mission-title { font-size: 2.5rem; }
+    .objectives-grid { grid-template-columns: 1fr; }
+    main { padding: 0 1rem 3rem; }
+    .nav-buttons { flex-direction: column; }
+    .nav-btn { flex: none; }
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <img src="assets/westtek-solutions-dark-theme.png" alt="West-Tek Solutions" class="logo-img" />
+      </a>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Shop</a>
+      <a href="about.html">About Us</a>
+      <a href="mission.html">Missions</a>
+      <a href="nvm2.html">NVM2</a>
+    </nav>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="gallery.html">Shop</a>
+    <a href="about.html">About Us</a>
+    <a href="mission.html">Missions</a>
+    <a href="nvm2.html">NVM2</a>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+
+  <!-- Mission Banner -->
+  <div class="mission-header">
+    <div class="mission-header-content">
+      <div class="mission-id-tag">WTS-MSN-002 &nbsp;·&nbsp; Mid-Power Rocketry Development</div>
+      <h1 class="mission-title">Mission: <span>STRATUS</span></h1>
+      <div class="mission-banner-meta">
+        <div class="mission-status-badge">Mission Complete</div>
+        <div class="meta-tag">Vehicle: <span>Stratus-2</span></div>
+        <div class="meta-tag">Site: <span>SARA, Arizona</span></div>
+        <div class="meta-tag">Apogee: <span>855 ft AGL</span></div>
+      </div>
+    </div>
+  </div>
+
+
+  <main>
+
+    <!-- Overview -->
+    <section>
+      <h2>Mission Overview</h2>
+      <div class="overview-layout">
+        <div class="overview-body">
+          <p>
+            The <span class="highlight">STRATUS Program</span> represents West-Tek's first foray into mid-power rocket
+            development, transitioning from low-power platforms to vehicles capable of supporting 24 mm motor systems.
+            The program required full in-house design, fabrication, and systems integration — from airframe to avionics —
+            executed with no external tooling beyond a desktop FDM printer.
+          </p>
+          <p>
+            The vehicle was designed and printed in New York, then transported and flight-tested at a remote launch site
+            in Arizona under campaign conditions hosted by the Southern Arizona Rocketry Association (SARA). All
+            engineering analysis, anomaly investigation, and field mitigation was performed by the West-Tek team.
+          </p>
+          <p>
+            The mission validated a modular, threaded airframe architecture and demonstrated a functional telemetry
+            pipeline for altitude data collection on a fully 3D-printed platform.
+          </p>
+        </div>
+        <div class="specs-sidebar">
+          <div class="specs-sidebar-title">// Specifications</div>
+          <div class="spec-row"><span class="spec-key">Vehicle</span><span class="spec-val">Stratus-2</span></div>
+          <div class="spec-row"><span class="spec-key">Motor Class</span><span class="spec-val">Estes D/E</span></div>
+          <div class="spec-row"><span class="spec-key">Motor Dia.</span><span class="spec-val">24 mm</span></div>
+          <div class="spec-row"><span class="spec-key">Airframe</span><span class="spec-val">3D-Printed PETG</span></div>
+          <div class="spec-row"><span class="spec-key">Avionics</span><span class="spec-val">Jolly Logic Altimeter</span></div>
+          <div class="spec-row"><span class="spec-key">Launch Site</span><span class="spec-val">SARA, AZ</span></div>
+          <div class="spec-row"><span class="spec-key">Apogee</span><span class="spec-val">855 ft AGL</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Objectives -->
+    <section>
+      <h2>Mission Objectives</h2>
+      <div class="objectives-grid">
+        <div class="obj-card"><span class="obj-num">01</span><span class="obj-text">Design a fully in-house rocket platform with no commercial airframe components</span></div>
+        <div class="obj-card"><span class="obj-num">02</span><span class="obj-text">Develop a structurally validated 3D-printed PETG airframe</span></div>
+        <div class="obj-card"><span class="obj-num">03</span><span class="obj-text">Integrate and qualify a 24 mm motor mount system</span></div>
+        <div class="obj-card"><span class="obj-num">04</span><span class="obj-text">Fly and recover onboard barometric altitude telemetry</span></div>
+        <div class="obj-card"><span class="obj-num">05</span><span class="obj-text">Validate modular threaded airframe assembly without adhesives</span></div>
+        <div class="obj-card"><span class="obj-num">06</span><span class="obj-text">Demonstrate stable flight performance and parachute recovery</span></div>
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <section>
+      <h2>Vehicle Architecture</h2>
+      <div class="arch-grid">
+        <div class="arch-card">
+          <div class="arch-card-tag">// Subsystem 01</div>
+          <h3>Fin Can</h3>
+          <p>Swept-fin geometry derived from Goblin-class designs, with an integrated shock-cord anchor and captive 24 mm motor mount. Fins printed as a single monolithic assembly to eliminate adhesive joints.</p>
+        </div>
+        <div class="arch-card">
+          <div class="arch-card-tag">// Subsystem 02</div>
+          <h3>Threaded Airframe</h3>
+          <p>Modular body tube segmented into threaded sections enabling tool-free field assembly and disassembly. Supports length extension for future payload or motor upgrades without structural redesign.</p>
+        </div>
+        <div class="arch-card">
+          <div class="arch-card-tag">// Subsystem 03</div>
+          <h3>Avionics Bay</h3>
+          <p>Dedicated payload bay housing a barometric altimeter for real-time altitude capture, interfacing with the threaded airframe and providing a datum for future electronics integration.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Anomaly Report -->
+    <section>
+      <h2>Anomaly Report</h2>
+      <div class="anomaly-panel">
+        <div class="anomaly-tag">⚠ Anomaly — Launch Attempt 1</div>
+        <p>
+          During the first Arizona launch attempt, the vehicle experienced a
+          <strong style="color: var(--warning-yellow);">catastrophic motor failure</strong> immediately upon ignition.
+          No flight data was recorded. The airframe was recovered without structural damage.
+        </p>
+        <p>
+          Post-incident investigation identified a known failure mode in some Estes motor batches: the clay nozzle cap
+          can dislodge during ignition, causing loss of thrust and ejection of hot gases aft rather than through the
+          nozzle — resulting in zero net thrust and motor destruction.
+        </p>
+        <div class="mitigation-label">Field Mitigation Implemented</div>
+        <p>
+          A circumferential bead of CA adhesive was applied around the clay nozzle cap perimeter prior to the second
+          launch attempt, mechanically retaining the cap and preventing recurrence. The corrective action was validated
+          on subsequent flight.
+        </p>
+      </div>
+    </section>
+
+    <!-- Outcome -->
+    <section>
+      <h2>Mission Outcome</h2>
+      <div class="outcome-panel">
+        <div class="outcome-metric">
+          <div class="metric-value">855</div>
+          <div class="metric-unit">ft AGL — Apogee</div>
+        </div>
+        <div class="outcome-text">
+          <p>
+            Following the field-implemented motor mitigation, the second launch attempt achieved nominal flight.
+            The vehicle accelerated to apogee, deployed its parachute recovery system, and landed without damage.
+          </p>
+          <p>
+            Telemetry was successfully recovered from the onboard altimeter. All six mission objectives were
+            satisfied. The STRATUS platform was declared flight-ready for future motor class upgrades.
+          </p>
+          <div class="outcome-badge">✓ All Primary Objectives Met</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission Video -->
+    <section>
+      <h2>Mission Video</h2>
+      <div class="video-wrapper">
+        <!-- Paste your YouTube embed URL below, replacing the src value -->
+        <!-- e.g. https://www.youtube.com/embed/YOUR_VIDEO_ID -->
+        <iframe
+          src="https://youtu.be/Hwx8yoCC6uMc"
+          title="Mission STRATUS Launch Video"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section>
+      <h2>Mission Gallery</h2>
+      <div class="gallery-container">
+
+        <div class="gallery-image active">
+          <img src="../images/stratus-photo-1.jpg" alt="STRATUS Launch" class="mission-image">
+          <div class="image-overlay">
+            <p class="image-title">Launch Day</p>
+            <p class="image-caption">Stratus-2 on the pad at SARA, Arizona.</p>
+          </div>
+        </div>
+
+        <div class="gallery-image">
+          <img src="../images/stratus-photo-2.jpg" alt="STRATUS Airframe" class="mission-image">
+          <div class="image-overlay">
+            <p class="image-title">Airframe Assembly</p>
+            <p class="image-caption">Modular threaded sections prior to final assembly.</p>
+          </div>
+        </div>
+
+        <div class="gallery-image">
+          <img src="../images/stratus-photo-3.jpg" alt="STRATUS Recovery" class="mission-image">
+          <div class="image-overlay">
+            <p class="image-title">Recovery</p>
+            <p class="image-caption">Vehicle recovered after successful parachute deployment.</p>
+          </div>
+        </div>
+
+        <div class="image-counter">
+          <span id="current-slide">1</span> / <span id="total-slides">3</span>
+        </div>
+
+        <div class="gallery-controls">
+          <button class="gallery-nav" id="prev-btn">&#8592;</button>
+          <button class="gallery-nav" id="next-btn">&#8594;</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="mission-navigation">
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="location.href='mission.html'">← Back to Missions</button>
+        <button class="nav-btn" onclick="location.href='mission-atlas.html'">Next Mission →</button>
+      </div>
+    </div>
+
+  </main>
+
+
+  <footer>
+    <p>Social Media Links</p>
+    <div class="newsletter">
+      <input type="email" id="subscribe-email" placeholder="Your email" required />
+      <button id="subscribe-btn">Join</button>
+      <div id="newsletter-status" style="margin-top: 10px; font-size: 14px;"></div>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a> | <a href="gallery.html">Shop</a> |
+      <a href="about.html">About Us</a> |
+      <a href="events.html">Missions</a> |
+      <a href="nvm2.html">NVM2</a> |
+      <a href="report.html">Staff</a>
+    </div>
+  </footer>
+
+  <script>
+    const SHEET_DB_URL = 'https://sheetdb.io/api/v1/sf0j8tkm2crwm';
+
+    const subscribeBtn = document.getElementById('subscribe-btn');
+    const emailInput = document.getElementById('subscribe-email');
+    const statusDiv = document.getElementById('newsletter-status');
+
+    function showStatus(message, isError = false) {
+      statusDiv.textContent = message;
+      statusDiv.style.color = isError ? '#ff6b6b' : '#51cf66';
+      setTimeout(() => { statusDiv.textContent = ''; }, 4000);
+    }
+
+    subscribeBtn.addEventListener('click', async function () {
+      const email = emailInput.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || !emailRegex.test(email)) {
+        showStatus('Please enter a valid email address.', true);
+        return;
+      }
+      subscribeBtn.disabled = true;
+      subscribeBtn.textContent = 'Joining...';
+      try {
+        const response = await fetch(SHEET_DB_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ data: [{ email: email, timestamp: new Date().toISOString() }] })
+        });
+        if (response.ok) {
+          showStatus(`Thank you for subscribing with ${email}!`);
+          emailInput.value = '';
+        } else {
+          throw new Error('Network response was not ok');
+        }
+      } catch (error) {
+        showStatus('Something went wrong. Please try again.', true);
+      } finally {
+        subscribeBtn.disabled = false;
+        subscribeBtn.textContent = 'Join';
+      }
+    });
+
+    emailInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') subscribeBtn.click();
+    });
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const overlay = document.getElementById('overlay');
+
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', toggleMenu);
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && mobileNav.classList.contains('active')) toggleMenu();
+    });
+
+    // Gallery
+    const slides = document.querySelectorAll('.gallery-image');
+    const currentSlideEl = document.getElementById('current-slide');
+    const totalSlidesEl = document.getElementById('total-slides');
+    let current = 0;
+
+    if (totalSlidesEl) totalSlidesEl.textContent = slides.length;
+
+    function goToSlide(index) {
+      slides[current].classList.remove('active');
+      current = (index + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      if (currentSlideEl) currentSlideEl.textContent = current + 1;
+    }
+
+    document.getElementById('prev-btn')?.addEventListener('click', () => goToSlide(current - 1));
+    document.getElementById('next-btn')?.addEventListener('click', () => goToSlide(current + 1));
+  </script>
+
+</body>
+</html>

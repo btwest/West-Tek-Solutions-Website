@@ -6,107 +6,338 @@
     <title>West-Tek Solutions | About</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+      :root {
+        --space-black: #1c1c1c;
+        --pure-white: #ffffff;
+        --spacex-orange: #ff6b35;
+        --dark-gray: #1a1a1a;
+        --medium-gray: #666666;
+        --light-gray: #cccccc;
+        --border-gray: #333333;
+        --success-green: #27ae60;
+      }
+
+      /* PAGE BANNER */
+      .page-banner {
+        position: relative;
+        width: 100vw;
+        height: 40vh;
+        margin-left: calc(-50vw + 50%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        overflow: hidden;
+        border-bottom: 1px solid var(--border-gray);
+        background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+      }
+
+      .page-banner::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(var(--border-gray) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border-gray) 1px, transparent 1px);
+        background-size: 50px 50px;
+        opacity: 0.18;
+        z-index: 0;
+      }
+
+      .page-banner::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        height: 70%;
+        background: linear-gradient(to top, rgba(28,28,28,0.97) 0%, transparent 100%);
+        z-index: 1;
+      }
+
+      .page-banner-content {
+        position: relative;
+        z-index: 2;
+        padding: 2.5rem 4rem;
+        animation: fadeInUp 0.7s ease both;
+      }
+
+      .page-id-tag {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--spacex-orange);
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .page-id-tag::before {
+        content: '';
+        display: inline-block;
+        width: 24px;
+        height: 2px;
+        background: var(--spacex-orange);
+      }
+
+      .page-banner h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        color: var(--pure-white);
+        line-height: 1;
+        margin: 0;
+        text-align: left;
+        text-shadow: 2px 2px 12px rgba(0,0,0,0.8);
+      }
+
+      .page-banner h1 span { color: var(--spacex-orange); }
+
+      /* MAIN */
+      main {
+        padding: 0 2rem 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      section {
+        padding: 3rem 0;
+        border-bottom: 1px solid var(--border-gray);
+      }
+
+      section:last-of-type { border-bottom: none; }
+
+      main h2 {
+        text-align: left;
+        font-size: 2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--pure-white);
+        margin-bottom: 1rem;
+      }
+
+      main h2::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: var(--spacex-orange);
+        margin: 1rem 0;
+      }
+
+      /* ABOUT LAYOUT */
+      .about-layout {
+        display: grid;
+        grid-template-columns: 340px 1fr;
+        gap: 3rem;
+        margin-top: 1.5rem;
+        align-items: start;
+      }
+
+      .about-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        border: 1px solid var(--border-gray);
+        filter: grayscale(20%);
+        transition: filter 0.3s ease, border-color 0.3s ease;
+      }
+
+      .about-image:hover {
+        filter: grayscale(0%);
+        border-color: var(--spacex-orange);
+      }
+
+      .about-text p {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: var(--light-gray);
+        margin-bottom: 1.25rem;
+      }
+
+      .about-text p:first-child {
+        font-size: 1.2rem;
+        color: var(--pure-white);
+        font-weight: 400;
+      }
+
+      /* CONTACT FORM */
+      .contact-panel {
+        background-color: var(--dark-gray);
+        border: 1px solid var(--border-gray);
+        padding: 2rem;
+        margin-top: 1.5rem;
+        max-width: 680px;
+        transition: border-color 0.3s ease;
+      }
+
+      .contact-panel:hover { border-color: var(--spacex-orange); }
+
+      .contact-panel input,
+      .contact-panel textarea {
+        width: 100%;
+        padding: 0.9rem 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid var(--border-gray);
+        background-color: var(--space-black);
+        color: var(--pure-white);
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 0.9rem;
+        box-sizing: border-box;
+        outline: none;
+        transition: border-color 0.3s ease;
+        border-radius: 0;
+      }
+
+      .contact-panel input:focus,
+      .contact-panel textarea:focus {
+        border-color: var(--spacex-orange);
+      }
+
+      .contact-panel input::placeholder,
+      .contact-panel textarea::placeholder {
+        color: var(--medium-gray);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.8rem;
+      }
+
+      .contact-panel textarea {
+        resize: vertical;
+        min-height: 130px;
+        line-height: 1.6;
+      }
+
+      .contact-panel button {
+        background-color: var(--space-black);
+        color: var(--pure-white);
+        border: 2px solid var(--spacex-orange);
+        padding: 0.85rem 2rem;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+
+      .contact-panel button:hover:not(:disabled) {
+        background-color: var(--spacex-orange);
+        color: var(--space-black);
+      }
+
+      .contact-panel button:disabled {
+        border-color: var(--medium-gray);
+        color: var(--medium-gray);
+        cursor: not-allowed;
+      }
+
+      .form-status {
+        margin-top: 0.75rem;
+        font-size: 0.85rem;
+        text-align: center;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        min-height: 20px;
+      }
+
+      /* ANIMATIONS */
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      section { animation: fadeInUp 0.5s ease both; }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .page-banner-content { padding: 2rem; }
+        .page-banner h1 { font-size: 2.2rem; }
+        .about-layout { grid-template-columns: 1fr; }
+        main { padding: 0 1rem 3rem; }
+        .contact-panel { max-width: 100%; }
+      }
+    </style>
   </head>
   <body>
-    <header>
-      <div class="logo">
-        <a href="index.html">
-        <img src="assets/westtek-solutions-dark-theme.png" alt="West-Tek Solutions" class="logo-img" />
-        </a>
-      </div>
-      
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="gallery.html">Shop</a>
-        <a href="about.html">About Us</a>
-        <a href="events.html">Launches</a>
-        <a href="nvm2.html">NVM2</a>
-      </nav>
-      
-      <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </header>
 
-    <!-- Mobile Navigation Elements -->
+    <header id="site-header"></header>
     <div class="overlay" id="overlay"></div>
-    
     <div class="mobile-nav" id="mobileNav">
-      <a href="index.html">Home</a>
-      <a href="gallery.html">Shop</a>
-      <a href="about.html">About Us</a>
-      <a href="events.html">Launches</a>
-      <a href="nvm2.html">NVM2</a>
+      <a href="/index.html">Home</a>
+      <a href="/gallery.html">Shop</a>
+      <a href="/about.html">About Us</a>
+      <a href="/missionlog.html">Missions</a>
+      <a href="/nvm2.html">NVM2</a>
+    </div>
+    <script src="/header.js"></script>
+
+
+    <!-- Page Banner -->
+    <div class="page-banner">
+      <div class="page-banner-content">
+        <div class="page-id-tag">West-Tek Solutions</div>
+        <h1>About <span>Us</span></h1>
+      </div>
     </div>
 
-    <main>
-      <div class="about-section">
-        <h2>About Us</h2>
-        <img src="assets/about.JPEG" alt="About Westtek Solutions" class="about-image" />
-        <p>
-          <span class="highlight">WEST-TEK SOLUTIONS</span> is a family-driven hub for creativity, exploration,
-          and innovation. What began as a collection of small projects has
-          evolved into a shared space for documenting our work in rocketry,
-          software development, game design, and creative media.
-        </p>
-        <p>
-          Our mission is simple: bring together curiosity, technical skill, and
-          imagination to build projects that inspire and connect. From launching
-          model rockets to building apps and sharing stories online, this is where our ideas take flight.
-        </p>
-      </div>
 
-      <div class="feedback-section">
+    <main>
+
+      <!-- About -->
+      <section>
+        <h2>Who We Are</h2>
+        <div class="about-layout">
+          <img src="assets/about.JPEG" alt="West-Tek Solutions" class="about-image" />
+          <div class="about-text">
+            <p>
+              <span class="highlight">WEST-TEK SOLUTIONS</span> is a family-driven hub for creativity,
+              exploration, and innovation. What began as a collection of small projects has evolved into
+              a shared space for documenting our work in rocketry, software development, game design,
+              and creative media.
+            </p>
+            <p>
+              Our mission is simple: bring together curiosity, technical skill, and imagination to build
+              projects that inspire and connect. From launching model rockets to building apps and sharing
+              stories online, this is where our ideas take flight.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section>
         <h2>Contact Us</h2>
-        <p>
-          We'd love to hear from you! Drop us a message below.
+        <p style="color: var(--light-gray); font-size: 1rem; margin-bottom: 0;">
+          We'd love to hear from you — drop us a message below.
         </p>
-        
-        <form class="contact-form" id="contact-form">
-          <input 
-            type="text" 
-            id="contact-name" 
-            placeholder="Your Name" 
-            required 
-          />
-          <input 
-            type="email" 
-            id="contact-email" 
-            placeholder="Your Email" 
-            required 
-          />
-          <textarea 
-            id="contact-message" 
-            placeholder="Your Message" 
-            required
-          ></textarea>
-          <button type="submit" id="contact-submit">Send Message</button>
-          <div id="contact-status" class="form-status"></div>
-        </form>
-      </div>
+        <div class="contact-panel">
+          <form id="contact-form">
+            <input type="text" id="contact-name" placeholder="Your Name" required />
+            <input type="email" id="contact-email" placeholder="Your Email" required />
+            <textarea id="contact-message" placeholder="Your Message" required></textarea>
+            <button type="submit" id="contact-submit">Send Message</button>
+            <div id="contact-status" class="form-status"></div>
+          </form>
+        </div>
+      </section>
+
     </main>
 
-    <footer>
-      <p>Social Media Links</p>
-      <div class="newsletter">
-        <input type="email" id="subscribe-email" placeholder="Your email" required />
-        <button id="subscribe-btn">Join</button>
-        <div id="newsletter-status" style="margin-top: 10px; font-size: 14px;"></div>
-      </div>
-      <div class="footer-links">
-        <a href="index.html">Home</a> | <a href="gallery.html">Shop</a> |
-        <a href="about.html">About Us</a> |
-        <a href="events.html">Launches</a> |
-        <a href="nvm2.html">NVM2</a>
-      </div>
-    </footer>
+
+    <footer id="site-footer"></footer>
+    <script src="/footer.js"></script>
 
     <script>
-      // === CONTACT FORM LOGIC ===
+      // Contact form
       const CONTACT_URL = 'https://sheetdb.io/api/v1/r7vx0zy5f5kky';
-      
+
       const contactForm = document.getElementById('contact-form');
       const contactName = document.getElementById('contact-name');
       const contactEmail = document.getElementById('contact-email');
@@ -117,40 +348,34 @@
       function showContactStatus(message, isError = false) {
         contactStatus.textContent = message;
         contactStatus.style.color = isError ? '#ff6b6b' : '#51cf66';
-        setTimeout(() => {
-          contactStatus.textContent = '';
-        }, 5000);
+        setTimeout(() => { contactStatus.textContent = ''; }, 5000);
       }
 
-      contactForm.addEventListener('submit', async function(e) {
+      contactForm.addEventListener('submit', async function (e) {
         e.preventDefault();
-        
+
         const name = contactName.value.trim();
         const email = contactEmail.value.trim();
         const message = contactMessage.value.trim();
-        
-        // Validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
         if (!name || !email || !message) {
           showContactStatus('Please fill in all fields.', true);
           return;
         }
-        
+
         if (!emailRegex.test(email)) {
           showContactStatus('Please enter a valid email address.', true);
           return;
         }
 
-        // Disable form during submission
         contactSubmit.disabled = true;
         contactSubmit.textContent = 'Sending...';
 
         try {
           const response = await fetch(CONTACT_URL, {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               data: [{
                 name: name,
@@ -175,100 +400,7 @@
           contactSubmit.textContent = 'Send Message';
         }
       });
-
-      // === NEWSLETTER LOGIC ===
-      const SHEET_DB_URL = 'https://sheetdb.io/api/v1/sf0j8tkm2crwm';
-      
-      const subscribeBtn = document.getElementById('subscribe-btn');
-      const emailInput = document.getElementById('subscribe-email');
-      const statusDiv = document.getElementById('newsletter-status');
-
-      function showStatus(message, isError = false) {
-        statusDiv.textContent = message;
-        statusDiv.style.color = isError ? '#ff6b6b' : '#51cf66';
-        setTimeout(() => {
-          statusDiv.textContent = '';
-        }, 4000);
-      }
-
-      subscribeBtn.addEventListener('click', async function () {
-        const email = emailInput.value.trim();
-        
-        // Basic email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!email || !emailRegex.test(email)) {
-          showStatus('Please enter a valid email address.', true);
-          return;
-        }
-
-        // Disable button during request
-        subscribeBtn.disabled = true;
-        subscribeBtn.textContent = 'Joining...';
-
-        try {
-          const response = await fetch(SHEET_DB_URL, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              data: [{
-                email: email,
-                timestamp: new Date().toISOString()
-              }]
-            })
-          });
-
-          if (response.ok) {
-            showStatus(`Thank you for subscribing with ${email}!`);
-            emailInput.value = '';
-          } else {
-            throw new Error('Network response was not ok');
-          }
-        } catch (error) {
-          console.error('Error:', error);
-          showStatus('Something went wrong. Please try again.', true);
-        } finally {
-          // Re-enable button
-          subscribeBtn.disabled = false;
-          subscribeBtn.textContent = 'Join';
-        }
-      });
-
-      // Allow Enter key to submit
-      emailInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-          subscribeBtn.click();
-        }
-      });
-
-      // === HAMBURGER MENU LOGIC ===
-      const hamburger = document.getElementById('hamburger');
-      const mobileNav = document.getElementById('mobileNav');
-      const overlay = document.getElementById('overlay');
-
-      function toggleMenu() {
-          hamburger.classList.toggle('active');
-          mobileNav.classList.toggle('active');
-          overlay.classList.toggle('active');
-          document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
-      }
-
-      hamburger.addEventListener('click', toggleMenu);
-      overlay.addEventListener('click', toggleMenu);
-
-      // Close menu when clicking on a link
-      const mobileLinks = mobileNav.querySelectorAll('a');
-      mobileLinks.forEach(link => {
-          link.addEventListener('click', toggleMenu);
-      });
-
-      // Close menu on window resize if desktop size
-      window.addEventListener('resize', () => {
-          if (window.innerWidth > 768 && mobileNav.classList.contains('active')) {
-              toggleMenu();
-          }
-      });
     </script>
+
   </body>
 </html>

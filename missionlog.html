@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>West-Tek Solutions | Mission Log</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+      :root {
+        --space-black: #1c1c1c;
+        --pure-white: #ffffff;
+        --spacex-orange: #ff6b35;
+        --dark-gray: #1a1a1a;
+        --medium-gray: #666666;
+        --light-gray: #cccccc;
+        --border-gray: #333333;
+        --success-green: #27ae60;
+        --warning-yellow: #f39c12;
+      }
+
+      /* PAGE BANNER */
+      .page-banner {
+        position: relative;
+        width: 100vw;
+        height: 40vh;
+        margin-left: calc(-50vw + 50%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        overflow: hidden;
+        border-bottom: 1px solid var(--border-gray);
+        background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+      }
+
+      .page-banner::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(var(--border-gray) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border-gray) 1px, transparent 1px);
+        background-size: 50px 50px;
+        opacity: 0.18;
+        z-index: 0;
+      }
+
+      .page-banner::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        height: 70%;
+        background: linear-gradient(to top, rgba(28,28,28,0.97) 0%, transparent 100%);
+        z-index: 1;
+      }
+
+      .page-banner-content {
+        position: relative;
+        z-index: 2;
+        padding: 2.5rem 4rem;
+        animation: fadeInUp 0.7s ease both;
+      }
+
+      .page-id-tag {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--spacex-orange);
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .page-id-tag::before {
+        content: '';
+        display: inline-block;
+        width: 24px;
+        height: 2px;
+        background: var(--spacex-orange);
+      }
+
+      .page-banner h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        color: var(--pure-white);
+        line-height: 1;
+        margin: 0;
+        text-shadow: 2px 2px 12px rgba(0,0,0,0.8);
+      }
+
+      .page-banner h1 span { color: var(--spacex-orange); }
+
+      /* MAIN */
+      main {
+        padding: 0 2rem 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      section {
+        padding: 3rem 0;
+        border-bottom: 1px solid var(--border-gray);
+      }
+
+      section:last-of-type { border-bottom: none; }
+
+      /* SECTION HEADER — matches mission page h2 style from styles.css */
+      .section-heading {
+        font-size: 2rem;
+        color: var(--pure-white);
+        margin-bottom: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+      }
+
+      .section-heading::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: var(--spacex-orange);
+        margin: 1rem 0;
+      }
+
+      /* MISSION CARD GRID */
+      .mission-log-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .mission-log-card {
+        background-color: var(--dark-gray);
+        border: 1px solid var(--border-gray);
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+        overflow: hidden;
+      }
+
+      .mission-log-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--spacex-orange);
+      }
+
+      .card-top-bar {
+        height: 3px;
+        background: var(--border-gray);
+        transition: background 0.3s ease;
+      }
+
+      .mission-log-card:hover .card-top-bar { background: var(--spacex-orange); }
+
+      .card-body { padding: 1.75rem 2rem; flex: 1; display: flex; flex-direction: column; }
+
+      .card-mission-id {
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--spacex-orange);
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .card-mission-id::before {
+        content: '';
+        display: inline-block;
+        width: 14px;
+        height: 1.5px;
+        background: var(--spacex-orange);
+      }
+
+      .card-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--pure-white);
+        margin-bottom: 0.75rem;
+      }
+
+      .card-description {
+        font-size: 0.9rem;
+        color: var(--light-gray);
+        line-height: 1.7;
+        margin-bottom: 1.25rem;
+        flex: 1;
+      }
+
+      .card-date {
+        font-size: 0.75rem;
+        color: var(--medium-gray);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .card-date::before { content: '📅'; font-size: 0.75rem; }
+
+      .card-footer {
+        padding: 1rem 2rem;
+        border-top: 1px solid var(--border-gray);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .card-status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.68rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 0.3rem 0.75rem;
+        border: 1.5px solid var(--success-green);
+        color: var(--success-green);
+        background: rgba(39,174,96,0.08);
+      }
+
+      .card-status-badge::before {
+        content: '';
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--success-green);
+      }
+
+      .card-status-badge.upcoming {
+        border-color: var(--spacex-orange);
+        color: var(--spacex-orange);
+        background: rgba(255,107,53,0.08);
+      }
+
+      .card-status-badge.upcoming::before { background: var(--spacex-orange); animation: blink 1.5s ease-in-out infinite; }
+
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.15; }
+      }
+
+      .card-view-btn {
+        background-color: var(--space-black);
+        color: var(--pure-white);
+        border: 2px solid var(--spacex-orange);
+        padding: 0.55rem 1.25rem;
+        cursor: pointer;
+        font-size: 0.78rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        white-space: nowrap;
+      }
+
+      .card-view-btn:hover { background-color: var(--spacex-orange); color: var(--space-black); }
+
+      /* COUNTDOWN */
+      .countdown-display {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--spacex-orange);
+        font-family: 'Courier New', monospace;
+        letter-spacing: 0.05em;
+      }
+
+      /* ANIMATIONS */
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      section { animation: fadeInUp 0.5s ease both; }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .page-banner-content { padding: 2rem; }
+        .page-banner h1 { font-size: 2.2rem; }
+        .mission-log-grid { grid-template-columns: 1fr; }
+        main { padding: 0 1rem 3rem; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <header id="site-header"></header>
+    <div class="overlay" id="overlay"></div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="/index.html">Home</a>
+      <a href="/gallery.html">Shop</a>
+      <a href="/about.html">About Us</a>
+      <a href="/missionlog.html">Missions</a>
+      <a href="/nvm2.html">NVM2</a>
+    </div>
+    <script src="/header.js"></script>
+
+
+    <!-- Page Banner -->
+    <div class="page-banner">
+      <div class="page-banner-content">
+        <div class="page-id-tag">West-Tek Solutions &nbsp;·&nbsp; Flight Operations</div>
+        <h1>Mission <span>Log</span></h1>
+      </div>
+    </div>
+
+
+    <main>
+
+      <!-- Upcoming Launches -->
+      <section>
+        <h2 class="section-heading">Current Missions</h2>
+        <div class="mission-log-grid" id="upcoming-launches">
+          <!-- Upcoming mission cards injected here by JS if any exist -->
+          <p style="color: var(--medium-gray); font-size: 0.9rem; padding: 1rem 0;" id="no-upcoming">Check back soon.
+          </p>
+        </div>
+      </section>
+
+      <!-- Completed Missions -->
+      <section>
+        <h2 class="section-heading">Completed Missions</h2>
+        <div class="mission-log-grid" id="completed-missions">
+
+          <div class="mission-log-card" data-launch="2025-09-28T14:00:00">
+            <div class="card-top-bar"></div>
+            <div class="card-body">
+              <div class="card-mission-id">WTS-MSN-003</div>
+              <div class="card-title">Stratus</div>
+              <p class="card-description">
+                West-Tek's transition to mid-power rocketry. A fully 3D-printed PETG vehicle supporting 24 mm motors with onboard barometric telemetry, flight-tested at SARA in Arizona.
+              </p>
+              <div class="card-date">TBD</div>
+            </div>
+            <div class="card-footer">
+              <span class="card-status-badge">Completed</span>
+              <button class="card-view-btn" onclick="viewMission('stratus')">View Mission →</button>
+            </div>
+          </div>
+
+          <div class="mission-log-card" data-launch="2025-09-28T14:00:00">
+            <div class="card-top-bar"></div>
+            <div class="card-body">
+              <div class="card-mission-id">WTS-MSN-002</div>
+              <div class="card-title">Stratum</div>
+              <p class="card-description">
+                The Stratum Program explores the viability of 3D-printed polymers in model rocketry through iterative launch and recovery testing, culminating in an improved fin-can design and thicker body walls.
+              </p>
+              <div class="card-date">Sunday, Sept 28, 2025 — 3:00 PM</div>
+            </div>
+            <div class="card-footer">
+              <span class="card-status-badge">Completed</span>
+              <button class="card-view-btn" onclick="viewMission('stratum2')">View Mission →</button>
+            </div>
+          </div>
+
+          <div class="mission-log-card" data-launch="2025-09-07T16:00:00">
+            <div class="card-top-bar"></div>
+            <div class="card-body">
+              <div class="card-mission-id">WTS-MSN-001</div>
+              <div class="card-title">Gnat 1</div>
+              <p class="card-description">
+                Prototype 3D-printed rockets powered by the Estes A3-4T engine. Tested launch procedures, recovery systems, and the essentials of 3D-printed rocketry.
+              </p>
+              <div class="card-date">Sunday, Sept 7, 2025 — 4:00 PM</div>
+            </div>
+            <div class="card-footer">
+              <span class="card-status-badge">Completed</span>
+              <button class="card-view-btn" onclick="viewMission('gnat1')">View Mission →</button>
+            </div>
+          </div>
+
+          <div class="mission-log-card">
+            <div class="card-top-bar"></div>
+            <div class="card-body">
+              <div class="card-mission-id">WTS-NVM-001</div>
+              <div class="card-title">NVM 2 "Beachvision"</div>
+              <p class="card-description">
+                A high school capstone project turned West-Tek milestone. A digital night vision monocle optimized for low-light and near-water conditions, built from scratch with no formal engineering training.
+              </p>
+              <div class="card-date">2024</div>
+            </div>
+            <div class="card-footer">
+              <span class="card-status-badge">Completed</span>
+              <button class="card-view-btn" onclick="viewMission('nvm2')">View Mission →</button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+
+    <footer id="site-footer"></footer>
+    <script src="/footer.js"></script>
+    <script>   function viewMission(page) {
+      window.location.href = page + '.html';
+    }
+</script>
+
+  </body>
+</html>
