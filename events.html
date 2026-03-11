@@ -3,26 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>West-Tek Solutions | Launches</title>
+    <title>West-Tek Solutions | Missions</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+      .missions-tally {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        padding: 2rem;
+        border-bottom: 1px solid var(--border-gray);
+        text-align: center;
+      }
+      .tally-number {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--spacex-orange);
+        font-family: 'Courier New', monospace;
+        line-height: 1;
+      }
+      .tally-label {
+        display: block;
+        font-size: 0.7rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--medium-gray);
+        margin-top: 0.4rem;
+      }
+      @media (max-width: 480px) {
+        .missions-tally { gap: 1.5rem; }
+        .tally-number { font-size: 1.5rem; }
+      }
+    </style>
   </head>
   <body>
     <header>
       <div class="logo">
         <a href="index.html">
-        <img src="assets/westtek-solutions-dark-theme.png" alt="West-Tek Solutions" class="logo-img" />
+          <img src="assets/westtek-solutions-dark-theme.png" alt="West-Tek Solutions" class="logo-img" />
         </a>
       </div>
-      
+
       <nav>
         <a href="index.html">Home</a>
-        <a href="gallery.html">Shop</a>
-        <a href="about.html">About Us</a>
-        <a href="events.html">Launches</a>
-        <a href="nvm2.html">NVM2</a>
+        <a href="about.html">About</a>
+        <a href="videos.html">Videos</a>
+        <a href="missions.html" style="color: var(--spacex-orange);">Missions</a>
+        <a href="shop.html">Shop</a>
       </nav>
-      
+
       <div class="hamburger" id="hamburger">
         <span></span>
         <span></span>
@@ -30,74 +60,87 @@
       </div>
     </header>
 
-    <!-- Mobile Navigation Elements -->
     <div class="overlay" id="overlay"></div>
-    
+
     <div class="mobile-nav" id="mobileNav">
       <a href="index.html">Home</a>
-      <a href="gallery.html">Shop</a>
-      <a href="about.html">About Us</a>
-      <a href="events.html">Launches</a>
-      <a href="nvm2.html">NVM2</a>
+      <a href="about.html">About</a>
+      <a href="videos.html">Videos</a>
+      <a href="missions.html">Missions</a>
+      <a href="shop.html">Shop</a>
     </div>
 
     <main>
       <div class="gallery-header">
-        <h2 class="gallery-title">Upcoming Launches</h2>
+        <h2 class="gallery-title">Mission Log</h2>
       </div>
 
-      <div id="upcoming-launches" class="product-list">
-        <!-- UPCOMING MISSIONS HERE -->
-     
-       
-      
-
-      
-
-     
+      <div class="missions-tally">
+        <div>
+          <span class="tally-number">05</span>
+          <span class="tally-label">Total</span>
+        </div>
+        <div>
+          <span class="tally-number">01</span>
+          <span class="tally-label">Active</span>
+        </div>
+        <div>
+          <span class="tally-number">01</span>
+          <span class="tally-label">In Development</span>
+        </div>
+        <div>
+          <span class="tally-number">03</span>
+          <span class="tally-label">Complete</span>
+        </div>
       </div>
 
-      <div class="gallery-header">
-        <h2 class="gallery-title">Completed Missions</h2>
-      </div>
-      <div id="completed-missions" class="product-list">
-        <!-- Completed missions will move here automatically -->
-        <div class="product-item" data-launch="2025-09-28T14:00:00">
+      <div class="product-list">
+
+        <div class="product-item">
           <div class="product-details">
-            <h3 class="product-title">Mission: Stratum 2</h3>
-            <p class="product-description">
-              The Stratum 2 rocket features an improved fin-can design and thicker body walls to mitigate the heat damage observed during the Stratum 1 launch.            </p>
-            <p><strong>Date:</strong> Sunday, Sept 28, – 3:00 PM</p>
-            
-            <button class="add-to-cart-btn" onclick="viewMission('stratum2')">
-              View
-            </button>
+            <h3 class="product-title">Mission 001 — GNAT 1</h3>
+            <p class="product-description">Prototype 3D-printed rockets powered by the Estes A3-4T engine. Tests launch procedures, recovery, and the essentials of 3D-printed rocketry.</p>
+            <p><span class="status-badge completed">Complete</span></p>
+            <button class="add-to-cart-btn" onclick="viewMission('gnat1')">View Mission</button>
           </div>
         </div>
-        <div class="product-item" data-launch="2025-09-20T17:00:00">
+
+        <div class="product-item">
           <div class="product-details">
-            <h3 class="product-title">Mission: Stratum 1</h3>
-            <p class="product-description">
-              The Stratum Program explores the viability of 3D-printed polymers in model rocketry through iterative launch and recovery testing.            </p>
-            <p><strong>Date:</strong> Sunday, Sept 14, – 5:00 PM</p>
-            
-            <button class="add-to-cart-btn" onclick="viewMission('stratum1')">
-              View
-            </button>
+            <h3 class="product-title">Mission 002 — STRATUM 1</h3>
+            <p class="product-description">The Stratum Program explores the viability of 3D-printed polymers in model rocketry through iterative launch and recovery testing.</p>
+            <p><span class="status-badge completed">Complete</span></p>
+            <button class="add-to-cart-btn" onclick="viewMission('stratum1')">View Mission</button>
           </div>
         </div>
-        <div class="product-item" data-launch="2025-09-07T16:00:00">
+
+        <div class="product-item">
           <div class="product-details">
-            <h3 class="product-title">Mission: Gnat 1</h3>
-            <p class="product-description">
-              Prototype 3D-printed rockets powered by the Estes A3-4T engine. This mission tests launch procedures, recovery, and the essentials of 3D-printed rocketry, helping us learn and iterate for future flights.
-            </p>
-            <p><strong>Date:</strong> Sunday, Sept 7, 2025 – 4:00 PM</p>
-            <button class="add-to-cart-btn" onclick="viewMission('gnat1')">
-              View
-            </button>
+            <h3 class="product-title">Mission 003 — STRATUM 2</h3>
+            <p class="product-description">Improved fin-can design and thicker body walls to mitigate heat damage observed during Stratum 1. Iterating toward a more durable airframe.</p>
+            <p><span class="status-badge completed">Complete</span></p>
+            <button class="add-to-cart-btn" onclick="viewMission('stratum2')">View Mission</button>
           </div>
         </div>
+
+        <div class="product-item">
+          <div class="product-details">
+            <h3 class="product-title">Mission 004 — STRATUS</h3>
+            <p class="product-description">Next-generation rocket platform building on lessons from the Stratum series. Advanced aerodynamic profile and refined recovery system.</p>
+            <p><span class="status-badge upcoming">In Development</span></p>
+            <button class="add-to-cart-btn" onclick="viewMission('stratus')">View Mission</button>
+          </div>
+        </div>
+
+        <div class="product-item">
+          <div class="product-details">
+            <h3 class="product-title">Mission 005 — NVM2</h3>
+            <p class="product-description">A DIY digital night vision monocle built for civilian and experimental use. Custom housing, low-light imaging sensor, and field-tested optics.</p>
+            <p><span class="status-badge upcoming">Active</span></p>
+            <button class="add-to-cart-btn" onclick="viewMission('nvm2')">View Mission</button>
+          </div>
+        </div>
+
       </div>
     </main>
 
@@ -109,17 +152,17 @@
         <div id="newsletter-status" style="margin-top: 10px; font-size: 14px;"></div>
       </div>
       <div class="footer-links">
-        <a href="index.html">Home</a> | <a href="gallery.html">Shop</a> |
-        <a href="about.html">About Us</a> |
-        <a href="events.html">Launches</a> |
-        <a href="nvm2.html">NVM2</a>
+        <a href="index.html">Home</a> |
+        <a href="about.html">About</a> |
+        <a href="videos.html">Videos</a> |
+        <a href="missions.html">Missions</a> |
+        <a href="shop.html">Shop</a> |
+        <a href="report.html">Staff</a>
       </div>
     </footer>
 
     <script>
-      // Replace with your actual SheetDB API URL
       const SHEET_DB_URL = 'https://sheetdb.io/api/v1/sf0j8tkm2crwm';
-      
       const subscribeBtn = document.getElementById('subscribe-btn');
       const emailInput = document.getElementById('subscribe-email');
       const statusDiv = document.getElementById('newsletter-status');
@@ -127,39 +170,24 @@
       function showStatus(message, isError = false) {
         statusDiv.textContent = message;
         statusDiv.style.color = isError ? '#ff6b6b' : '#51cf66';
-        setTimeout(() => {
-          statusDiv.textContent = '';
-        }, 4000);
+        setTimeout(() => { statusDiv.textContent = ''; }, 4000);
       }
 
       subscribeBtn.addEventListener('click', async function () {
         const email = emailInput.value.trim();
-        
-        // Basic email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!email || !emailRegex.test(email)) {
           showStatus('Please enter a valid email address.', true);
           return;
         }
-
-        // Disable button during request
         subscribeBtn.disabled = true;
         subscribeBtn.textContent = 'Joining...';
-
         try {
           const response = await fetch(SHEET_DB_URL, {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              data: [{
-                email: email,
-                timestamp: new Date().toISOString()
-              }]
-            })
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ data: [{ email: email, timestamp: new Date().toISOString() }] })
           });
-
           if (response.ok) {
             showStatus(`Thank you for subscribing with ${email}!`);
             emailInput.value = '';
@@ -170,82 +198,35 @@
           console.error('Error:', error);
           showStatus('Something went wrong. Please try again.', true);
         } finally {
-          // Re-enable button
           subscribeBtn.disabled = false;
           subscribeBtn.textContent = 'Join';
         }
       });
 
-      // Allow Enter key to submit
       emailInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-          subscribeBtn.click();
-        }
+        if (e.key === 'Enter') subscribeBtn.click();
       });
 
-      // View Mission
       function viewMission(page) {
         window.location.href = page + '.html';
-        }
-
-      // Countdown + auto-move to Completed
-      function updateCountdowns() {
-        const now = new Date().getTime();
-        const upcoming = document.querySelectorAll(
-          '#upcoming-launches .product-item'
-        );
-
-        upcoming.forEach((item) => {
-          const launchTime = new Date(item.dataset.launch).getTime();
-          const countdownEl = item.querySelector('.countdown');
-          const distance = launchTime - now;
-
-          if (distance > 0) {
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor(
-              (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-            );
-            const minutes = Math.floor(
-              (distance % (1000 * 60 * 60)) / (1000 * 60)
-            );
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            countdownEl.textContent = `T-${days}d ${hours}h ${minutes}m ${seconds}s`;
-          } else {
-            countdownEl.textContent = 'Launched!';
-            document.getElementById('completed-missions').appendChild(item);
-          }
-        });
       }
 
-      setInterval(updateCountdowns, 1000);
-
-      // Hamburger Menu JavaScript
       const hamburger = document.getElementById('hamburger');
       const mobileNav = document.getElementById('mobileNav');
       const overlay = document.getElementById('overlay');
 
       function toggleMenu() {
-          hamburger.classList.toggle('active');
-          mobileNav.classList.toggle('active');
-          overlay.classList.toggle('active');
-          document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        hamburger.classList.toggle('active');
+        mobileNav.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
       }
 
       hamburger.addEventListener('click', toggleMenu);
       overlay.addEventListener('click', toggleMenu);
-
-      // Close menu when clicking on a link
-      const mobileLinks = mobileNav.querySelectorAll('a');
-      mobileLinks.forEach(link => {
-          link.addEventListener('click', toggleMenu);
-      });
-
-      // Close menu on window resize if desktop size
+      mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', toggleMenu));
       window.addEventListener('resize', () => {
-          if (window.innerWidth > 768 && mobileNav.classList.contains('active')) {
-              toggleMenu();
-          }
+        if (window.innerWidth > 768 && mobileNav.classList.contains('active')) toggleMenu();
       });
     </script>
   </body>
