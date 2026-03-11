@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!footer) return;
   
     footer.innerHTML = `
-      <p>Social Media Links</p>
       <div class="newsletter">
         <input type="email" id="subscribe-email" placeholder="Your email" required />
         <button id="subscribe-btn">Join</button>
@@ -12,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <div class="footer-links">
         <a href="/index.html">Home</a> | <a href="/gallery.html">Shop</a> |
         <a href="/about.html">About Us</a> |
-        <a href="/missionlog.html">Missions</a> |
+        <a href="/missionlog.html">Missions</a> 
 
       </div>
     `;
