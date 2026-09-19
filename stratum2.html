@@ -8,68 +8,97 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   </head>
   <body>
-    <header>
-      <div class="logo">
-        <a href="index.html">
-        <img src="assets/westtek-solutions-dark-theme.png" alt="West-Tek Solutions" class="logo-img" />
-        </a>
-      </div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="gallery.html">Shop</a>
-        <a href="about.html">About Us</a>
-        <a href="missionlog.html">Missions</a>
-        <a href="nvm2.html">NVM2</a>
-      </nav>
-      
-      <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </header>
-
-    <!-- Mobile Navigation Elements -->
-    <div class="overlay" id="overlay"></div>
-    
-    <div class="mobile-nav" id="mobileNav">
-      <a href="index.html">Home</a>
-      <a href="gallery.html">Shop</a>
-      <a href="about.html">About Us</a>
-      <a href="missionlog.html">Missions</a>
-      <a href="nvm2.html">NVM2</a>
-    </div>
+    <header id="site-header"></header>
+    <script src="/nav.js"></script>
+    <script src="/header.js"></script>
 
     <main>
       <!-- Mission Header -->
       <section class="mission-header" style="background-image: url('assets/stratum2_launch.PNG');">
-        <div class="countdown-display" id="countdown-display" data-launch="[LAUNCH DATE HERE in format: 2025-09-07T16:00:00]">
-          T-[DAYS]d [HOURS]h [MINUTES]m [SECONDS]s
-        </div>
         <h1 class="mission-title">Mission: STRATUM 2</h1>
-        
+
         <div class="mission-status" id="mission-status">
-          <!-- Status will be updated by JavaScript: UPCOMING, LIVE, COMPLETED -->
-          <span class="status-badge">UPCOMING</span>
+          <span class="status-badge completed">COMPLETED</span>
+        </div>
+      </section>
+
+      <!-- Mission Video -->
+      <section>
+        <h2>Mission Video</h2>
+        <div class="video-wrapper">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/fa9DKkEf734"
+            title="Mission STRATUM Launch Video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
         </div>
       </section>
 
       <!-- Mission Overview -->
-      <section class="mission-description">
-        <p>
-          West-Tek Solutions is targeting Sunday, September 28th for launch of our Stratum 2 test rockets from the West Family Launch Site. Liftoff is planned for 3:00 PM EDT.
-        </p>
-        <p>
-          This will be the first flight of our Stratum 2 rocket variants, powered by an 18mm B6-4 motor. Following liftoff, the rockets are expected to complete a standard ascent, deploy their recovery systems, and return to the launch site for inspection and potential relaunch preparation.
-        </p>
-        <p>
-          <span class="highlight">Mission: Stratum 2 Launch</span> represents a critical step in addressing the heat damage issues encountered during the Stratum 1 flight. Each rocket variant features a custom West-Tek-designed fin can, ensuring the motor remains securely in place and preventing dislodgement into the body tube. The primary objectives are to launch, recover, and successfully re-launch the rockets while validating the improved fin can design and reinforced PETG body tubes. This mission is important for refining our engineering solutions and ensuring reliable performance for future flights.
-        </p>
-        <p>
-          By resolving the structural and thermal issues observed in Stratum 1, Stratum 2 demonstrates how design improvements based on testing and expert consultation—particularly advice from our Supreme Advisor, Rob West—will directly improve rocket safety and reliability. These technical upgrades aim to allow for consistent reusability and contribute to West-Tek Solutions’ broader goal of developing resilient, reusable rockets for future testing and missions.
-        </p>
+      <section>
+        <h2>Mission Overview</h2>
+        <div class="overview-layout">
+          <div class="overview-body">
+          <p>
+            West-Tek Solutions is targeting Sunday, September 28th for launch of our Stratum 2 test rockets from the West Family Launch Site. Liftoff is planned for 3:00 PM EDT.
+          </p>
+          <p>
+            This will be the first flight of our Stratum 2 rocket variants, powered by an 18mm B6-4 motor. Following liftoff, the rockets are expected to complete a standard ascent, deploy their recovery systems, and return to the launch site for inspection and potential relaunch preparation.
+          </p>
+          <p>
+            <span class="highlight">Mission: Stratum 2 Launch</span> represents a critical step in addressing the heat damage issues encountered during the Stratum 1 flight. Each rocket variant features a custom West-Tek-designed fin can, ensuring the motor remains securely in place and preventing dislodgement into the body tube. The primary objectives are to launch, recover, and successfully re-launch the rockets while validating the improved fin can design and reinforced PETG body tubes. This mission is important for refining our engineering solutions and ensuring reliable performance for future flights.
+          </p>
+          <p>
+            By resolving the structural and thermal issues observed in Stratum 1, Stratum 2 demonstrates how design improvements based on testing and expert consultation—particularly advice from our Supreme Advisor, Rob West—will directly improve rocket safety and reliability. These technical upgrades aim to allow for consistent reusability and contribute to West-Tek Solutions’ broader goal of developing resilient, reusable rockets for future testing and missions.
+          </p>
+          </div>
+          <div class="specs-sidebar">
+            <div class="specs-sidebar-title">// Specifications</div>
+            <div class="spec-row"><span class="spec-key">Vehicle</span><span class="spec-val">Stratum 2</span></div>
+            <div class="spec-row"><span class="spec-key">Motor Class</span><span class="spec-val">Estes B6-4</span></div>
+            <div class="spec-row"><span class="spec-key">Motor Dia.</span><span class="spec-val">18 mm</span></div>
+            <div class="spec-row"><span class="spec-key">Body Dia.</span><span class="spec-val">25 mm</span></div>
+            <div class="spec-row"><span class="spec-key">Airframe</span><span class="spec-val">3D-Printed PETG (reinforced)</span></div>
+            <div class="spec-row"><span class="spec-key">Avionics</span><span class="spec-val">None</span></div>
+            <div class="spec-row"><span class="spec-key">Launch Site</span><span class="spec-val">West Family Launch Site</span></div>
+            <div class="spec-row"><span class="spec-key">Apogee</span><span class="spec-val">Not Recorded</span></div>
+          </div>
+        </div>
       </section>
-      
+
+      <!-- Objectives -->
+      <section>
+        <h2>Mission Objectives</h2>
+        <div class="objectives-grid">
+          <div class="obj-card"><span class="obj-num">01</span><span class="obj-text">Resolve the heat-damage and fin-separation issues identified in Stratum 1</span></div>
+          <div class="obj-card"><span class="obj-num">02</span><span class="obj-text">Validate a custom-designed fin can and reinforced PETG body tube</span></div>
+          <div class="obj-card"><span class="obj-num">03</span><span class="obj-text">Launch, recover, and re-launch the same vehicle to test durability</span></div>
+          <div class="obj-card"><span class="obj-num">04</span><span class="obj-text">Improve reliability ahead of a future 24mm motor platform</span></div>
+        </div>
+      </section>
+
+      <!-- Mission Outcome -->
+      <section class="mission-outcome" id="mission-outcome">
+        <h2>Mission Summary</h2>
+
+        <div class="outcome-status">
+          <div class="status-indicator">
+            <span class="outcome-badge success" id="outcome-badge">SUCCESS</span>
+            <p class="outcome-text">
+                The Stratum 2 mission was a success. Weather conditions were bright and sunny with temperatures in the mid-70s and occasional breezes, providing ideal launch conditions. Both variants of the Stratum 2 rocket were launched: one experienced minor body warping when recovery wadding caught on the shock cord anchor, causing stress and heat, but still flew well and deployed its chute safely. That rocket has been retired. The second rocket successfully flew three times without any noticeable damage, although on the third flight it became temporarily stuck in a nearby tree; we are confident it will descend naturally soon.
+              </p>
+              <p>
+                Technical performance was excellent overall. The rockets demonstrated significant improvement over Stratum 1, with reinforced PETG body tubes and custom fin cans performing as expected. The first rocket's issue highlighted the shock cord anchor as a potential choke point for future designs. No structural failures were observed in the second rocket, which performed flawlessly on repeated flights.
+              </p>
+              <p>
+                Overall, the mission exceeded expectations and provided valuable lessons. Objectives of launching, recovering, and validating the new design were met. Knowledge gained from these flights will guide future improvements, including a more streamlined rocket design and a refined shock cord anchoring method. West-Tek Solutions plans to conduct at least one more Stratum launch before moving toward a 24mm motor platform.
+              </p>
+          </div>
+        </div>
+      </section>
+
       <!-- Mission Gallery -->
       <section class="mission-gallery">
         <div class="gallery-container">
@@ -79,31 +108,28 @@
               <p class="image-caption">Stratum 2 Lineup</p>
             </div>
           </div>
-          
+
           <div class="gallery-image" data-index="1">
             <img src="assets/stratum2_workbench.jpg" alt="Stratum 2 Assembly" class="mission-image" />
             <div class="image-overlay">
               <p class="image-caption">Stratum 2 Assembly</p>
             </div>
           </div>
-          
+
           <div class="gallery-image" data-index="2">
             <img src="assets/stratum2_launch.PNG" alt="Stratum 2 Launch" class="mission-image" />
             <div class="image-overlay">
               <p class="image-caption">Stratum 2 Launch</p>
             </div>
           </div>
-          
+
           <div class="gallery-image" data-index="3">
             <img src="assets/stratum2_damage.jpg" alt="Stratum 2 Damage" class="mission-image" />
             <div class="image-overlay">
               <p class="image-caption">Stratum 2 Damage</p>
             </div>
           </div>
-          
 
-          </div>
-          
           <!-- Navigation Controls -->
           <div class="gallery-controls">
             <button class="gallery-nav prev-btn" onclick="changeImage(-1)">
@@ -125,198 +151,21 @@
         </div>
       </section>
 
-      <!-- Post-Event Section (Hidden until mission is completed) -->
-      <section class="mission-outcome" id="mission-outcome" style="display: none;">
-        <h2>Mission Summary</h2>
-        
-        <div class="outcome-status">
-          <div class="status-indicator">
-            <span class="outcome-badge success" id="outcome-badge">SUCCESS</span>
-            <p class="outcome-text">
-                The Stratum 2 mission was a success. Weather conditions were bright and sunny with temperatures in the mid-70s and occasional breezes, providing ideal launch conditions. Both variants of the Stratum 2 rocket were launched: one experienced minor body warping when recovery wadding caught on the shock cord anchor, causing stress and heat, but still flew well and deployed its chute safely. That rocket has been retired. The second rocket successfully flew three times without any noticeable damage, although on the third flight it became temporarily stuck in a nearby tree; we are confident it will descend naturally soon.
-              </p>
-              <p>
-                Technical performance was excellent overall. The rockets demonstrated significant improvement over Stratum 1, with reinforced PETG body tubes and custom fin cans performing as expected. The first rocket's issue highlighted the shock cord anchor as a potential choke point for future designs. No structural failures were observed in the second rocket, which performed flawlessly on repeated flights.
-              </p>
-              <p>
-                Overall, the mission exceeded expectations and provided valuable lessons. Objectives of launching, recovering, and validating the new design were met. Knowledge gained from these flights will guide future improvements, including a more streamlined rocket design and a refined shock cord anchoring method. West-Tek Solutions plans to conduct at least one more Stratum launch before moving toward a 24mm motor platform.
-              </p>
-          </div>
-        </div>
-      </section>
 
       <!-- Navigation -->
       <section class="mission-navigation">
         <div class="nav-buttons">
-          <button class="nav-btn" onclick="window.location.href='events.html'">← Back to Launches</button>
+          <button class="nav-btn" onclick="window.location.href='missionlog.html'">← Back to Rockets</button>
           <button class="nav-btn" onclick="window.location.href='stratum1.html'">← Previous Mission</button>
           <button class="nav-btn" onclick="window.location.href='events.html'">Next Mission →</button>
         </div>
       </section>
     </main>
 
-    <footer>
-      <p>Social Media Links</p>
-      <div class="newsletter">
-        <input type="email" id="subscribe-email" placeholder="Your email" required />
-        <button id="subscribe-btn">Join</button>
-        <div id="newsletter-status" style="margin-top: 10px; font-size: 14px;"></div>
-      </div>
-      <div class="footer-links">
-        <a href="index.html">Home</a> | <a href="gallery.html">Shop</a> |
-        <a href="about.html">About Us</a> |
-        <a href="missionlog.html">Missions</a> |
-        <a href="nvm2.html">NVM2</a>
-      </div>
-    </footer>
+    <footer id="site-footer"></footer>
+    <script src="/footer.js"></script>
 
     <script>
-    // Replace with your actual SheetDB API URL
-    const SHEET_DB_URL = 'https://sheetdb.io/api/v1/sf0j8tkm2crwm';
-      
-      const subscribeBtn = document.getElementById('subscribe-btn');
-      const emailInput = document.getElementById('subscribe-email');
-      const statusDiv = document.getElementById('newsletter-status');
-
-      function showStatus(message, isError = false) {
-        statusDiv.textContent = message;
-        statusDiv.style.color = isError ? '#ff6b6b' : '#51cf66';
-        setTimeout(() => {
-          statusDiv.textContent = '';
-        }, 4000);
-      }
-
-      subscribeBtn.addEventListener('click', async function () {
-        const email = emailInput.value.trim();
-        
-        // Basic email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!email || !emailRegex.test(email)) {
-          showStatus('Please enter a valid email address.', true);
-          return;
-        }
-
-        // Disable button during request
-        subscribeBtn.disabled = true;
-        subscribeBtn.textContent = 'Joining...';
-
-        try {
-          const response = await fetch(SHEET_DB_URL, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              data: [{
-                email: email,
-                timestamp: new Date().toISOString()
-              }]
-            })
-          });
-
-          if (response.ok) {
-            showStatus(`Thank you for subscribing with ${email}!`);
-            emailInput.value = '';
-          } else {
-            throw new Error('Network response was not ok');
-          }
-        } catch (error) {
-          console.error('Error:', error);
-          showStatus('Something went wrong. Please try again.', true);
-        } finally {
-          // Re-enable button
-          subscribeBtn.disabled = false;
-          subscribeBtn.textContent = 'Join';
-        }
-      });
-
-      // Allow Enter key to submit
-      emailInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-          subscribeBtn.click();
-        }
-      });
-      
-      // Hamburger Menu
-      const hamburger = document.getElementById('hamburger');
-      const mobileNav = document.getElementById('mobileNav');
-      const overlay = document.getElementById('overlay');
-
-      function toggleMenu() {
-          hamburger.classList.toggle('active');
-          mobileNav.classList.toggle('active');
-          overlay.classList.toggle('active');
-          document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
-      }
-
-      hamburger.addEventListener('click', toggleMenu);
-      overlay.addEventListener('click', toggleMenu);
-
-      const mobileLinks = mobileNav.querySelectorAll('a');
-      mobileLinks.forEach(link => {
-          link.addEventListener('click', toggleMenu);
-      });
-
-      window.addEventListener('resize', () => {
-          if (window.innerWidth > 768 && mobileNav.classList.contains('active')) {
-              toggleMenu();
-          }
-      });
-
-      // Mission-specific functionality
-      function updateMissionStatus() {
-        // This should be customized for each specific mission
-        const launchDate = new Date(document.getElementById('countdown-display').dataset.launch);
-        const now = new Date();
-        const statusBadge = document.querySelector('.status-badge');
-        const outcomeSection = document.getElementById('mission-outcome');
-        const countdownSection = document.getElementById('countdown-display');
-
-        if (now < launchDate) {
-          // Mission is upcoming
-          statusBadge.textContent = 'UPCOMING';
-          statusBadge.className = 'status-badge upcoming';
-          updateCountdown();
-        } else {
-          // Mission has occurred
-          statusBadge.textContent = 'COMPLETED';
-          statusBadge.className = 'status-badge completed';
-          countdownSection.style.display = 'none';
-          outcomeSection.style.display = 'block';
-        }
-      }
-
-      function updateCountdown() {
-        const launchTime = new Date(document.getElementById('countdown-display').dataset.launch).getTime();
-        const now = new Date().getTime();
-        const distance = launchTime - now;
-
-        if (distance > 0) {
-          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-          document.getElementById('countdown-display').textContent = 
-            `T-${days}d ${hours}h ${minutes}m ${seconds}s`;
-        } else {
-          document.getElementById('countdown-display').textContent = 'LAUNCH TIME!';
-          // Auto-refresh page or update status after launch
-          setTimeout(() => {
-            location.reload();
-          }, 5000);
-        }
-      }
-
-      // Initialize mission status and start countdown if needed
-      updateMissionStatus();
-      
-      // Update countdown every second if mission is upcoming
-      const statusBadge = document.querySelector('.status-badge');
-      if (statusBadge.textContent === 'UPCOMING') {
-        setInterval(updateCountdown, 1000);
-      }
-      
       // Gallery Navigation JavaScript
       let currentImageIndex = 0;
       const totalImages = document.querySelectorAll('.gallery-image').length;

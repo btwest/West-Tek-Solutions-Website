@@ -6,110 +6,23 @@
     <title>West-Tek Solutions | Home</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <style>
-      .hero {
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-      }
-
-      .hero-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
-      }
-
-      .hero h2 {
-        font-size: clamp(2rem, 5vw, 3.5rem);
-        letter-spacing: 3px;
-        margin-bottom: 0;
-      }
-
-      /* Remove the default h2::after orange bar inside hero */
-      .hero h2::after { display: none; }
-
-      .hero p {
-        max-width: 620px;
-        font-size: 1.1rem;
-        color: var(--light-gray);
-        line-height: 1.8;
-        margin: 0;
-      }
-
-      .cta-buttons {
-        display: flex;
-        gap: 1.25rem;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 0.5rem;
-      }
-
-      .cta-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.6rem;
-        padding: 0.85rem 2rem;
-        font-size: 0.9rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        text-decoration: none;
-        border: 2px solid var(--spacex-orange);
-        color: var(--pure-white);
-        background: transparent;
-        transition: all 0.3s ease;
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        cursor: pointer;
-      }
-
-      .cta-btn:hover {
-        background-color: var(--spacex-orange);
-        color: var(--space-black);
-      }
-
-      .cta-btn.secondary {
-        border-color: var(--pure-white);
-        color: var(--pure-white);
-      }
-
-      .cta-btn.secondary:hover {
-        background-color: var(--pure-white);
-        color: var(--space-black);
-      }
-
-      @media (max-width: 480px) {
-        .cta-buttons { flex-direction: column; align-items: center; }
-        .cta-btn { width: 100%; max-width: 280px; justify-content: center; }
-      }
-    </style>
   </head>
   <body>
 
     <header id="site-header"></header>
-    <div class="overlay" id="overlay"></div>
-    <div class="mobile-nav" id="mobileNav">
-      <a href="/index.html">Home</a>
-      <a href="/gallery.html">Shop</a>
-      <a href="/about.html">About Us</a>
-      <a href="/missionlog.html">Missions</a>
-      <a href="/nvm2.html">NVM2</a>
-    </div>
+    <script src="/nav.js"></script>
     <script src="/header.js"></script>
 
     <section class="hero">
-      <img src="assets/cats_paw_nebula.png" class="hero-bg" alt="Nebula" />
+      <img src="assets/Elephant%2006F.jpeg" class="hero-bg" alt="Elephant Nebula" />
       <div class="hero-content">
-        <h2>Exploring Projects.<br>Building Futures.</h2>
+        <h2><span class="highlight">West-Tek</span> Solutions</h2>
         <p>
-          Welcome to <span class="highlight">WEST-TEK SOLUTIONS</span> — the central hub for West family
-          projects, ideas, and creative ventures. From tech experiments to
-          aerospace-inspired builds, this is where innovation takes flight.
+          Exploring the boundaries of 3D printing and additive manufacturing in aerospace.
         </p>
+        <p class="motto">Ad astra per aspera <span class="motto-translation">— through hardships to the stars</span></p>
         <div class="cta-buttons">
-          <a href="/missionlog.html" class="cta-btn">View Mission Log →</a>
+          <a href="/missionlog.html" class="cta-btn">See Our Rockets →</a>
           <a href="https://youtube.com/@west-teksolutions?si=URjQ0NPJtFAakRpV" target="_blank" rel="noopener" class="cta-btn secondary">▶ YouTube Channel</a>
         </div>
       </div>

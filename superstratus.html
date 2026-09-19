@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission: SUPER STRATUS | West-Tek Solutions</title>
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+
+  <header id="site-header"></header>
+  <script src="/nav.js"></script>
+  <script src="/header.js"></script>
+
+
+  <!-- Mission Banner -->
+  <div class="mission-header">
+    <div class="mission-header-content">
+      <div class="mission-id-tag">WTS-RKT-004 &nbsp;·&nbsp; Mid-Power Rocketry Development</div>
+      <h1 class="mission-title">Mission: <span>SUPER STRATUS</span></h1>
+      <div class="mission-banner-meta">
+        <div class="mission-status-badge">Mission Complete</div>
+        <div class="meta-tag">Vehicle: <span>Super Stratus</span></div>
+        <div class="meta-tag">Site: <span>Potter, New York</span></div>
+        <div class="meta-tag">Apogee: <span>~2,400 ft (est.)</span></div>
+      </div>
+    </div>
+  </div>
+
+
+  <main class="detail-main left-heading mission-report report-superstratus">
+
+    <!-- Mission Video -->
+    <section>
+      <h2>Mission Video</h2>
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/nP-GC3q144Y"
+          title="Mission SUPER STRATUS Launch Video"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section>
+      <h2>Mission Overview</h2>
+      <div class="overview-layout">
+        <div class="overview-body">
+          <p>
+            After the <span class="highlight">Yankee One</span> disaster — an underpowered, overweight rocket built in a single
+            weekend that "flopped back to Earth like a wet paper towel" — West-Tek's mid-power track record stood at one
+            success in five flights, and that one success only held together thanks to a stranger's super glue in the
+            Arizona desert. The Super Stratus was the response: a commitment to design the next mid-power rocket the right
+            way, from the ground up.
+          </p>
+          <p>
+            Same DNA as the Stratus, bigger ambitions, and for the first time in West-Tek history, a real engineering
+            workflow. The rocket was designed fully in OpenRocket before any hardware was touched, modeled in Fusion 360
+            after outgrowing Tinkercad, and printed in PETG carbon-fiber for a stiffer, more dimensionally stable airframe.
+            It was the first West-Tek vehicle to launch off a 1010 rail with positive motor retention, the first built as a
+            fully modular threaded stack, and the first to fly on composite motors instead of Estes black powder.
+          </p>
+          <p>
+            Body diameter landed at 2.56 in — between the Stratus's 1.6 in and the Yankee One's 3 in — paired with a
+            clipped delta fin design borrowing from both. OpenRocket converged on a 32 in tall vehicle projected at
+            around 400 g without a motor; the as-built vehicle came in almost exactly on target.
+          </p>
+        </div>
+        <div class="specs-sidebar">
+          <div class="specs-sidebar-title">// Specifications</div>
+          <div class="spec-row"><span class="spec-key">Vehicle</span><span class="spec-val">Super Stratus</span></div>
+          <div class="spec-row"><span class="spec-key">Motor Class</span><span class="spec-val">F/G, Composite</span></div>
+          <div class="spec-row"><span class="spec-key">Motor Dia.</span><span class="spec-val">29 mm</span></div>
+          <div class="spec-row"><span class="spec-key">Body Dia.</span><span class="spec-val">65 mm (2.56 in)</span></div>
+          <div class="spec-row"><span class="spec-key">Airframe</span><span class="spec-val">3D-Printed PETG-CF</span></div>
+          <div class="spec-row"><span class="spec-key">Avionics</span><span class="spec-val">None</span></div>
+          <div class="spec-row"><span class="spec-key">Launch Site</span><span class="spec-val">URRG, Potter, NY</span></div>
+          <div class="spec-row"><span class="spec-key">Apogee</span><span class="spec-val">~2,400 ft (est.)</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Objectives -->
+    <section>
+      <h2>Mission Objectives</h2>
+      <div class="objectives-grid">
+        <div class="obj-card"><span class="obj-num">01</span><span class="obj-text">Complete the full design cycle in OpenRocket before any physical build</span></div>
+        <div class="obj-card"><span class="obj-num">02</span><span class="obj-text">Transition the CAD workflow from Tinkercad to Fusion 360</span></div>
+        <div class="obj-card"><span class="obj-num">03</span><span class="obj-text">Print in PETG carbon-fiber for a stiffer, more dimensionally stable airframe</span></div>
+        <div class="obj-card"><span class="obj-num">04</span><span class="obj-text">Launch from a 1010 rail with positive motor retention for the first time</span></div>
+        <div class="obj-card"><span class="obj-num">05</span><span class="obj-text">Validate a fully modular, threaded construction across every airframe section</span></div>
+        <div class="obj-card"><span class="obj-num">06</span><span class="obj-text">Fly composite motors for the first time in West-Tek history</span></div>
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <section>
+      <h2>Vehicle Architecture</h2>
+      <div class="arch-grid">
+        <div class="arch-card">
+          <div class="arch-card-tag">// Subsystem 01</div>
+          <h3>Threaded Fin Can</h3>
+          <p>Clipped delta fins borrowing from both the Stratus and Yankee One designs. Interior threads at the top and bottom let the motor mount thread in from below and the lower body stack on top.</p>
+        </div>
+        <div class="arch-card">
+          <div class="arch-card-tag">// Subsystem 02</div>
+          <h3>Modular Threaded Airframe</h3>
+          <p>Every section — lower body, upper body, payload bay, and nose cone — threads together in one continuous stack, so any section can be removed, swapped, or reprinted without touching the rest of the rocket.</p>
+        </div>
+        <div class="arch-card">
+          <div class="arch-card-tag">// Subsystem 03</div>
+          <h3>Positive Motor Retention</h3>
+          <p>The first West-Tek vehicle designed with dedicated motor retention hardware rather than a friction fit, eliminating any risk of the motor shifting under thrust.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Anomaly Report -->
+    <section>
+      <h2>Anomaly Report</h2>
+      <div class="anomaly-panel">
+        <div class="anomaly-tag">⚠ Anomaly — Flight 1 (F50T)</div>
+        <p>
+          The first flight — a checkout of the airframe, recovery system, and new rail setup on an F50T motor — left the
+          rail cleanly and deployed its parachute as planned. On recovery, the team found the airframe had separated at
+          the threaded joint between the lower body and the fin can, snapped clean at the thread.
+        </p>
+        <p>
+          The working theory: the interior threads created a small lip inside the body tube. When the ejection charge
+          fired, that lip caught the blast, and on this flight it was enough force to break the weakest point in the
+          airframe.
+        </p>
+        <div class="mitigation-label">Field Mitigation Implemented</div>
+        <p>
+          Since this vehicle was already slated for retirement after this test program, the team lined up the separated
+          sections, soaked the joint in Gorilla Glue, clamped it together, and let it cure in the field — well enough to
+          fly one more time on the G78.
+        </p>
+      </div>
+    </section>
+
+    <!-- Outcome -->
+    <section>
+      <h2>Mission Outcome</h2>
+      <div class="outcome-panel">
+        <div class="outcome-metric">
+          <div class="metric-value">~2,400</div>
+          <div class="metric-unit">ft AGL — Apogee (est.)</div>
+        </div>
+        <div class="outcome-text">
+          <p>
+            The Super Stratus flew twice in one day at URRG in Potter, New York on March 29, 2026. The checkout flight
+            on the F50T confirmed the airframe, recovery system, and rail setup — and also exposed the threaded-joint
+            failure documented above.
+          </p>
+          <p>
+            After the field repair, the same airframe flew a second time on a G78 — the most powerful motor West-Tek had
+            flown to date. It left the rail faster, louder, and if anything straighter than the first attempt, reaching
+            an estimated 2,400 ft before deploying its 18 in parachute. The rocket drifted far off the field and required
+            an extended recovery effort, including a river crossing, before it was found in perfect condition.
+          </p>
+          <div class="outcome-badge">✓ New Workflow Validated</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section>
+      <h2>Mission Gallery</h2>
+      <div class="gallery-container">
+
+        <div class="gallery-image active">
+          <img src="/assets/superstratus_prelaunch.jpg" alt="Super Stratus on the rail" class="mission-image">
+          <div class="image-overlay">
+            <p class="image-title">Pre-Launch</p>
+            <p class="image-caption">Super Stratus on the rail at URRG, Potter, New York.</p>
+          </div>
+        </div>
+
+        <div class="gallery-image">
+          <img src="/assets/superstratus_assembled.jpg" alt="Super Stratus assembled airframe" class="mission-image">
+          <div class="image-overlay">
+            <p class="image-title">Assembled Airframe</p>
+            <p class="image-caption">The threaded fin can, body, and nose cone sections prior to launch.</p>
+          </div>
+        </div>
+
+        <div class="gallery-image">
+          <img src="/assets/superstratus_recovery.jpg" alt="Super Stratus recovery" class="mission-image">
+          <div class="image-overlay">
+            <p class="image-title">Recovery</p>
+            <p class="image-caption">Recovered in perfect condition after a long drift and a river crossing.</p>
+          </div>
+        </div>
+
+        <div class="gallery-image">
+          <img src="/assets/superstratus_cad.png" alt="Super Stratus CAD cutaway" class="mission-image">
+          <div class="image-overlay">
+            <p class="image-title">CAD Design</p>
+            <p class="image-caption">Fusion 360 cutaway of the threaded fin can and motor mount.</p>
+          </div>
+        </div>
+
+        <div class="image-counter">
+          <span id="current-slide">1</span> / <span id="total-slides">4</span>
+        </div>
+
+        <div class="gallery-controls">
+          <button class="gallery-nav" id="prev-btn">&#8592;</button>
+          <button class="gallery-nav" id="next-btn">&#8594;</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="mission-navigation">
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="location.href='/missionlog.html'">← Back to Rockets</button>
+        <button class="nav-btn" onclick="location.href='/stratus.html'">← Previous Mission</button>
+        <button class="nav-btn" onclick="location.href='/av1.html'">Next Mission →</button>
+      </div>
+    </div>
+
+  </main>
+
+
+  <footer id="site-footer"></footer>
+  <script src="/footer.js"></script>
+
+  <script>
+    // Gallery
+    const slides = document.querySelectorAll('.gallery-image');
+    const currentSlideEl = document.getElementById('current-slide');
+    const totalSlidesEl = document.getElementById('total-slides');
+    let current = 0;
+
+    if (totalSlidesEl) totalSlidesEl.textContent = slides.length;
+
+    function goToSlide(index) {
+      slides[current].classList.remove('active');
+      current = (index + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      if (currentSlideEl) currentSlideEl.textContent = current + 1;
+    }
+
+    document.getElementById('prev-btn')?.addEventListener('click', () => goToSlide(current - 1));
+    document.getElementById('next-btn')?.addEventListener('click', () => goToSlide(current + 1));
+  </script>
+
+</body>
+</html>

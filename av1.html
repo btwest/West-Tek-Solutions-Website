@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission: AV1 | West-Tek Solutions</title>
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+
+  <header id="site-header"></header>
+  <script src="/nav.js"></script>
+  <script src="/header.js"></script>
+
+
+  <!-- Mission Banner -->
+  <div class="mission-header">
+    <div class="mission-header-content">
+      <div class="mission-id-tag">WTS-RKT-005 &nbsp;·&nbsp; Mid-Power Rocketry Development</div>
+      <h1 class="mission-title">Mission: <span>AV1</span></h1>
+      <div class="mission-banner-meta">
+        <div class="mission-status-badge">Mission Complete</div>
+        <div class="meta-tag">Vehicle: <span>AV1 "Audio Video 1"</span></div>
+        <div class="meta-tag">Site: <span>Potter, New York</span></div>
+        <div class="meta-tag">Apogee: <span>626 ft</span></div>
+      </div>
+    </div>
+  </div>
+
+
+  <main class="detail-main left-heading mission-report report-av1">
+
+    <!-- Mission Video -->
+    <section>
+      <h2>Mission Video</h2>
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/XgYYoXuDT7k"
+          title="Mission AV1 Launch Video"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section>
+      <h2>Mission Overview</h2>
+      <div class="overview-layout">
+        <div class="overview-body">
+          <p>
+            With most of West-Tek's engineering bandwidth going toward the <span class="highlight">Yankee-II</span>
+            Level 1 certification rocket, the team needed extra design help — so they outsourced it to a seven-year-old.
+            Avi, a family cousin who'd been present since West-Tek's earliest launches, was handed a simple brief: draw
+            a rocket, no constraints. What came back was a rocket with a pair of swept wings mounted mid-body, eight
+            fins clustered at the tail, and "camera" labeled clearly at the nose.
+          </p>
+          <p>
+            Cousin Hanssen — designing a rocket from scratch for the first time — translated Avi's drawing into CAD: a
+            3 in diameter airframe on a 29 mm motor mount. For the camera requirement, the team sourced a Mate 808
+            miniature camera (HD video with audio, under 20 g) and mounted it below the payload bay pointed down at
+            the fin can, using a pre-made rocketry bracket built for that exact camera model.
+          </p>
+          <p>
+            When the design was run through OpenRocket, it came back completely unstable — the extra weight of the
+            eight-fin fin can pulled the center of gravity too close to the center of pressure. Rather than add nose
+            weight, the team stretched the airframe with two extra upper body sections, pushing the CP back and
+            restoring a stability margin of just under 1 caliber on the F50T.
+          </p>
+        </div>
+        <div class="specs-sidebar">
+          <div class="specs-sidebar-title">// Specifications</div>
+          <div class="spec-row"><span class="spec-key">Vehicle</span><span class="spec-val">AV1 "Audio Video 1"</span></div>
+          <div class="spec-row"><span class="spec-key">Motor Class</span><span class="spec-val">F50T, Composite</span></div>
+          <div class="spec-row"><span class="spec-key">Motor Dia.</span><span class="spec-val">29 mm</span></div>
+          <div class="spec-row"><span class="spec-key">Body Dia.</span><span class="spec-val">76.2 mm (3 in)</span></div>
+          <div class="spec-row"><span class="spec-key">Airframe</span><span class="spec-val">3D-Printed PETG (1 mm wall)</span></div>
+          <div class="spec-row"><span class="spec-key">Avionics</span><span class="spec-val">Mate 808 Camera (Video + Audio)</span></div>
+          <div class="spec-row"><span class="spec-key">Launch Site</span><span class="spec-val">URRG, Potter, NY</span></div>
+          <div class="spec-row"><span class="spec-key">Apogee</span><span class="spec-val">626 ft</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Objectives -->
+    <section>
+      <h2>Mission Objectives</h2>
+      <div class="objectives-grid">
+        <div class="obj-card"><span class="obj-num">01</span><span class="obj-text">Translate a hand-drawn family design brief into a flight-ready rocket</span></div>
+        <div class="obj-card"><span class="obj-num">02</span><span class="obj-text">Give Hanssen his first from-scratch CAD design experience</span></div>
+        <div class="obj-card"><span class="obj-num">03</span><span class="obj-text">Fly West-Tek's first onboard audio/video camera package</span></div>
+        <div class="obj-card"><span class="obj-num">04</span><span class="obj-text">Resolve a stability deficit from the 8-fin design by stretching the airframe rather than adding nose weight</span></div>
+        <div class="obj-card"><span class="obj-num">05</span><span class="obj-text">Fly the F50T as a checkout flight ahead of a planned G78 flight</span></div>
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <section>
+      <h2>Vehicle Architecture</h2>
+      <div class="arch-grid">
+        <div class="arch-card">
+          <div class="arch-card-tag">// Subsystem 01</div>
+          <h3>Eight-Fin Fin Can</h3>
+          <p>Avi's drawing showed a jagged fan at the tail that could be read as exhaust flames or a cluster of fins. The team built it as eight discrete fins.</p>
+        </div>
+        <div class="arch-card">
+          <div class="arch-card-tag">// Subsystem 02</div>
+          <h3>Mid-Body Wing Pair</h3>
+          <p>A pair of swept, wing-like surfaces mounted mid-body, faithful to the original drawing. On a non-gliding rocket, these behave like oversized fins — their contribution to stability depends entirely on their position relative to the center of gravity.</p>
+        </div>
+        <div class="arch-card">
+          <div class="arch-card-tag">// Subsystem 03</div>
+          <h3>Camera Bay</h3>
+          <p>A Mate 808 camera mounted below the payload bay on a pre-made rocketry bracket, angled down toward the fin can for a full-airframe view during flight.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Anomaly Report -->
+    <section>
+      <h2>Anomaly Report</h2>
+      <div class="anomaly-panel">
+        <div class="anomaly-tag">⚠ Anomaly — Pre-Launch Structural Failure</div>
+        <p>
+          While prepping AV1 for launch at MuckFest, the team leaned the rocket against a car and turned away for only
+          a moment. A sudden gust knocked it over, fracturing the airframe clean along the layer lines.
+        </p>
+        <p>
+          The root cause was straightforward: 1 mm wall thickness proved too thin for this build.
+        </p>
+        <div class="mitigation-label">Field Mitigation Implemented</div>
+        <p>
+          The team glued the fracture, then glued the camera mount directly across the break, turning it into a
+          structural brace, and zip-tied around the joint for extra support. The repaired rocket passed RSO
+          inspection and flew anyway.
+        </p>
+      </div>
+    </section>
+
+    <!-- Outcome -->
+    <section>
+      <h2>Mission Outcome</h2>
+      <div class="outcome-panel">
+        <div class="outcome-metric">
+          <div class="metric-value">626</div>
+          <div class="metric-unit">ft AGL — Apogee</div>
+        </div>
+        <div class="outcome-text">
+          <p>
+            AV1 flew once at MuckFest 2026, the annual URRG launch event in Potter, New York, on May 16, 2026 —
+            West-Tek's first launch event of this scale. Despite having fractured and been field-repaired less than an
+            hour before flight, it passed RSO inspection and launched off a 1010 rail on its F50T checkout motor.
+          </p>
+          <p>
+            It wasn't the straightest flight — the camera mount bracing one side of the airframe likely contributed to
+            some wobble — but it flew, reaching a recorded 626 ft before deploying its parachute and landing within
+            sight of the flight line. The upper body picked up additional fractures on the way down, likely from the
+            ejection charge, which scrubbed the planned follow-up G78 flight for the day.
+          </p>
+          <div class="outcome-badge">✓ First Onboard Camera Flight Completed</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section>
+      <h2>Mission Gallery</h2>
+      <div class="gallery-container">
+
+        <div class="gallery-image active">
+          <img src="/assets/av1_design_sketch.webp" alt="Avi's original AV1 design sketch" class="mission-image">
+          <div class="image-overlay">
+            <p class="image-title">Design Brief</p>
+            <p class="image-caption">Avi's original hand-drawn design — the brief for the entire project.</p>
+          </div>
+        </div>
+
+        <div class="gallery-image">
+          <img src="/assets/av1_cad_render.webp" alt="AV1 CAD render" class="mission-image">
+          <div class="image-overlay">
+            <p class="image-title">CAD Model</p>
+            <p class="image-caption">Hanssen's CAD translation of Avi's drawing: eight-fin fin can and mid-body wings.</p>
+          </div>
+        </div>
+
+        <div class="gallery-image">
+          <img src="/assets/av1_openrocket_sim.png" alt="AV1 OpenRocket simulation" class="mission-image">
+          <div class="image-overlay">
+            <p class="image-title">Stability Fix</p>
+            <p class="image-caption">The OpenRocket simulation after stretching the airframe to restore stability margin.</p>
+          </div>
+        </div>
+
+        <div class="gallery-image">
+          <img src="/assets/av1_onboard_footage.webp" alt="AV1 onboard camera footage" class="mission-image">
+          <div class="image-overlay">
+            <p class="image-title">Onboard Footage</p>
+            <p class="image-caption">A frame from the Mate 808's onboard camera during flight.</p>
+          </div>
+        </div>
+
+        <div class="gallery-image">
+          <img src="/assets/av1_workbench.webp" alt="AV1 on the workbench next to the Super Stratus" class="mission-image">
+          <div class="image-overlay">
+            <p class="image-title">Assembly</p>
+            <p class="image-caption">AV1 (right) alongside the Super Stratus during final assembly.</p>
+          </div>
+        </div>
+
+        <div class="image-counter">
+          <span id="current-slide">1</span> / <span id="total-slides">5</span>
+        </div>
+
+        <div class="gallery-controls">
+          <button class="gallery-nav" id="prev-btn">&#8592;</button>
+          <button class="gallery-nav" id="next-btn">&#8594;</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="mission-navigation">
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="location.href='/missionlog.html'">← Back to Rockets</button>
+        <button class="nav-btn" onclick="location.href='/superstratus.html'">← Previous Mission</button>
+      </div>
+    </div>
+
+  </main>
+
+
+  <footer id="site-footer"></footer>
+  <script src="/footer.js"></script>
+
+  <script>
+    // Gallery
+    const slides = document.querySelectorAll('.gallery-image');
+    const currentSlideEl = document.getElementById('current-slide');
+    const totalSlidesEl = document.getElementById('total-slides');
+    let current = 0;
+
+    if (totalSlidesEl) totalSlidesEl.textContent = slides.length;
+
+    function goToSlide(index) {
+      slides[current].classList.remove('active');
+      current = (index + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      if (currentSlideEl) currentSlideEl.textContent = current + 1;
+    }
+
+    document.getElementById('prev-btn')?.addEventListener('click', () => goToSlide(current - 1));
+    document.getElementById('next-btn')?.addEventListener('click', () => goToSlide(current + 1));
+  </script>
+
+</body>
+</html>
