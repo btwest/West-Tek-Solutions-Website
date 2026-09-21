@@ -2,7 +2,7 @@
    CSS VARIABLES & ROOT STYLES
    ======================================== */
    :root {
-    /* SpaceX Color Palette */
+    /* SpaceX Color Palette (flips with light/dark theme) */
     --space-black: #1c1c1c;
     --pure-white: #ffffff;
     --spacex-orange: #ff6b35; /* alt: #ff6b35, ef5323*/
@@ -12,6 +12,27 @@
     --border-gray: #333333;
     --success-green: #27ae60;
     --warning-yellow: #f39c12;
+
+    /* Header/nav "chrome" — stays dark in both themes (the logo art is dark-theme only) */
+    --chrome-bg: #1c1c1c;
+    --chrome-surface: #1a1a1a;
+    --chrome-border: #333333;
+    --chrome-text: #ffffff;
+
+    /* Text/badges layered over photos or fixed-dark banners — stays fixed in both themes */
+    --overlay-text: #ffffff;
+    --overlay-text-muted: #cccccc;
+    --overlay-text-dim: #666666;
+  }
+
+  /* Light theme — only the "content" palette flips; chrome/overlay colors stay fixed */
+  :root[data-theme="light"] {
+    --space-black: #f7f7f7;
+    --pure-white: #1a1a1a;
+    --dark-gray: #ececec;
+    --medium-gray: #707070;
+    --light-gray: #3d3d3d;
+    --border-gray: #dcdcdc;
   }
 
   /* ========================================
@@ -78,8 +99,8 @@
     justify-content: center;
     gap: 3rem;
     padding: .5rem 3rem;
-    background-color: var(--space-black);
-    border-bottom: 1px solid var(--border-gray);
+    background-color: var(--chrome-bg);
+    border-bottom: 1px solid var(--chrome-border);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -97,10 +118,60 @@
     padding-left: 3rem;
   }
 
+  /* Light/dark theme toggle */
+  .theme-toggle {
+    position: relative;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--chrome-border);
+    background: transparent;
+    color: var(--chrome-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: border-color 0.3s ease, color 0.3s ease;
+  }
+
+  .theme-toggle:hover {
+    border-color: var(--spacex-orange);
+    color: var(--spacex-orange);
+  }
+
+  .theme-icon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    transition: opacity 0.25s ease, transform 0.35s ease;
+  }
+
+  .theme-icon-sun {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+  }
+
+  .theme-icon-moon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+
+  :root[data-theme="light"] .theme-icon-sun {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+
+  :root[data-theme="light"] .theme-icon-moon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+  }
+
   nav a {
     margin: 0 1.5rem;
     text-decoration: none;
-    color: var(--pure-white);
+    color: var(--chrome-text);
     font-weight: 400;
     font-size: 0.95rem;
     text-transform: uppercase;
@@ -147,6 +218,13 @@
       transform: translateY(-50%);
     }
 
+    .theme-toggle {
+      position: absolute;
+      left: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
     header nav {
       display: none; /* hide desktop nav */
     }
@@ -167,7 +245,7 @@
   .hamburger span {
     width: 25px;
     height: 3px;
-    background: var(--pure-white);
+    background: var(--chrome-text);
     margin: 3px 0;
     transition: 0.3s ease;
     border-radius: 2px;
@@ -193,8 +271,8 @@
     right: -100%;
     width: 300px;
     height: 100vh;
-    background-color: var(--space-black);
-    border-left: 1px solid var(--border-gray);
+    background-color: var(--chrome-bg);
+    border-left: 1px solid var(--chrome-border);
     transition: right 0.3s ease;
     z-index: 1000;
     padding-top: 100px;
@@ -207,10 +285,10 @@
 
   .mobile-nav a {
     display: block;
-    color: var(--pure-white);
+    color: var(--chrome-text);
     text-decoration: none;
     padding: 1.2rem 2rem;
-    border-bottom: 1px solid var(--border-gray);
+    border-bottom: 1px solid var(--chrome-border);
     transition: all 0.3s ease;
     font-weight: 400;
     font-size: 0.95rem;
@@ -219,7 +297,7 @@
   }
 
   .mobile-nav a:hover {
-    background-color: var(--dark-gray);
+    background-color: var(--chrome-surface);
     color: var(--spacex-orange);
     padding-left: 3rem;
     border-left: 3px solid var(--spacex-orange);
@@ -319,7 +397,7 @@
     font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 700;
     margin-bottom: 0;
-    color: var(--pure-white);
+    color: var(--overlay-text);
     text-transform: uppercase;
     letter-spacing: 3px;
     animation: fadeInUp 1s ease-out;
@@ -333,7 +411,7 @@
     font-size: 1.1rem;
     max-width: 620px;
     line-height: 1.8;
-    color: var(--light-gray);
+    color: var(--overlay-text-muted);
     margin: 0;
     animation: fadeInUp 1s ease-out 0.3s both;
   }
@@ -347,11 +425,11 @@
   .hero .motto {
     font-style: italic;
     font-size: 1rem;
-    color: var(--light-gray);
+    color: var(--overlay-text-muted);
   }
 
   .motto-translation {
-    color: var(--light-gray);
+    color: var(--overlay-text-muted);
     font-size: 0.9em;
   }
 
@@ -375,7 +453,7 @@
     letter-spacing: 1px;
     text-decoration: none;
     border: 2px solid var(--spacex-orange);
-    color: var(--pure-white);
+    color: var(--overlay-text);
     background: transparent;
     transition: all 0.3s ease;
     font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -384,22 +462,92 @@
 
   .cta-btn:hover {
     background-color: var(--spacex-orange);
-    color: var(--space-black);
+    color: var(--chrome-bg);
   }
 
   .cta-btn.secondary {
-    border-color: var(--pure-white);
-    color: var(--pure-white);
+    border-color: var(--overlay-text);
+    color: var(--overlay-text);
   }
 
   .cta-btn.secondary:hover {
-    background-color: var(--pure-white);
-    color: var(--space-black);
+    background-color: var(--overlay-text);
+    color: var(--chrome-bg);
   }
 
   @media (max-width: 480px) {
     .cta-buttons { flex-direction: column; align-items: center; }
     .cta-btn { width: 100%; max-width: 280px; justify-content: center; }
+  }
+
+  /* ========================================
+     HOMEPAGE — OUR MISSION / OUR PROJECTS
+     (body content, flips with theme)
+     ======================================== */
+  .home-mission-text {
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--light-gray);
+  }
+
+  .home-cta-btn {
+    display: inline-block;
+    background-color: var(--space-black);
+    color: var(--pure-white);
+    border: 2px solid var(--spacex-orange);
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .home-cta-btn:hover {
+    background-color: var(--spacex-orange);
+    color: var(--space-black);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr 1fr;
+    align-items: center;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .project-card .video-wrapper {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .project-title {
+    font-size: 1.2rem;
+    color: var(--pure-white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .project-card-featured .project-title {
+    font-size: 1.4rem;
+  }
+
+  @media (max-width: 900px) {
+    .projects-grid { grid-template-columns: 1fr; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .project-card-featured { order: -1; }
   }
 
   /* Hero Animations */
@@ -481,7 +629,7 @@
 
   .mission-title {
     font-size: 3rem;
-    color: var(--pure-white);
+    color: var(--overlay-text);
     margin-bottom: 1rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -504,9 +652,9 @@
   }
 
   .status-badge.completed {
-    background-color: var(--space-black);
-    color: var(--pure-white);
-    border-color: var(--pure-white);
+    background-color: var(--chrome-bg);
+    color: var(--overlay-text);
+    border-color: var(--overlay-text);
   }
 
 
@@ -523,7 +671,7 @@
   height: 80vh;
   margin-left: calc(-50vw + 50%);
   overflow: hidden;
-  background-color: var(--space-black);
+  background-color: var(--chrome-bg);
 }
 
 .gallery-image {
@@ -568,7 +716,7 @@
 
 .image-caption {
   font-size: 1.1rem;
-  color: var(--light-gray);
+  color: var(--overlay-text-muted);
   margin: 0;
   max-width: 600px;
 }
@@ -719,11 +867,11 @@
      FOOTER
      ======================================== */
   footer {
-    background-color: var(--space-black);
+    background-color: var(--chrome-bg);
     padding: 2rem 2rem 2rem;
     text-align: center;
-    border-top: 1px solid var(--border-gray);
-    color: var(--pure-white);
+    border-top: 1px solid var(--chrome-border);
+    color: var(--chrome-text);
     margin-top: 4rem;
   }
 
@@ -739,11 +887,11 @@
 
   .newsletter input[type='email'] {
     padding: 0.8rem 1rem;
-    border: 2px solid var(--border-gray);
+    border: 2px solid var(--chrome-border);
     border-right: none;
     border-radius: 0;
-    background-color: var(--dark-gray);
-    color: var(--pure-white);
+    background-color: var(--chrome-surface);
+    color: var(--chrome-text);
     flex: 1;
     font-size: 0.95rem;
     outline: none;
@@ -755,14 +903,14 @@
   }
 
   .newsletter input[type='email']::placeholder {
-    color: var(--medium-gray);
+    color: var(--overlay-text-dim);
   }
 
   .newsletter button {
     padding: 0.8rem 1.5rem;
     border: 2px solid var(--spacex-orange);
     background: var(--spacex-orange);
-    color: var(--space-black);
+    color: var(--chrome-bg);
     border-radius: 0;
     cursor: pointer;
     font-weight: 600;
@@ -772,7 +920,7 @@
   }
 
   .newsletter button:hover {
-    background-color: var(--space-black);
+    background-color: var(--chrome-bg);
     color: var(--spacex-orange);
   }
 
@@ -783,7 +931,7 @@
   }
 
   .footer-links a {
-    color: var(--light-gray);
+    color: var(--overlay-text-muted);
     text-decoration: none;
     margin: 0 1rem;
     text-transform: uppercase;
@@ -1357,7 +1505,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 4px;
-    color: var(--pure-white);
+    color: var(--overlay-text);
     line-height: 1;
     text-align: left;
     text-shadow: 2px 2px 12px rgba(0,0,0,0.8);
@@ -1370,7 +1518,7 @@
     font-weight: 300;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--light-gray);
+    color: var(--overlay-text-muted);
     margin: 0 0 1.5rem 0;
     text-align: left;
   }
@@ -1405,8 +1553,8 @@
     animation: blink 2s ease-in-out infinite;
   }
 
-  .meta-tag { font-size: 0.8rem; color: var(--medium-gray); text-transform: uppercase; letter-spacing: 1px; }
-  .meta-tag span { color: var(--light-gray); margin-left: 0.3rem; }
+  .meta-tag { font-size: 0.8rem; color: var(--overlay-text-dim); text-transform: uppercase; letter-spacing: 1px; }
+  .meta-tag span { color: var(--overlay-text-muted); margin-left: 0.3rem; }
 
   .mission-report.detail-main {
     padding: 0 2rem 4rem;
@@ -1662,6 +1810,55 @@
   .report-stratus .mission-title { font-size: clamp(3rem, 7vw, 5rem); margin-bottom: 1.5rem; }
   .report-superstratus .mission-title { font-size: clamp(2.2rem, 5vw, 4rem); margin-bottom: 1.5rem; }
   .report-av1 .mission-title { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 1.5rem; }
+
+  /* AV1 and Super Stratus: plain in-flow header instead of the dark banner — flips with theme */
+  .report-av1 .mission-header,
+  .report-superstratus .mission-header {
+    position: static;
+    width: auto;
+    height: auto;
+    min-height: 0;
+    margin-left: 0;
+    display: block;
+    overflow: visible;
+    background: none;
+    border-bottom: 1px solid var(--border-gray);
+    padding: 2rem 0 3rem;
+  }
+
+  .report-av1 .mission-header::before,
+  .report-av1 .mission-header::after,
+  .report-superstratus .mission-header::before,
+  .report-superstratus .mission-header::after {
+    display: none;
+  }
+
+  .report-av1 .mission-header-content,
+  .report-superstratus .mission-header-content {
+    padding: 0;
+    animation: none;
+  }
+
+  .report-av1 .mission-title,
+  .report-superstratus .mission-title {
+    color: var(--pure-white);
+    text-shadow: none;
+  }
+
+  .report-av1 .mission-subtitle,
+  .report-superstratus .mission-subtitle {
+    color: var(--light-gray);
+  }
+
+  .report-av1 .meta-tag,
+  .report-superstratus .meta-tag {
+    color: var(--medium-gray);
+  }
+
+  .report-av1 .meta-tag span,
+  .report-superstratus .meta-tag span {
+    color: var(--light-gray);
+  }
 
   .report-nvm2 .arch-card h3 { font-size: 1rem; }
   .report-stratus .arch-card h3 { font-size: 1.1rem; }
