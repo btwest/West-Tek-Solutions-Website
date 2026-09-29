@@ -5,5 +5,5 @@ window.SITE_NAV = [
   { href: '/gallery.html', label: 'Shop' },
   { href: '/about.html', label: 'About Us' },
   { href: '/missionlog.html', label: 'Rockets' },
-  { href: 'https://west-tekflightreplay.netlify.app/', label: 'T-Plus Flight Replay', external: true },
+  { href: 'https://west-tekflightreplay.netlify.app/', label: 'T+ Flight Replay', external: true },
 ];
