@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!footer) return;
 
   const navLinks = window.SITE_NAV || [];
-  const linksHtml = navLinks.map(link => `<a href="${link.href}">${link.label}</a>`).join(' | ');
+  const linksHtml = navLinks.map(link => `<a href="${link.href}"${link.external ? ' target="_blank" rel="noopener"' : ''}>${link.label}</a>`).join(' | ');
 
   footer.innerHTML = `
     <div class="newsletter">

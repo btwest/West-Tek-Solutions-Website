@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!header) return;
 
   const navLinks = window.SITE_NAV || [];
-  const linksHtml = navLinks.map(link => `<a href="${link.href}">${link.label}</a>`).join('\n        ');
+  const linksHtml = navLinks.map(link => `<a href="${link.href}"${link.external ? ' target="_blank" rel="noopener"' : ''}>${link.label}</a>`).join('\n        ');
 
   header.innerHTML = `
     <div class="logo">
